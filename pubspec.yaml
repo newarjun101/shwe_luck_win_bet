@@ -21,7 +21,6 @@ dependencies:
   get_storage: ^2.0.3
   http: ^0.13.4
   substring_highlight: ^1.0.33
-  webview_flutter: ^3.0.0
   carousel_slider: ^4.0.0
   badges: ^2.0.2
 
@@ -38,8 +37,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  assets:
-     - assets/images/
+#  assets:
+#     - assets/images/
 
   # fonts:
   #   - family: Schyler
