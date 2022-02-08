@@ -15,6 +15,7 @@ class Routes {
     GetPage(
         name: Pages.lTodayResult,
         page: () => const TodayResult(),
+  binding: FeatureMainBinding(),
        ),
   ];
 }

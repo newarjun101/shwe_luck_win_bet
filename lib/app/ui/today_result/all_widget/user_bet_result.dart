@@ -10,7 +10,6 @@ class UserBetResult extends StatelessWidget {
     return Container(
         padding: EdgeInsets.all(kDefaultMargin.sh),
         width: 1.sw,
-        height: 0.5.sh,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
                 topRight: Radius.circular(0.056.sh),
@@ -30,25 +29,25 @@ class UserBetResult extends StatelessWidget {
                 rows:const [
                   DataRow(
                     cells: [
-                      DataCell(Text('Go')),
-                      DataCell(Text('2009')),
-                      DataCell(Text("4 Jan 2021")),
+                      DataCell(Text('11:30 AM')),
+                      DataCell(Text('23, 24, 25')),
+                      DataCell(Text("4.1.2022")),
 
                     ],
                   ),
                   DataRow(
                     cells: [
-                      DataCell(Text('Go')),
-                      DataCell(Text('2009')),
-                      DataCell(Text("4 Jan 2021")),
+                      DataCell(Text('11:30 AM')),
+                      DataCell(Text('23, 24, 25')),
+                      DataCell(Text("4.1.2022")),
 
                     ],
                   ),
                   DataRow(
                     cells: [
-                      DataCell(Text('Go')),
-                      DataCell(Text('2009')),
-                      DataCell(Text("4 Jan 2021")),
+                      DataCell(Text('11:30 AM')),
+                      DataCell(Text('23, 24, 25')),
+                      DataCell(Text("4.1.2022")),
 
                     ],
                   ),
@@ -70,25 +69,25 @@ class UserBetResult extends StatelessWidget {
                 rows:const [
                   DataRow(
                     cells: [
-                      DataCell(Text('Go')),
-                      DataCell(Text('2009')),
-                      DataCell(Text("4 Jan 2021")),
+                      DataCell(Text('11:30 AM')),
+                      DataCell(Text('23, 24, 25')),
+                      DataCell(Text("4.1.2022")),
 
                     ],
                   ),
                   DataRow(
                     cells: [
-                      DataCell(Text('Go')),
-                      DataCell(Text('2009')),
-                      DataCell(Text("4 Jan 2021")),
+                      DataCell(Text('11:30 AM')),
+                      DataCell(Text('23, 24, 25')),
+                      DataCell(Text("4.1.2022")),
 
                     ],
                   ),
                   DataRow(
                     cells: [
-                      DataCell(Text('Go')),
-                      DataCell(Text('2009')),
-                      DataCell(Text("4 Jan 2021")),
+                      DataCell(Text('11:30 AM')),
+                      DataCell(Text('23, 24, 25')),
+                      DataCell(Text("4.1.2022")),
 
                     ],
                   ),

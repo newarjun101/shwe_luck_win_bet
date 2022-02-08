@@ -8,9 +8,10 @@ class LotteryResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          "Today Result",
+          "ဒီနေ့ထွက်",
           style: TextStyle(
             shadows: [
               Shadow(
@@ -30,39 +31,37 @@ class LotteryResult extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            RichText(
-                text: TextSpan(children: [
-                TextSpan(
-                  text: "36\n",
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.secondary,
-                      fontSize: 42.sp,
-                      fontWeight: FontWeight.bold)),
-              TextSpan(
-                  text: "Test Text",
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.secondary,
-                      fontSize: kExtraLargeFontSize18.sp,
-                      fontWeight: FontWeight.bold))
-            ])),
+            Column(
+              children: [
+                Text("36",
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary,
+                        fontSize: 42.sp,
+                        fontWeight: FontWeight.bold)),
+                Text("12:00 နံပါတ်",
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary,
+                        fontSize: kExtraLargeFontSize18.sp,
+                        fontWeight: FontWeight.bold))
+              ],
+            ),
             SizedBox(
               width: kDefaultMargin.sw,
             ),
-            RichText(
-                text: TextSpan(children: [
-              TextSpan(
-                  text: "36\n",
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.secondary,
-                      fontSize: 42.sp,
-                      fontWeight: FontWeight.bold)),
-              TextSpan(
-                  text: "Test Text",
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.secondary,
-                      fontSize: kExtraLargeFontSize18.sp,
-                      fontWeight: FontWeight.bold))
-            ])),
+            Column(
+              children: [
+                Text("36",
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary,
+                        fontSize: 42.sp,
+                        fontWeight: FontWeight.bold)),
+                Text("၄:၃၀ ဂဏန်း",
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary,
+                        fontSize: kExtraLargeFontSize18.sp,
+                        fontWeight: FontWeight.bold))
+              ],
+            ),
           ],
         )
       ],
