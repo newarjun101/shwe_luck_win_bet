@@ -15,18 +15,19 @@ class BuildButtomNavbarFeature extends StatelessWidget {
     return BottomNavigationBar(
       items: [
         getNavigationBarItem(
-          Icons.account_circle, 'Home', context, 0, featureMainController),
-        getNavigationBarItem(
-            Icons.account_balance_wallet, 'Balance', context, 0, featureMainController),
-        getNavigationBarItem(
-            Icons.phone_callback_outlined, 'Help', context, 0, featureMainController),
+            Icons.home_outlined, 'Home', context, 0, featureMainController),
+        getNavigationBarItem(Icons.account_balance_wallet, 'Balance', context,
+            0, featureMainController),
+        getNavigationBarItem(Icons.phone_callback_outlined, 'Help', context, 0,
+            featureMainController),
         getNavigationBarItem(
             Icons.account_circle, 'Profile', context, 0, featureMainController),
       ],
       elevation: 1,
-      selectedItemColor: Theme.of(context).primaryColor,
-      unselectedItemColor: Theme.of(context).colorScheme.onPrimary,
+      selectedItemColor: Theme.of(context).colorScheme.secondary,
+      unselectedItemColor: Theme.of(context).colorScheme.primaryVariant,
       showUnselectedLabels: true,
+      backgroundColor: Theme.of(context).primaryColor,
       type: BottomNavigationBarType.fixed,
       currentIndex: featureMainController.getIndex(),
       selectedFontSize: 14,
