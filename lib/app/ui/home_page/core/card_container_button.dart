@@ -19,14 +19,14 @@ class CardButtonContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 0.45.sw,
-      height: 0.3.sh,
+      height: 0.2 .sh,
       margin: EdgeInsets.all(kDefaultMargin.sh),
       decoration: BoxDecoration(
           border: Border.all(
-              width: 3, color: Theme.of(context).colorScheme.secondary),
+              width: 1.5, color: Theme.of(context).colorScheme.secondary),
           gradient: LinearGradient(
             colors: [
-              Color(0xff0575e6),
+             const Color(0xff0575e6),
               Theme.of(context).primaryColor
               //add more colors for gradient
             ],
@@ -57,7 +57,7 @@ class CardButtonContainer extends StatelessWidget {
                 child: Text(
               title,
               style: TextStyle(
-                  fontSize: 42.sp,
+                  fontSize: 32.sp,
                   color: Theme.of(context).colorScheme.secondary,
                   fontWeight: FontWeight.bold),
             )),

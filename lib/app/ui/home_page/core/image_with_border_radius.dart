@@ -11,12 +11,13 @@ class ImageWithBorderRadius extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+
       width: 1.sw,
       height: 0.45.sw,
-      margin: EdgeInsets.all(kDefaultMargin.sh),
+      margin: EdgeInsets.only(top: 2* kDefaultMargin.sh,left: kDefaultMargin.sh,right: kDefaultMargin.sh,bottom: kDefaultMargin.sh),
       decoration: BoxDecoration(
           border: Border.all(
-              width: 3, color: Theme.of(context).colorScheme.secondary),
+              width: 1.5, color: Theme.of(context).colorScheme.secondary),
          /* gradient: LinearGradient(
             colors: [
               Color(0xff0575e6),
