@@ -14,7 +14,7 @@ class TodayResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FeatureMainController mFeatureController =
-    Get.find<FeatureMainController>();
+        Get.find<FeatureMainController>();
     return ScreenUtilInit(builder: () {
       return Scaffold(
         appBar: const AppBarWithProfile(
@@ -49,8 +49,9 @@ class TodayResult extends StatelessWidget {
           onPressed: () {},
           child: Text(
             "ထိုးမယ်",
-            style:
-                TextStyle(color: Theme.of(context).colorScheme.primaryVariant,fontWeight: FontWeight.bold),
+            style: TextStyle(
+                color: Theme.of(context).colorScheme.primaryVariant,
+                fontWeight: FontWeight.bold),
           ),
         ),
         // bottomNavigationBar: BuildButtomNavbarFeature(

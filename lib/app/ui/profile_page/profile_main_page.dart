@@ -8,16 +8,9 @@ class ProfileMainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      appBar:  AppBarWithProfile(
-        profileUrl:
-        "https://cdn.pixabay.com/photo/2015/11/30/14/10/batman-1070422_960_720.jpg",
-        name: 'Aj MM',
-        phone: '096',
-        balance: '40000',
-        notification: '10',
-      ),
 
-      body: Text("Comming Soon"),
+
+      body: Center(child: Text("Comming Soon...")),
     );
   }
 }

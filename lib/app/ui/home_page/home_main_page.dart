@@ -19,6 +19,7 @@ class HomeMainPage extends StatelessWidget {
             phone: '096',
             balance: '40000',
             notification: '10',
+
           ),
           body: Stack(
             children: [
@@ -30,7 +31,7 @@ class HomeMainPage extends StatelessWidget {
                 imageUrl:
                     "https://i.pinimg.com/474x/0d/17/56/0d17567b3f5abae1c5add00b1f61bf5d.jpg",
               ),
-              BuildHomeMainBody(),
+              const BuildHomeMainBody(),
             ],
           ));
     });

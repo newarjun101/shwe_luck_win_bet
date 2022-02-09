@@ -23,7 +23,7 @@ class CardButtonContainer extends StatelessWidget {
       margin: EdgeInsets.all(kDefaultMargin.sh),
       decoration: BoxDecoration(
           border: Border.all(
-              width: 3, color: Theme.of(context).colorScheme.secondary),
+              width: 1.5, color: Theme.of(context).colorScheme.secondary),
           gradient: LinearGradient(
             colors: [
              const Color(0xff0575e6),

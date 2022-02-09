@@ -1,8 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shwe_luck_win_bet/app/core/local_%20widget/custom_button.dart';
 import 'package:shwe_luck_win_bet/app/ui/betting_page/all_widget/build_betting_page_body.dart';
+import 'package:shwe_luck_win_bet/app/ui/betting_page/all_widget/catagory_button.dart';
 
+import '../../core/local_ widget/app_bar_with_preferred_widget.dart';
 import '../../core/local_ widget/app_bar_with_profile.dart';
 
 class BettingPage extends StatelessWidget {
@@ -12,15 +15,27 @@ class BettingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       builder: () => Scaffold(
-        appBar: const AppBarWithProfile(
+        appBar:const   AppBarWithPreferredWidget(
           profileUrl:
               "https://cdn.pixabay.com/photo/2015/11/30/14/10/batman-1070422_960_720.jpg",
           name: 'Aj MM',
           phone: '096',
           balance: '40000',
-          notification: '10',
+          notification: '10', mPreferredWidget: CatagoryButton(),
         ),
-        body: const BuildBettingPageBody(),
+        body: Stack(
+          children: [
+            CachedNetworkImage(
+              fit: BoxFit.cover,
+              height: double.infinity,
+              width: double.infinity,
+              alignment: Alignment.center,
+              imageUrl:
+              "https://i.pinimg.com/474x/0d/17/56/0d17567b3f5abae1c5add00b1f61bf5d.jpg",
+            ),
+            const BuildBettingPageBody(),
+          ],
+        ),
         floatingActionButton: SizedBox(
           width: 0.3.sw,
           child: CustomButton(

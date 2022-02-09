@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:shwe_luck_win_bet/app/module/controller/betting_page.dart';
+import 'package:shwe_luck_win_bet/app/module/controller/betting_page_controller.dart';
 
 class BettingPageBinding extends Bindings {
   @override

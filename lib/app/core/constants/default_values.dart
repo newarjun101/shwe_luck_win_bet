@@ -7,8 +7,9 @@ const double kMediumFontSize14 = 14.0;
 const double kLargeFontSize16 = 16.0;
 const double kExtraLargeFontSize18 = 18.0;
 const double kExtraBigLargeFontSize24 = 24.0;
-const double kDefaultMargin = 0.014;
-const double kCustomAppBarHeight = 0.09;
+const double kDefaultMargin = 0.02;
+const double kCustomAppBarHeight = 0.07;
+const double kCustomAppBarPreferredSize = 0.14;
 const double kIconSize = 28;
 
 ///Color for the whole application

@@ -3,26 +3,27 @@ import 'package:flutter/material.dart';
 import 'package:shwe_luck_win_bet/app/core/constants/default_values.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AppBarWithProfile extends StatelessWidget with PreferredSizeWidget {
+class AppBarWithPreferredWidget extends StatelessWidget with PreferredSizeWidget {
   final String profileUrl;
   final String name;
   final String phone;
   final String balance;
   final String notification;
+  final Widget mPreferredWidget;
 
-  const AppBarWithProfile(
-      {Key? key,
-      required this.profileUrl,
-      required this.name,
-      required this.phone,
-      required this.balance,
-      required this.notification})
-      : super(key: key);
+  const AppBarWithPreferredWidget({
+    Key? key,
+    required this.profileUrl,
+    required this.name,
+    required this.phone,
+    required this.balance,
+    required this.notification,
+    required this.mPreferredWidget,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      elevation: 1.4,
       backgroundColor: Theme.of(context).primaryColor,
       leading: Padding(
         padding: EdgeInsets.symmetric(horizontal: kDefaultMargin.sh),
@@ -105,10 +106,17 @@ class AppBarWithProfile extends StatelessWidget with PreferredSizeWidget {
           width: kDefaultMargin.sh,
         )
       ],
+      bottom: PreferredSize(
+        preferredSize: Size.fromHeight(kCustomAppBarPreferredSize.sh),
+        child: Container(
+          color: Colors.grey,
+          child: mPreferredWidget,
+        ),
+      ),
     );
   }
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => Size.fromHeight(kCustomAppBarHeight.sh);
+  Size get preferredSize => Size.fromHeight(kCustomAppBarPreferredSize.sh);
 }

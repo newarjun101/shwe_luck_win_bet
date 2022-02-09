@@ -19,10 +19,10 @@ class Routes {
         page: () => const TodayResult(),
   binding: FeatureMainBinding(),
        ),
-    GetPage(
+/*    GetPage(
       name: Pages.lBetting,
       page: () => const BettingPage(),
       binding: BettingPageBinding(),
-    ),
+    ),*/
   ];
 }
