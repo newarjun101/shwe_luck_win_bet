@@ -11,6 +11,7 @@ class ImageWithBorderRadius extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+
       width: 1.sw,
       height: 0.45.sw,
       margin: EdgeInsets.all(kDefaultMargin.sh),

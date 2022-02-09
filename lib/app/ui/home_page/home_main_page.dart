@@ -28,7 +28,7 @@ class HomeMainPage extends StatelessWidget {
                 width: double.infinity,
                 alignment: Alignment.center,
                 imageUrl:
-                    "https://cdn.pixabay.com/photo/2016/09/10/12/40/grass-1659054_960_720.jpg",
+                    "https://i.pinimg.com/474x/0d/17/56/0d17567b3f5abae1c5add00b1f61bf5d.jpg",
               ),
               BuildHomeMainBody(),
             ],

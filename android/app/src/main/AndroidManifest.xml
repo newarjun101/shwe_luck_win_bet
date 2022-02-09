@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shweluckwinbet.company.shwe_luck_win_bet">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="shwe_luck_win_bet"
         android:name="${applicationName}"

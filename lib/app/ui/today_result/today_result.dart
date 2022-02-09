@@ -53,9 +53,9 @@ class TodayResult extends StatelessWidget {
                 TextStyle(color: Theme.of(context).colorScheme.primaryVariant,fontWeight: FontWeight.bold),
           ),
         ),
-        bottomNavigationBar: BuildButtomNavbarFeature(
-          featureMainController: mFeatureController,
-        ),
+        // bottomNavigationBar: BuildButtomNavbarFeature(
+        //   featureMainController: mFeatureController,
+        // ),
       );
     });
   }

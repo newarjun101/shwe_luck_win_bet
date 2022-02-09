@@ -4,34 +4,42 @@ import 'package:shwe_luck_win_bet/app/core/constants/default_values.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppBarWithProfile extends StatelessWidget with PreferredSizeWidget {
-
   final String profileUrl;
   final String name;
   final String phone;
   final String balance;
   final String notification;
-  const AppBarWithProfile({Key? key,required this.profileUrl, required this.name,
-    required this.phone, required this.balance, required this.notification}) : super(key: key);
 
+  const AppBarWithProfile(
+      {Key? key,
+      required this.profileUrl,
+      required this.name,
+      required this.phone,
+      required this.balance,
+      required this.notification})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      elevation: 1.4,
       backgroundColor: Theme.of(context).primaryColor,
-      leading: CachedNetworkImage(
-        imageUrl:
-            profileUrl,
-        imageBuilder: (context, imageProvider) => Container(
-          width: 0.07.sh,
-          height: 0.07.sh,
-          decoration: BoxDecoration(
-            color: Colors.red,
-            shape: BoxShape.circle,
-            image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
+      leading: Padding(
+        padding:  EdgeInsets.symmetric(horizontal: kDefaultMargin.sh),
+        child: CachedNetworkImage(
+          imageUrl: profileUrl,
+          imageBuilder: (context, imageProvider) => Container(
+            width: 0.05.sh,
+            height: 0.05.sh,
+            decoration: BoxDecoration(
+              color: Colors.red,
+              shape: BoxShape.circle,
+              image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
+            ),
           ),
+          placeholder: (context, url) => CircularProgressIndicator(),
+          errorWidget: (context, url, error) => Icon(Icons.error),
         ),
-        placeholder: (context, url) => CircularProgressIndicator(),
-        errorWidget: (context, url, error) => Icon(Icons.error),
       ),
       title: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -58,9 +66,11 @@ class AppBarWithProfile extends StatelessWidget with PreferredSizeWidget {
             ),
             Text(
               balance,
-              style: TextStyle(color: Theme.of(context).colorScheme.primaryVariant,
-                fontSize: kMediumFontSize14.sp,overflow: TextOverflow.ellipsis,),
-
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.primaryVariant,
+                fontSize: kMediumFontSize14.sp,
+                overflow: TextOverflow.ellipsis,
+              ),
             )
           ],
         ),
@@ -80,18 +90,22 @@ class AppBarWithProfile extends StatelessWidget with PreferredSizeWidget {
               child: Container(
                 padding: EdgeInsets.all(2),
                 decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.red
+                    shape: BoxShape.circle, color: Colors.red),
+                child: Text(
+                  notification,
+                  style: TextStyle(
+                      fontSize: 8.sp,
+                      color: Theme.of(context).colorScheme.primaryVariant),
                 ),
-                child: Text(notification,style: TextStyle(fontSize: 8.sp,color: Theme.of(context).colorScheme.primaryVariant),),
               ),
             )
-
           ],
         ),
+        SizedBox(
+          width: kDefaultMargin.sh,
+        )
       ],
     );
-
   }
 
   @override

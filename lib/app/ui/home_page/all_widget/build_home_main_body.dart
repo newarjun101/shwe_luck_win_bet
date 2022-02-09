@@ -13,7 +13,7 @@ class BuildHomeMainBody extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          ImageWithBorderRadius(imgUrl: "https://cdn.pixabay.com/photo/2021/11/10/18/10/aces-6784543_960_720.jpg"),
+         const ImageWithBorderRadius(imgUrl: "https://cdn.pixabay.com/photo/2021/11/10/18/10/aces-6784543_960_720.jpg"),
           FittedBox(
             child: Row(
 
