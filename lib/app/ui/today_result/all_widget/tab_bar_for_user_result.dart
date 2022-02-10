@@ -11,7 +11,7 @@ class TabBarForUserResult extends StatelessWidget {
     return DefaultTabController(
         length: 2,
         child: Container(
-          padding: EdgeInsets.only(top: 0.015.sh,right: 0.009.sh,left: 0.009.sh),
+          padding: EdgeInsets.only(top: 0.01.sh,right: 0.009.sh,left: 0.009.sh),
           width: 1.sw,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.only(
@@ -20,7 +20,7 @@ class TabBarForUserResult extends StatelessWidget {
               color: Theme.of(context).colorScheme.secondaryVariant),
           child: Column(children: [
             TabBar(
-              labelColor: Colors.white,
+              labelColor: Theme.of(context).primaryColor,
               labelStyle: TextStyle(
                   fontSize: kMediumFontSize14.sp,
                   fontWeight: FontWeight.w700,
@@ -32,15 +32,14 @@ class TabBarForUserResult extends StatelessWidget {
                   fontFamily: 'helvetica'),
               isScrollable: true,
               indicatorSize: TabBarIndicatorSize.tab,
-              indicator: BoxDecoration(
+             indicatorColor:Theme.of(context).primaryColor ,
+             /* indicator: BoxDecoration(
                   borderRadius: BorderRadius.circular(1.sh), // Creates border
-                  color: Theme.of(context).primaryColor),
+                  color: Theme.of(context).primaryColor),*/
               tabs: [
 
-                SizedBox(
-                    width: 150.w, height: 35.h, child: const Tab(text: "ထိုးသားမှတ်တမ်း")),
-                SizedBox(
-                    width: 150.w, height: 35.h, child: const Tab(text: "ထီပေါက်စဉ်မှတ်တမ်း")),
+                const Tab(text: "ထိုးသားမှတ်တမ်း"),
+                const Tab(text: "ထီပေါက်စဉ်မှတ်တမ်း"),
               ],
             ),
 
