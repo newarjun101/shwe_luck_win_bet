@@ -17,7 +17,7 @@ class BuildBettingPageBody extends StatelessWidget {
 
        SizedBox(height: 12),
           NumberList(),
-        SizedBox(height: 12,)
+        SizedBox(height: 113)
 
       ],
     );

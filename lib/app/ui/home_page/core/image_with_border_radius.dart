@@ -18,16 +18,6 @@ class ImageWithBorderRadius extends StatelessWidget {
       decoration: BoxDecoration(
           border: Border.all(
               width: 1.5, color: Theme.of(context).colorScheme.secondary),
-         /* gradient: LinearGradient(
-            colors: [
-              Color(0xff0575e6),
-              Theme.of(context).primaryColor
-              //add more colors for gradient
-            ],
-            begin: Alignment.topCenter, //begin of the gradient color
-            end: Alignment.bottomCenter, //end of the gradient color
-            //set the stops number equal to numbers of color
-          ),*/
           borderRadius: BorderRadius.circular(0.04.sh)),
       child: CachedNetworkImage(
         imageUrl:
@@ -39,7 +29,13 @@ class ImageWithBorderRadius extends StatelessWidget {
             image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
           ),
         ),
-        placeholder: (context, url) => CircularProgressIndicator(),
+        placeholder: (context, url) => Center(
+          child: SizedBox(
+            width: 40.0,
+            height: 40.0,
+            child: new CircularProgressIndicator(),
+          ),
+        ),
         errorWidget: (context, url, error) => Icon(Icons.error),
       ),
     );
