@@ -17,6 +17,7 @@ class TodayResult extends StatelessWidget {
         Get.find<FeatureMainController>();
     return ScreenUtilInit(builder: () {
       return Scaffold(
+        backgroundColor: Theme.of(context).primaryColor.withOpacity(0.8),
         appBar: const AppBarWithProfile(
           profileUrl:
               "https://cdn.pixabay.com/photo/2015/11/30/14/10/batman-1070422_960_720.jpg",
@@ -27,13 +28,17 @@ class TodayResult extends StatelessWidget {
         ),
         body: Stack(
           children: [
-            CachedNetworkImage(
-              fit: BoxFit.cover,
+            Container(
               height: double.infinity,
               width: double.infinity,
               alignment: Alignment.center,
-              imageUrl:
-                  "https://cdn.pixabay.com/photo/2016/09/10/12/40/grass-1659054_960_720.jpg",
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: const AssetImage('assets/images/bg.png',),
+                      colorFilter: ColorFilter.mode(Theme.of(context).primaryColor.withOpacity(0.27),  BlendMode.modulate)
+                  )
+              ),
             ),
             const Positioned(
                 top: 0,

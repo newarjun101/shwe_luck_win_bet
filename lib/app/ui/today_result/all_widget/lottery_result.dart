@@ -16,7 +16,7 @@ class LotteryResult extends StatelessWidget {
             shadows: [
               Shadow(
                   color: Theme.of(context).colorScheme.secondary,
-                  offset: Offset(0, -5))
+                  offset: Offset(0, -20))
             ],
             color: Colors.transparent,
             fontSize: kExtraBigLargeFontSize24.sp,

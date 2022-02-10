@@ -26,12 +26,12 @@ class AppBarWithPreferredWidget extends StatelessWidget with PreferredSizeWidget
     return AppBar(
       backgroundColor: Theme.of(context).primaryColor,
       leading: Padding(
-        padding: EdgeInsets.symmetric(horizontal: kDefaultMargin.sh),
+        padding: EdgeInsets.only(left: kDefaultMargin.sh,right: 1),
         child: CachedNetworkImage(
           imageUrl: profileUrl,
           imageBuilder: (context, imageProvider) => Container(
-            width: 0.05.sh,
-            height: 0.05.sh,
+            width: 0.09.sh,
+            height: 0.09.sh,
             decoration: BoxDecoration(
               color: Colors.red,
               shape: BoxShape.circle,
@@ -65,6 +65,9 @@ class AppBarWithPreferredWidget extends StatelessWidget with PreferredSizeWidget
               size: kIconSize.sp,
               color: Theme.of(context).colorScheme.secondary,
             ),
+            SizedBox(
+              width: 0.0099.sw,
+            ),
             Text(
               balance,
               style: TextStyle(
@@ -76,7 +79,7 @@ class AppBarWithPreferredWidget extends StatelessWidget with PreferredSizeWidget
           ],
         ),
         SizedBox(
-          width: 0.006.sw,
+          width: 0.0099.sw,
         ),
         Stack(
           alignment: Alignment.center,

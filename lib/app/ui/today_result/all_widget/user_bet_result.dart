@@ -7,94 +7,86 @@ class UserBetResult extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: EdgeInsets.all(kDefaultMargin.sh),
-        width: 1.sw,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-                topRight: Radius.circular(0.056.sh),
-                topLeft: Radius.circular(0.056.sh)),
-            color: Theme.of(context).colorScheme.secondaryVariant),
-        child: ListView(children: <Widget>[
-          Theme(
-            data: Theme.of(context).copyWith(
-                dividerColor: Colors.transparent
-            ),
-            child: DataTable(
-                columns: const[
-                  DataColumn(label: Text('Time')),
-                  DataColumn(label: Text('Number')),
-                  DataColumn(label: Text('Date'))
+    return ListView(children: <Widget>[
+      Theme(
+        data: Theme.of(context).copyWith(
+            dividerColor: Colors.transparent
+        ),
+        child: DataTable(
+            columns: const[
+              DataColumn(label: Text('Time')),
+              DataColumn(label: Text('Number')),
+              DataColumn(label: Text('Date'))
+            ],
+            rows:const [
+              DataRow(
+                cells: [
+                  DataCell(Text('11:30 AM')),
+                  DataCell(Text('23, 24, 25')),
+                  DataCell(Text("4.1.2022")),
+
                 ],
-                rows:const [
-                  DataRow(
-                    cells: [
-                      DataCell(Text('11:30 AM')),
-                      DataCell(Text('23, 24, 25')),
-                      DataCell(Text("4.1.2022")),
+              ),
+              DataRow(
+                cells: [
+                  DataCell(Text('11:30 AM')),
+                  DataCell(Text('23, 24, 25')),
+                  DataCell(Text("4.1.2022")),
 
-                    ],
-                  ),
-                  DataRow(
-                    cells: [
-                      DataCell(Text('11:30 AM')),
-                      DataCell(Text('23, 24, 25')),
-                      DataCell(Text("4.1.2022")),
-
-                    ],
-                  ),
-                  DataRow(
-                    cells: [
-                      DataCell(Text('11:30 AM')),
-                      DataCell(Text('23, 24, 25')),
-                      DataCell(Text("4.1.2022")),
-
-                    ],
-                  ),
-
-                ]
-            ),
-          ),
-          Divider(),
-          Theme(
-            data: Theme.of(context).copyWith(
-                dividerColor: Colors.transparent
-            ),
-            child: DataTable(
-                columns: const[
-                  DataColumn(label: Text('Time')),
-                  DataColumn(label: Text('Number')),
-                  DataColumn(label: Text('Date'))
                 ],
-                rows:const [
-                  DataRow(
-                    cells: [
-                      DataCell(Text('11:30 AM')),
-                      DataCell(Text('23, 24, 25')),
-                      DataCell(Text("4.1.2022")),
+              ),
+              DataRow(
+                cells: [
+                  DataCell(Text('11:30 AM')),
+                  DataCell(Text('23, 24, 25')),
+                  DataCell(Text("4.1.2022")),
 
-                    ],
-                  ),
-                  DataRow(
-                    cells: [
-                      DataCell(Text('11:30 AM')),
-                      DataCell(Text('23, 24, 25')),
-                      DataCell(Text("4.1.2022")),
+                ],
+              ),
 
-                    ],
-                  ),
-                  DataRow(
-                    cells: [
-                      DataCell(Text('11:30 AM')),
-                      DataCell(Text('23, 24, 25')),
-                      DataCell(Text("4.1.2022")),
+            ]
+        ),
+      ),
+      Divider(),
+      Theme(
+        data: Theme.of(context).copyWith(
+            dividerColor: Colors.transparent
+        ),
+        child: DataTable(
+            columns: const[
+              DataColumn(label: Text('Time')),
+              DataColumn(label: Text('Number')),
+              DataColumn(label: Text('Date'))
+            ],
+            rows:const [
+              DataRow(
+                cells: [
+                  DataCell(Text('11:30 AM')),
+                  DataCell(Text('23, 24, 25')),
+                  DataCell(Text("4.1.2022")),
 
-                    ],
-                  ),
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(Text('11:30 AM')),
+                  DataCell(Text('23, 24, 25')),
+                  DataCell(Text("4.1.2022")),
 
-                ]
-            ),
-          ),
-        ]));
+                ],
+              ),
+              DataRow(
+                cells: [
+                  DataCell(Text('11:30 AM')),
+                  DataCell(Text('23, 24, 25')),
+                  DataCell(Text("4.1.2022")),
+
+                ],
+              ),
+
+            ]
+        ),
+      ),
+    ]);
   }
 }

@@ -12,6 +12,7 @@ class HomeMainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(builder: () {
       return Scaffold(
+          backgroundColor: Theme.of(context).primaryColor.withOpacity(0.8),
           appBar: const AppBarWithProfile(
             profileUrl:
                 "https://cdn.pixabay.com/photo/2015/11/30/14/10/batman-1070422_960_720.jpg",
@@ -19,17 +20,20 @@ class HomeMainPage extends StatelessWidget {
             phone: '096',
             balance: '40000',
             notification: '10',
-
           ),
           body: Stack(
             children: [
-              CachedNetworkImage(
-                fit: BoxFit.cover,
+              Container(
                 height: double.infinity,
                 width: double.infinity,
                 alignment: Alignment.center,
-                imageUrl:
-                    "https://i.pinimg.com/474x/0d/17/56/0d17567b3f5abae1c5add00b1f61bf5d.jpg",
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: const AssetImage('assets/images/bg.png',),
+                        colorFilter: ColorFilter.mode(Theme.of(context).primaryColor.withOpacity(0.27),  BlendMode.modulate)
+                    )
+                ),
               ),
               const BuildHomeMainBody(),
             ],

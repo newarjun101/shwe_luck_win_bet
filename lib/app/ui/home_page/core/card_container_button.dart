@@ -30,27 +30,36 @@ class CardButtonContainer extends StatelessWidget {
               Theme.of(context).primaryColor
               //add more colors for gradient
             ],
-            begin: Alignment.topCenter, //begin of the gradient color
-            end: Alignment.bottomCenter, //end of the gradient color
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+
+
             //set the stops number equal to numbers of color
           ),
           borderRadius: BorderRadius.circular(0.016.sh)),
       child: Column(
         children: [
           isComming
-              ? Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(4),
+              ?
+        Container(
+              width: double.infinity,
+                // padding: const EdgeInsets.all(4),
+              decoration: BoxDecoration(
                   color: const Color(0xffFC4F4F),
-                  child: Center(
-                      child: Text(
-                    "Comming Soon",
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.primaryVariant,
-                        fontSize: kLargeFontSize16.sp,
-                        fontWeight: FontWeight.bold),
-                  )),
-                )
+                  border: Border.all(
+                      width: 3,  color: const Color(0xffFC4F4F),),
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(0.013.sh),topRight: Radius.circular(0.013.sh))
+              ),
+
+              child: Center(
+                  child: Text(
+                "Comming Soon",
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.primaryVariant,
+                    fontSize: kLargeFontSize16.sp,
+                    fontWeight: FontWeight.bold),
+              )),
+            )
               : SizedBox(),
           Flexible(
             child: Center(

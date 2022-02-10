@@ -13,7 +13,7 @@ const double kCustomAppBarPreferredSize = 0.14;
 const double kIconSize = 28;
 
 ///Color for the whole application
-const Color primaryColor =  Color(0xff116530); ///main color for application
+const Color primaryColor =  Color(0xff022D04); ///main color for application
 const Color primaryVariant = Color(0xffF1F2F3); ///cart bg grey
 const Color onPrimary = Color(0xff383838);/// text Color
 const Color scaffoldBackgroundColor =  Color(0xfff9f9f9);
