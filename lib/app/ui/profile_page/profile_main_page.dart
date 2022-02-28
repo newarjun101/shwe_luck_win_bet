@@ -10,7 +10,14 @@ class ProfileMainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Scaffold(
 
-
+        appBar: const AppBarWithProfile(
+          profileUrl:
+          "https://cdn.pixabay.com/photo/2015/11/30/14/10/batman-1070422_960_720.jpg",
+          name: 'Aj MM',
+          phone: '096',
+          balance: '40000',
+          notification: '10',
+        ),
       backgroundColor: Theme.of(context).primaryColor,
       body: const BuildProfileMainBody()
     );

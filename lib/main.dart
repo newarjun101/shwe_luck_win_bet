@@ -24,11 +24,20 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(builder: () {
       return GetMaterialApp(
         title: 'Whole Snack',
+        builder: (context, widget) {
+          //add this line
+          ScreenUtil.setContext(context);
+          return MediaQuery(
+            //Setting font does not change with system font size
+            data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+            child: widget!,
+          );
+        },
         // builder: DevicePreview.appBuilder,
         theme: StyleTheme().getTheme(),
         debugShowCheckedModeBanner: false,
         getPages: Routes().routerPage,
-        initialRoute: Pages.lINITIAL,
+        initialRoute: Pages.lBalancePage,
       );
     });
   }
