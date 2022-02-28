@@ -5,7 +5,7 @@ class FeatureMainController extends GetxController {
   late RxInt currentIndex;
 
   FeatureMainController() {
-    currentIndex = 0.obs;
+    currentIndex = 3.obs;
   }
 
   changeIndex(int index) {
