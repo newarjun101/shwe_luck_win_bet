@@ -19,4 +19,5 @@ const Color onPrimary = Color(0xff383838);/// text Color
 const Color scaffoldBackgroundColor =  Color(0xfff9f9f9);
 const Color secondary =  Color(0xffFFCC1D); ///secondary main color for application
 const Color secondaryVariant = Color(0xffffffff); // category color
+const Color primaryContainer =  Color(0xffffffff);
 const Color onSecondary = Color(0xff6A6D77); ///this color will use font hint

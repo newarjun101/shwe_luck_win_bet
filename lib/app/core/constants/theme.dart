@@ -10,6 +10,7 @@ class StyleTheme {
       scaffoldBackgroundColor: scaffoldBackgroundColor,
       colorScheme: ColorScheme.fromSwatch().copyWith(
         secondary: secondary,
+        primaryContainer:  primaryContainer,
         secondaryVariant: secondaryVariant,
         onSecondary: onSecondary,
         primaryVariant: primaryVariant, ///card bg color
