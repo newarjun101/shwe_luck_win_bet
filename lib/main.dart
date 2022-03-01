@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         theme: StyleTheme().getTheme(),
         debugShowCheckedModeBanner: false,
         getPages: Routes().routerPage,
-        initialRoute: Pages.lLoginScreen,
+        initialRoute: Pages.lSignUp,
       );
     });
   }

@@ -4,8 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/default_values.dart';
 import '../../../../core/local_ widget/custom_text_form_field.dart';
 
-class BuildLoginCard extends StatelessWidget {
-  BuildLoginCard({Key? key}) : super(key: key);
+class BuildOtpCard extends StatelessWidget {
+  BuildOtpCard({Key? key}) : super(key: key);
   final GlobalKey<FormState> _key = GlobalKey();
 
   @override
