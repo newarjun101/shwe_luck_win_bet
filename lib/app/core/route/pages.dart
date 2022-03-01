@@ -6,6 +6,7 @@ class Pages {
   static String lTodayResult = "/today-result";
   static String lBetting = "/betting-page";
   static String lBalancePage = "/balance";
+  static String lLoginScreen ="/login";
 
 
 }
