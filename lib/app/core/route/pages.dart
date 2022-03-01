@@ -8,6 +8,7 @@ class Pages {
   static String lBalancePage = "/balance";
   static String lLoginScreen ="/login";
   static String lSignUp = "/sign-up";
+  static String lOtp ="/otp";
 
 
 }
