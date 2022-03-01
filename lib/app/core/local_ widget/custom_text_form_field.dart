@@ -1,37 +1,73 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../constants/default_values.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  const CustomTextFormField({Key? key}) : super(key: key);
+  final TextEditingController controller;
+  final IconData icon;
+  final String hint;
+  final bool isPassword;
+
+  const CustomTextFormField(
+      {Key? key,
+        required this.controller,
+        required this.icon,
+        required this.hint,
+        required this.isPassword})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-        autovalidateMode: AutovalidateMode.always,
-        autofocus: false,
-        decoration:  InputDecoration(
+    return Container(
 
-          fillColor: Theme.of(context).colorScheme.primaryContainer,
-          contentPadding: const EdgeInsets.only(
-              left: 14.0, bottom: 6.0, top: 8.0),
-          focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white),
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          enabledBorder: UnderlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey),
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          icon: Icon(Icons.person),
-          hintText: 'What do people call you?',
-          labelText: 'Name *',
+      decoration: BoxDecoration(
+
+          borderRadius: BorderRadius.circular(4.w),
+          color: Theme.of(context).primaryColor
+      ),
+      child: TextFormField(
+        obscureText: isPassword?true: false,
+        controller: controller,
+        //  keyboardType: isPassword?TextInputType.visiblePassword : TextInputType.text ,
+        style: TextStyle(
+          fontSize: kMediumFontSize14.sp,
+          color: Theme.of(context).colorScheme.primaryContainer,
+          fontWeight: FontWeight.w600,
         ),
-        onSaved: (e) => print("hahhah"),
-        validator: (e) {
-          if (e != "") {
-            return "";
-          } else {
-            return "error";
+        decoration: InputDecoration(
+          focusColor: Colors.white,
+          contentPadding: EdgeInsets.fromLTRB(0.03.sh, 0.01.sh, 0.01.sh, 0),
+          //add prefix icon
+          prefixIcon: Icon(
+            icon,
+              size: 20.sp,
+              color: Theme.of(context).colorScheme.primaryContainer
+          ),
+          border:
+          OutlineInputBorder(borderRadius: BorderRadius.circular(4.w)),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.onSecondary,
+                width: 1.0),
+            borderRadius: BorderRadius.circular(4.w),
+          ),
+          fillColor: Colors.white,
+
+          hintText: hint,
+          //make hint text
+          hintStyle: TextStyle(
+            color: Theme.of(context).colorScheme.primaryContainer,
+            fontSize: kMediumFontSize14.sp,
+            fontFamily: "verdana_regular",
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        validator: (value) {
+          if (value== null || value=='') {
+            return "Error";
           }
-        });
+        },
+      ),
+    );
   }
 }
