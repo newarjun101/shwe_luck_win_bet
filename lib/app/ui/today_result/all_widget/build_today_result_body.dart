@@ -16,9 +16,9 @@ class BuildTodayResultBody extends StatelessWidget {
 
         SizedBox(
             height: 0.4.sh,
-            child: LotteryResult()),
+            child: const LotteryResult()),
 
-        Flexible(child: const TabBarForUserResult())
+       const  Flexible(child:  TabBarForUserResult())
       ],
     );
   }

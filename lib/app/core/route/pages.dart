@@ -9,6 +9,8 @@ class Pages {
   static String lLoginScreen ="/login";
   static String lSignUp = "/sign-up";
   static String lOtp ="/otp";
+  static String lAccountSuccess = "/account-success";
+  static String lOffDay = "/off-day";
 
 
 }

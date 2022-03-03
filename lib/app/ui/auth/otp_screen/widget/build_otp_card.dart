@@ -61,7 +61,7 @@ class BuildOtpCard extends StatelessWidget {
               onPressed: () {
                if(_key.currentState!.validate()){
 
-                 print("error");
+                 print("success");
                }
               },
               child: Text(

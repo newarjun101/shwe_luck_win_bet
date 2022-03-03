@@ -56,9 +56,9 @@ class BuildSignUpCard extends StatelessWidget {
             ),
             CustomTextFormField(
                 controller: passwordController,
-                icon: Icons.account_circle,
+                icon: Icons.visibility_off,
                 hint: "password",
-                isPassword: false),
+                isPassword: true),
             SizedBox(
               height: kDefaultMargin.sh,
             ),
@@ -72,7 +72,7 @@ class BuildSignUpCard extends StatelessWidget {
             ),
             CustomTextFormField(
                 controller: otpController,
-                icon: Icons.visibility_off,
+                icon: Icons.phone_locked_outlined,
                 hint: "Otp Code",
                 isPassword: true),
             SizedBox(
@@ -90,11 +90,11 @@ class BuildSignUpCard extends StatelessWidget {
               onPressed: () {
                if(_key.currentState!.validate()){
 
-                 print("error");
+                 print("success");
                }
               },
               child: Text(
-                "Login",
+                "Create Account",
                 style: TextStyle(
                //     color: Theme.of(context).colorScheme.primaryContainer,
                     fontSize: kLargeFontSize16.sp,fontWeight: FontWeight.bold),
