@@ -7,21 +7,21 @@ class CustomTextFormField extends StatelessWidget {
   final IconData icon;
   final String hint;
   final bool isPassword;
+  final bool? isIcon;
+
 
   const CustomTextFormField(
       {Key? key,
         required this.controller,
         required this.icon,
         required this.hint,
-        required this.isPassword})
+        required this.isPassword, this.isIcon})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-
       decoration: BoxDecoration(
-
           borderRadius: BorderRadius.circular(4.w),
           color: Theme.of(context).primaryColor
       ),
@@ -42,7 +42,7 @@ class CustomTextFormField extends StatelessWidget {
             icon,
               size: 20.sp,
               color: Theme.of(context).colorScheme.primaryContainer
-          ),
+          )  ,
           border:
           OutlineInputBorder(borderRadius: BorderRadius.circular(4.w)),
           focusedBorder: OutlineInputBorder(

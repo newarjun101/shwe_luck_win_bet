@@ -4,13 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/constants/default_values.dart';
 import '../../../../core/local_ widget/custom_text_form_field.dart';
 
-class BuildLoginCard extends StatelessWidget {
-  BuildLoginCard({Key? key}) : super(key: key);
+class BuildOtpCard extends StatelessWidget {
+  BuildOtpCard({Key? key}) : super(key: key);
   final GlobalKey<FormState> _key = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
-    TextEditingController userNameController = TextEditingController();
+    TextEditingController otpController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
     return Container(
       padding:  EdgeInsets.all(kDefaultMargin.sh),
@@ -24,19 +24,27 @@ class BuildLoginCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CustomTextFormField(
-                controller: userNameController,
-                icon: Icons.account_circle,
-                hint: "phone number",
-                isPassword: false),
-            SizedBox(
-              height: kDefaultMargin.sh,
+
+
+
+            Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                "Expire in 6s",
+                style: TextStyle(
+                       color: Theme.of(context).colorScheme.primaryContainer,
+                    fontSize: kMediumFontSize14.sp,),
+              ),
             ),
+            SizedBox(
+              height: 3.h,
+            ),
+
             CustomTextFormField(
-                controller: passwordController,
-                icon: Icons.visibility_off,
-                hint: "password",
-                isPassword: true),
+                controller: otpController,
+                icon: Icons.phone_iphone_sharp,
+                hint: "Otp",
+                isPassword: false),
 
             SizedBox(
               height: kDefaultMargin.sh,
@@ -53,7 +61,7 @@ class BuildLoginCard extends StatelessWidget {
               onPressed: () {
                if(_key.currentState!.validate()){
 
-                 print("error");
+                 print("success");
                }
               },
               child: Text(
