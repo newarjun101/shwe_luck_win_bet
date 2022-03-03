@@ -8,11 +8,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:device_preview/device_preview.dart';
 
 void main() {
- // runApp(const MyApp());
-  runApp(DevicePreview(
+  runApp(const MyApp());
+/*  runApp(DevicePreview(
     enabled: !kReleaseMode,
     builder: (context) => const MyApp(), // Wrap your app
-  ));
+  ));*/
 }
 
 class MyApp extends StatelessWidget {
@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         theme: StyleTheme().getTheme(),
         debugShowCheckedModeBanner: false,
         getPages: Routes().routerPage,
-        initialRoute: Pages.lBetSelected,
+        initialRoute: Pages.lINITIAL
       );
     });
   }
