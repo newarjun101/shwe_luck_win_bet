@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 
 import '../../../../core/constants/default_values.dart';
 import '../../../../core/local_ widget/custom_text_form_field.dart';
@@ -47,6 +49,7 @@ class BuildSignUpCard extends StatelessWidget {
                       controller: phoneController,
                       icon: Icons.phone_iphone_sharp,
                       hint: "phone",
+                      isPhone: true,
                       isPassword: false),
                 ),
               ],
@@ -90,11 +93,11 @@ class BuildSignUpCard extends StatelessWidget {
               onPressed: () {
                if(_key.currentState!.validate()){
 
-                 print("success");
+                Get.toNamed(Pages.lOtp);
                }
               },
               child: Text(
-                "Create Account",
+                "အကောင့်အသစ်ဖွင့်မည်",
                 style: TextStyle(
                //     color: Theme.of(context).colorScheme.primaryContainer,
                     fontSize: kLargeFontSize16.sp,fontWeight: FontWeight.bold),

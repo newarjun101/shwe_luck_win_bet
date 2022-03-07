@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 
 import '../../../../core/constants/default_values.dart';
 import '../../../../core/local_ widget/custom_text_form_field.dart';
@@ -28,7 +30,7 @@ class BuildLoginCard extends StatelessWidget {
             CustomTextFormField(
                 controller: userNameController,
                 icon: Icons.account_circle,
-                hint: "phone number",
+                hint: "ဖုန်းနံပါတ်",
                 isPassword: false),
             SizedBox(
               height: kDefaultMargin.sh,
@@ -36,7 +38,7 @@ class BuildLoginCard extends StatelessWidget {
             CustomTextFormField(
                 controller: passwordController,
                 icon: Icons.visibility_off,
-                hint: "password",
+                hint: "လျှိဝှက်နံပါတ်",
                 isPassword: true),
 
             SizedBox(
@@ -54,16 +56,17 @@ class BuildLoginCard extends StatelessWidget {
               onPressed: () {
                if(_key.currentState!.validate()){
 
-                 print("error");
+                Get.toNamed(Pages.lOtp);
                }
               },
               child: Text(
-                "Login",
+                "လော့အင်ဝင်မည်",
                 style: TextStyle(
                //     color: Theme.of(context).colorScheme.primaryContainer,
                     fontSize: kLargeFontSize16.sp,fontWeight: FontWeight.bold),
               ),
             ),
+            SizedBox(height: 20.h,)
           ],
         ),
       ),

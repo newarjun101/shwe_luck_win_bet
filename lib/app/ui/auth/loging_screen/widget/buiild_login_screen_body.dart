@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 import 'package:shwe_luck_win_bet/app/ui/auth/loging_screen/widget/build_login_card.dart';
 
 import '../../../../core/constants/default_values.dart';
@@ -51,8 +53,11 @@ class BuildLoginScreenBody extends StatelessWidget {
         Positioned(
     bottom: 8.h,
             left: 0,right: 0,
-            child:   Text("အကောင့်အသစ်ဖွင့်ရန်",textAlign: TextAlign.center, style: TextStyle(color: Theme.of(context).colorScheme.secondary,
-                fontWeight: FontWeight.bold,fontSize: kMediumFontSize14.sp),),
+            child:   InkWell(
+              onTap: ()=> Get.toNamed(Pages.lSignUp),
+              child: Text("အကောင့်အသစ်ဖွင့်ရန်",textAlign: TextAlign.center, style: TextStyle(color: Theme.of(context).colorScheme.secondary,
+                  fontWeight: FontWeight.bold,fontSize: kMediumFontSize14.sp),),
+            ),
         )
       ],
     );
