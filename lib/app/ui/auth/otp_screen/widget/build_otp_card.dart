@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 
 import '../../../../core/constants/default_values.dart';
 import '../../../../core/local_ widget/custom_text_form_field.dart';
@@ -61,7 +63,7 @@ class BuildOtpCard extends StatelessWidget {
               onPressed: () {
                if(_key.currentState!.validate()){
 
-                 print("success");
+                Get.offAllNamed(Pages.lAccountSuccess);
                }
               },
               child: Text(

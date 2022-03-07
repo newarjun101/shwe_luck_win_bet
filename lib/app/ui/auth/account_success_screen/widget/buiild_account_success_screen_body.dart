@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 import 'package:shwe_luck_win_bet/app/ui/auth/loging_screen/widget/build_login_card.dart';
 import 'package:shwe_luck_win_bet/app/ui/auth/otp_screen/widget/build_otp_card.dart';
 
@@ -50,7 +52,7 @@ class BuildAccountSuccessScreenBody extends StatelessWidget {
                   height: kDefaultMargin.sh,
                 ),
                 Text(
-                  "မြန်မာ 2D/3D",
+                  "အကောင့်အသစ်ဖွင့်ချင်အောင်မြင်ပါသည်",
                   style: TextStyle(
                       color: Theme.of(context).colorScheme.secondary,
                       fontWeight: FontWeight.bold,
@@ -71,26 +73,10 @@ class BuildAccountSuccessScreenBody extends StatelessWidget {
                 borderRadius: BorderRadius.circular(4.h)),
             color: Theme.of(context).colorScheme.secondary,
             onPressed: () {
-              showModalBottomSheet(
-                  isScrollControlled: true,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(20.h),
-                          topLeft: Radius.circular(20.h))),
-                  context: context,
-                  builder: (context) {
-                    return Container(
-                      height: 0.9.sh,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [Text("Testing")],
-                      ),
-                    );
-                  });
+              Get.offNamed(Pages.lINITIAL);
             },
             child: Text(
-              "Continue",
+              "ဆက်သွားမယ်",
               style: TextStyle(
                   //     color: Theme.of(context).colorScheme.primaryContainer,
                   fontSize: kLargeFontSize16.sp,

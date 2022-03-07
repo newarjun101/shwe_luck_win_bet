@@ -8,6 +8,7 @@ class CustomTextFormField extends StatelessWidget {
   final String hint;
   final bool isPassword;
   final bool? isIcon;
+  final bool? isPhone;
 
 
   const CustomTextFormField(
@@ -15,6 +16,7 @@ class CustomTextFormField extends StatelessWidget {
         required this.controller,
         required this.icon,
         required this.hint,
+        this.isPhone,
         required this.isPassword, this.isIcon})
       : super(key: key);
 
@@ -28,7 +30,7 @@ class CustomTextFormField extends StatelessWidget {
       child: TextFormField(
         obscureText: isPassword?true: false,
         controller: controller,
-        //  keyboardType: isPassword?TextInputType.visiblePassword : TextInputType.text ,
+          keyboardType: isPhone?? false ? TextInputType.number  : TextInputType.text,
         style: TextStyle(
           fontSize: kMediumFontSize14.sp,
           color: Theme.of(context).colorScheme.primaryContainer,

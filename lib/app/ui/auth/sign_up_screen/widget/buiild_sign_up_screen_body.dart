@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 import 'package:shwe_luck_win_bet/app/ui/auth/loging_screen/widget/build_login_card.dart';
 import 'package:shwe_luck_win_bet/app/ui/auth/sign_up_screen/widget/build_sign_up_card.dart';
 
@@ -34,20 +36,27 @@ class BuildSignUpScreenBody extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.max,
               children: [
-                Image.asset(
-                  "assets/images/logo.png",
-                  height: 100.h,
-                  width: 100.h,
-                  fit: BoxFit.fill,
+                CircleAvatar(
+                  radius: 60.h,
+                  backgroundColor: Theme.of(context).primaryColor,
+                  child: Center(
+                    child: Icon(
+                      Icons.add_a_photo_outlined,size: 50.sp,
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
+                  )
                 ),
                 Text(
-                  "မြန်မာ 2D/3D",
+                  "အကောင့်အသစ်ဖွင့်ရန်",
                   style: TextStyle(
-                      color: Theme.of(context).colorScheme.secondary,
-                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                    //  fontWeight: FontWeight.bold,
                       fontSize: kMediumFontSize14.sp),
                 ),
                 BuildSignUpCard(),
+                SizedBox(
+                  height: 20.h,
+                )
               ],
             ),
           ),
@@ -56,13 +65,16 @@ class BuildSignUpScreenBody extends StatelessWidget {
           bottom: 8.h,
           left: 0,
           right: 0,
-          child: Text(
-            "လော့ဂ်အင်",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                color: Theme.of(context).colorScheme.secondary,
-                fontWeight: FontWeight.bold,
-                fontSize: kMediumFontSize14.sp),
+          child: InkWell(
+            onTap: ()=> Get.offNamed(Pages.lLoginScreen),
+            child: Text(
+              "လော့ဂ်အင်",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Theme.of(context).colorScheme.secondary,
+                  fontWeight: FontWeight.bold,
+                  fontSize: kMediumFontSize14.sp),
+            ),
           ),
         )
       ],

@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/local_%20widget/custom_button.dart';
+import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 import 'package:shwe_luck_win_bet/app/ui/betting_page/all_widget/build_betting_page_body.dart';
 import 'package:shwe_luck_win_bet/app/ui/betting_page/all_widget/catagory_button.dart';
 
@@ -56,7 +58,10 @@ class BettingPage extends StatelessWidget {
             title: 'နောက်ထပ်',
             radius: 0.1.sw,
             bgColor: Theme.of(context).colorScheme.secondary,
-            onClick: () {},
+            onClick: () {
+
+              Get.toNamed(Pages.lBetSelected);
+            },
             iconSize: 0,
             textColor: Theme.of(context).colorScheme.onPrimary,
           ),
