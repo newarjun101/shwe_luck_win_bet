@@ -75,8 +75,8 @@ class BuildAccountSuccessScreenBody extends StatelessWidget {
                   isScrollControlled: true,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(20),
-                          topLeft: Radius.circular(20))),
+                          topRight: Radius.circular(20.h),
+                          topLeft: Radius.circular(20.h))),
                   context: context,
                   builder: (context) {
                     return Container(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shwe_luck_win_bet/app/core/constants/default_values.dart';
 
 class CustomButton extends StatelessWidget {
@@ -22,15 +23,18 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RaisedButton(
+    return MaterialButton(
       color: bgColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(title,style: TextStyle(color: textColor),),
-           const SizedBox(width: 4,),
-           isIcon? Icon(icon,size: iconSize,color: textColor,) : const SizedBox()
+          // const SizedBox(width: 4,),
+           isIcon? Padding(
+             padding: EdgeInsets.only(left: 4.w),
+             child: Icon(icon,size: iconSize,color: textColor,),
+           ) : const SizedBox()
           ],
         ),
         onPressed: onClick);
