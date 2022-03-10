@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 import 'package:shwe_luck_win_bet/app/module/binding/feature_main_binding.dart';
+import 'package:shwe_luck_win_bet/app/testing_app/test_localization.dart';
 import 'package:shwe_luck_win_bet/app/ui/auth/account_success_screen/account_success_screen.dart';
 import 'package:shwe_luck_win_bet/app/ui/auth/loging_screen/login_screen.dart';
 import 'package:shwe_luck_win_bet/app/ui/auth/otp_screen/otp_screen.dart';
@@ -51,5 +52,6 @@ class Routes {
       name: Pages.lBetSelected,
       page: () => const BetSelectedScreen(),
     ),
+    GetPage(name: Pages.lTestLocal, page: ()=> HomePage())
   ];
 }

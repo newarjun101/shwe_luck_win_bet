@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shwe_luck_win_bet/app/ui/balance_page/balance_screen.dart';
 import 'package:shwe_luck_win_bet/app/ui/betting_page/betting_page.dart';
 import 'package:shwe_luck_win_bet/app/ui/feature_main/build_buttom_navbar_feature.dart';
 import 'package:shwe_luck_win_bet/app/ui/help_center_page/help_center_main_page.dart';
@@ -20,7 +21,7 @@ class FeatureMain extends StatelessWidget {
           body: IndexedStack(
             children: const [
               HomeMainPage(),
-             TodayResult(),
+             BalanceScreen(),
               BettingPage(),
               ProfileMainPage()
             ],

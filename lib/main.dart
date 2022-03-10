@@ -7,6 +7,8 @@ import 'app/core/constants/theme.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:device_preview/device_preview.dart';
 
+import 'app/testing_app/local_string.dart';
+
 void main() {
   runApp(const MyApp());
 /*  runApp(DevicePreview(
@@ -36,8 +38,10 @@ class MyApp extends StatelessWidget {
         // builder: DevicePreview.appBuilder,
         theme: StyleTheme().getTheme(),
         debugShowCheckedModeBanner: false,
+          translations: LocaleString(),
+          locale: Locale('en','US'),
         getPages: Routes().routerPage,
-        initialRoute: Pages.lLoginScreen
+        initialRoute: Pages.lTestLocal
       );
     });
   }
