@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/constants/default_values.dart';
+import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 import 'package:shwe_luck_win_bet/app/ui/home_page/core/card_container_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shwe_luck_win_bet/app/ui/home_page/core/image_with_border_radius.dart';
@@ -20,8 +22,8 @@ class BuildHomeMainBody extends StatelessWidget {
             child: Row(
 
               children: [
-                CardButtonContainer(onClick: () {  }, isComming: false, title: '2D',),
-                CardButtonContainer(onClick: () {  }, isComming: false, title: '3D',),
+                CardButtonContainer(onClick: () => Get.toNamed(Pages.lBetting), isComming: false, title: '2D',),
+                CardButtonContainer(onClick: () {  print("hello world");}, isComming: false, title: '3D',),
               ],
             ),
           ),

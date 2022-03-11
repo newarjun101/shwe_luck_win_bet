@@ -22,7 +22,7 @@ class FeatureMain extends StatelessWidget {
             children: const [
               HomeMainPage(),
              BalanceScreen(),
-              BettingPage(),
+              HelpCenterMainPage(),
               ProfileMainPage()
             ],
             index: mFeatureController.currentIndex.value,
