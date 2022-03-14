@@ -8,7 +8,7 @@ class TestLocalBinding extends Bindings {
 
     Get.lazyPut(() => TestLocalController());
 
-    Get.put(TestLocalController());
+//    Get.put(TestLocalController());
   }
 
 
