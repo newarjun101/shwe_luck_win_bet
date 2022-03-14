@@ -9,7 +9,7 @@ class BalanceContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
 
-      height: 0.3.sh,
+      height: 0.25.sh,
       width: double.infinity,
 
       decoration: BoxDecoration(

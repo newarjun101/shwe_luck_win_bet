@@ -40,14 +40,7 @@ class BettingPage extends StatelessWidget {
                   )
               ),
             ),
-           /* CachedNetworkImage(
-              fit: BoxFit.cover,
-              height: double.infinity,
-              width: double.infinity,
-              alignment: Alignment.center,
-              imageUrl:
-              "https://i.pinimg.com/474x/0d/17/56/0d17567b3f5abae1c5add00b1f61bf5d.jpg",
-            ),*/
+
             const BuildBettingPageBody(),
           ],
         ),

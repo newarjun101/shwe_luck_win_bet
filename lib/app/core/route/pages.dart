@@ -12,6 +12,7 @@ class Pages {
   static String lAccountSuccess = "/account-success";
   static String lOffDay = "/off-day";
   static String lBetSelected = "/bet-selected";
+  static String lTestLocal = "/local";
 
 
 }
