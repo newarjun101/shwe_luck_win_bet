@@ -34,7 +34,7 @@ class CustomButton extends StatelessWidget {
            isIcon? Padding(
              padding: EdgeInsets.only(left: 4.w),
              child: Icon(icon,size: iconSize,color: textColor,),
-           ) : const SizedBox()
+           ) : const SizedBox(height: 0,width: 0,)
           ],
         ),
         onPressed: onClick);

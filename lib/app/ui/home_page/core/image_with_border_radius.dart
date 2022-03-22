@@ -29,11 +29,11 @@ class ImageWithBorderRadius extends StatelessWidget {
             image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
           ),
         ),
-        placeholder: (context, url) => Center(
+        placeholder: (context, url) =>const Center(
           child: SizedBox(
             width: 40.0,
             height: 40.0,
-            child: new CircularProgressIndicator(),
+            child:  CircularProgressIndicator(),
           ),
         ),
         errorWidget: (context, url, error) => Icon(Icons.error),

@@ -7,6 +7,8 @@ import 'package:shwe_luck_win_bet/app/ui/home_page/core/card_container_button.da
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shwe_luck_win_bet/app/ui/home_page/core/image_with_border_radius.dart';
 
+import '../core/custom_carousel_slider.dart';
+
 class BuildHomeMainBody extends StatelessWidget {
   const BuildHomeMainBody({Key? key}) : super(key: key);
 
@@ -15,24 +17,43 @@ class BuildHomeMainBody extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-         const ImageWithBorderRadius(imgUrl: "https://cdn.pixabay.com/photo/2021/11/10/18/10/aces-6784543_960_720.jpg",
 
-         ),
+          CustomCarouselSlider(),
+         /* const ImageWithBorderRadius(
+            imgUrl:
+                "https://cdn.pixabay.com/photo/2021/11/10/18/10/aces-6784543_960_720.jpg",
+          ),*/
           FittedBox(
             child: Row(
-
               children: [
-                CardButtonContainer(onClick: () => Get.toNamed(Pages.lBetting), isComming: false, title: '2D',),
-                CardButtonContainer(onClick: () {  print("hello world");}, isComming: false, title: '3D',),
+                CardButtonContainer(
+                  onClick: () => Get.toNamed(Pages.lTodayResult),
+                  isComming: false,
+                  title: '2D',
+                ),
+                CardButtonContainer(
+                  onClick: () {
+                    print("hello world");
+                  },
+                  isComming: false,
+                  title: '3D',
+                ),
               ],
             ),
           ),
           FittedBox(
             child: Row(
               children: [
-
-                CardButtonContainer(onClick: () {  }, isComming: true, title: 'ဘောလုံး',),
-                CardButtonContainer(onClick: () {  }, isComming: true, title: 'Slots',),
+                CardButtonContainer(
+                  onClick: () {},
+                  isComming: true,
+                  title: 'ဘောလုံး',
+                ),
+                CardButtonContainer(
+                  onClick: () {},
+                  isComming: true,
+                  title: 'Slots',
+                ),
               ],
             ),
           )

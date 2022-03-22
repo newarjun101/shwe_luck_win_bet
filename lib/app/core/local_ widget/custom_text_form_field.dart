@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shwe_luck_win_bet/app/core/extension/extension_form_validate.dart';
 import '../constants/default_values.dart';
 
 class CustomTextFormField extends StatelessWidget {
@@ -65,7 +66,7 @@ class CustomTextFormField extends StatelessWidget {
           ),
         ),
         validator: (value) {
-          if (value== null || value=='') {
+          if (value!.isValidEmail) {
             return "Error";
           }
         },
