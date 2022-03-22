@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shwe_luck_win_bet/app/ui/bet_selected_screen/widget/build_bet_selected_screen_body.dart';
-
-import '../../core/constants/default_values.dart';
 import '../../core/local_ widget/app_bar_with_profile.dart';
 
 class BetSelectedScreen extends StatelessWidget {

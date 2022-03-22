@@ -4,10 +4,10 @@ import 'package:shwe_luck_win_bet/app/core/constants/default_values.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shwe_luck_win_bet/app/module/controller/betting_page_controller.dart';
 
-List<String> mNumberList = List<String>.generate(100, (counter) => "$counter");
-
 class NumberList extends StatelessWidget {
-  const NumberList({Key? key}) : super(key: key);
+
+  final List<String> mNumberList;
+  const NumberList({Key? key,required this.mNumberList}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class NumberList extends StatelessWidget {
         itemCount: mNumberList.length,
         itemBuilder: (context, index) {
           return Obx(
-            ()=> Container(
+                ()=> Container(
                 decoration: BoxDecoration(
                     color: bettingPageController.selectedIndex.value== index?Theme.of(context).colorScheme.secondary: Color(0xff0F2810).withOpacity(0.9) ,
                     borderRadius: BorderRadius.circular(0.009.sh),
@@ -29,7 +29,7 @@ class NumberList extends StatelessWidget {
                   onTap: () => bettingPageController.onSelecteNumber(index),
                   child: Center(
                     child: Text(
-                      mNumberList[index].length == 1
+                      mNumberList[index].length <3
                           ? "0${mNumberList[index]}"
                           : mNumberList[index],
                       textAlign: TextAlign.center,

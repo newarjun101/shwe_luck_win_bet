@@ -45,12 +45,12 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
           translations: LocaleString(),
           locale: controller.addToLocale(),
-          fallbackLocale: Locale(
+          fallbackLocale:const Locale(
             'en',
             'US',
           ),
           getPages: Routes().routerPage,
-        initialRoute: Pages.lTestLocal
+        initialRoute: Pages.lLoginScreen
       );
     });
   }

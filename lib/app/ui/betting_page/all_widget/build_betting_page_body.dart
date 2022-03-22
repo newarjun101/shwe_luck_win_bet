@@ -1,10 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shwe_luck_win_bet/app/core/constants/default_values.dart';
-import 'package:shwe_luck_win_bet/app/ui/betting_page/all_widget/number_list.dart';
+import '../../../core/local_ widget/number_list.dart';
 
-
+List<String> mNumberList = List<String>.generate(100, (counter) => "$counter");
 
 class BuildBettingPageBody extends StatelessWidget {
   const BuildBettingPageBody({Key? key}) : super(key: key);
@@ -13,11 +11,11 @@ class BuildBettingPageBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       // alignment: Alignment.center,
-      children: const[
+      children: [
 
-       SizedBox(height: 12),
-          NumberList(),
-        SizedBox(height: 113)
+        const SizedBox(height: 12),
+          NumberList(mNumberList: mNumberList,),
+        const SizedBox(height: 113)
 
       ],
     );

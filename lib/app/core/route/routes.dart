@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
+import 'package:shwe_luck_win_bet/app/module/binding/betting_page_binding.dart';
 import 'package:shwe_luck_win_bet/app/module/binding/feature_main_binding.dart';
 import 'package:shwe_luck_win_bet/app/testing_app/binding/test_local_binding.dart';
 import 'package:shwe_luck_win_bet/app/testing_app/test_localization.dart';
@@ -11,6 +12,7 @@ import 'package:shwe_luck_win_bet/app/ui/balance_page/balance_screen.dart';
 import 'package:shwe_luck_win_bet/app/ui/bet_selected_screen/bet_selected_screen.dart';
 import 'package:shwe_luck_win_bet/app/ui/betting_page/betting_page.dart';
 import 'package:shwe_luck_win_bet/app/ui/off_day_screen/off_day_screen.dart';
+import 'package:shwe_luck_win_bet/app/ui/three_d_betting_screen/three_d_betting_page.dart';
 import 'package:shwe_luck_win_bet/app/ui/today_result/today_result.dart';
 
 import '../../ui/feature_main/feature_main.dart';
@@ -56,7 +58,12 @@ class Routes {
     ),
     GetPage(name: Pages.lTestLocal, page: ()=> HomePage(),
     binding: TestLocalBinding()),
-    GetPage(name: Pages.lBetting, page: ()=>const BettingPage()),
+    GetPage(name: Pages.lBetting, page: ()=>const BettingPage(),
+    binding: BettingPageBinding()),
+    GetPage(name: Pages.lThreeDBetting,
+        page:()=>const ThreeDBettingPage(),
+        binding: BettingPageBinding()
+    )
 
   ];
 }
