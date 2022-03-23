@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 import 'package:shwe_luck_win_bet/app/module/binding/betting_page_binding.dart';
 import 'package:shwe_luck_win_bet/app/module/binding/feature_main_binding.dart';
+import 'package:shwe_luck_win_bet/app/module/binding/login_screen_binding.dart';
+import 'package:shwe_luck_win_bet/app/module/binding/sign_up_screen_binding.dart';
 import 'package:shwe_luck_win_bet/app/testing_app/binding/test_local_binding.dart';
 import 'package:shwe_luck_win_bet/app/testing_app/test_localization.dart';
 import 'package:shwe_luck_win_bet/app/ui/auth/account_success_screen/account_success_screen.dart';
@@ -35,10 +37,12 @@ class Routes {
     GetPage(
       name: Pages.lLoginScreen,
       page: () => const LoginScreen(),
+      binding: LoginScreenBinding()
     ),
     GetPage(
       name: Pages.lSignUp,
       page: () => const SignUpScreen(),
+      binding: SignUpScreenBinding()
     ),
     GetPage(
       name: Pages.lOtp,

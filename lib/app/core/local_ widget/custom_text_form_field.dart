@@ -9,16 +9,17 @@ class CustomTextFormField extends StatelessWidget {
   final String hint;
   final bool isPassword;
   final bool? isIcon;
+  final String? Function(String?)? validator;
   final bool? isPhone;
-
 
   const CustomTextFormField(
       {Key? key,
-        required this.controller,
-        required this.icon,
-        required this.hint,
-        this.isPhone,
-        required this.isPassword, this.isIcon})
+      required this.controller,
+      required this.icon,
+      required this.hint,
+      this.isPhone,
+      required this.isPassword,
+      this.isIcon, this.validator})
       : super(key: key);
 
   @override
@@ -26,12 +27,12 @@ class CustomTextFormField extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4.w),
-          color: Theme.of(context).primaryColor
-      ),
+          color: Theme.of(context).primaryColor),
       child: TextFormField(
-        obscureText: isPassword?true: false,
+        obscureText: isPassword ? true : false,
         controller: controller,
-          keyboardType: isPhone?? false ? TextInputType.number  : TextInputType.text,
+        keyboardType:
+            isPhone ?? false ? TextInputType.number : TextInputType.text,
         style: TextStyle(
           fontSize: kMediumFontSize14.sp,
           color: Theme.of(context).colorScheme.primaryContainer,
@@ -41,17 +42,13 @@ class CustomTextFormField extends StatelessWidget {
           focusColor: Colors.white,
           contentPadding: EdgeInsets.fromLTRB(0.03.sh, 0.01.sh, 0.01.sh, 0),
           //add prefix icon
-          prefixIcon: Icon(
-            icon,
+          prefixIcon: Icon(icon,
               size: 20.sp,
-              color: Theme.of(context).colorScheme.primaryContainer
-          )  ,
-          border:
-          OutlineInputBorder(borderRadius: BorderRadius.circular(4.w)),
+              color: Theme.of(context).colorScheme.primaryContainer),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(4.w)),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
-                color: Theme.of(context).colorScheme.onSecondary,
-                width: 1.0),
+                color: Theme.of(context).colorScheme.onSecondary, width: 1.0),
             borderRadius: BorderRadius.circular(4.w),
           ),
           fillColor: Colors.white,
@@ -65,11 +62,7 @@ class CustomTextFormField extends StatelessWidget {
             fontWeight: FontWeight.w400,
           ),
         ),
-        validator: (value) {
-          if (value!.isValidEmail) {
-            return "Error";
-          }
-        },
+        validator:validator,
       ),
     );
   }
