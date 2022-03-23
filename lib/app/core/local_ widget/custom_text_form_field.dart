@@ -7,10 +7,12 @@ class CustomTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final IconData icon;
   final String hint;
-  final bool isPassword;
+  final bool? isPassword;
   final bool? isIcon;
   final String? Function(String?)? validator;
   final bool? isPhone;
+  final Color? bgColor;
+  final Color? textColor;
 
   const CustomTextFormField(
       {Key? key,
@@ -18,8 +20,8 @@ class CustomTextFormField extends StatelessWidget {
       required this.icon,
       required this.hint,
       this.isPhone,
-      required this.isPassword,
-      this.isIcon, this.validator})
+       this.isPassword,
+      this.isIcon, this.validator, this.bgColor, this.textColor})
       : super(key: key);
 
   @override
@@ -27,36 +29,36 @@ class CustomTextFormField extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(4.w),
-          color: Theme.of(context).primaryColor),
+          color: bgColor??Theme.of(context).primaryColor),
       child: TextFormField(
-        obscureText: isPassword ? true : false,
+        obscureText: isPassword ??false,
         controller: controller,
         keyboardType:
             isPhone ?? false ? TextInputType.number : TextInputType.text,
         style: TextStyle(
           fontSize: kMediumFontSize14.sp,
-          color: Theme.of(context).colorScheme.primaryContainer,
+          color:textColor?? Theme.of(context).colorScheme.primaryContainer,
           fontWeight: FontWeight.w600,
         ),
         decoration: InputDecoration(
-          focusColor: Colors.white,
+          focusColor:bgColor?? Theme.of(context).colorScheme.primaryContainer,
           contentPadding: EdgeInsets.fromLTRB(0.03.sh, 0.01.sh, 0.01.sh, 0),
           //add prefix icon
           prefixIcon: Icon(icon,
               size: 20.sp,
-              color: Theme.of(context).colorScheme.primaryContainer),
+              color: textColor??Theme.of(context).colorScheme.primaryContainer),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(4.w)),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(
                 color: Theme.of(context).colorScheme.onSecondary, width: 1.0),
             borderRadius: BorderRadius.circular(4.w),
           ),
-          fillColor: Colors.white,
+          fillColor: bgColor??Theme.of(context).colorScheme.primaryContainer,
 
           hintText: hint,
           //make hint text
           hintStyle: TextStyle(
-            color: Theme.of(context).colorScheme.primaryContainer,
+            color: textColor??Theme.of(context).colorScheme.primaryContainer,
             fontSize: kMediumFontSize14.sp,
             fontFamily: "verdana_regular",
             fontWeight: FontWeight.w400,

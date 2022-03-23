@@ -5,13 +5,17 @@ import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 
 import '../../../core/constants/default_values.dart';
 import '../../../core/local_ widget/custom_button.dart';
+import '../../../core/local_ widget/custom_text_form_field.dart';
+import '../../../core/validation/validation.dart';
 import '../../betting_page/all_widget/quick_betting_bottom_sheet.dart';
 
 class ThreeDOptions extends StatelessWidget {
   const ThreeDOptions({Key? key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
+    TextEditingController passwordController = TextEditingController();
     return Container(
       width: 1.sh,
       padding: EdgeInsets.symmetric(
@@ -21,7 +25,7 @@ class ThreeDOptions extends StatelessWidget {
         children: [
 
           CustomButton(
-            textColor: Theme.of(context).colorScheme.secondaryVariant,
+            textColor: Theme.of(context).colorScheme.onPrimary,
             title: 'R',
             bgColor: Colors.green,
             onClick: () {},
@@ -34,7 +38,16 @@ class ThreeDOptions extends StatelessWidget {
             width: 4,
           ),
           Expanded(
-            child: CustomButton(
+            child: CustomTextFormField(
+                controller: passwordController,
+                 icon: Icons.paid,
+                hint: "3000",
+                bgColor: Theme.of(context).colorScheme.primaryContainer,
+                textColor: Theme.of(context).colorScheme.onPrimary,
+                validator: checkIsEmpty,
+                isPassword: false),
+
+            /*CustomButton(
               textColor: Theme.of(context).colorScheme.onPrimary,
               title: '30000',
               bgColor: Theme.of(context).colorScheme.primaryVariant,
@@ -45,7 +58,7 @@ class ThreeDOptions extends StatelessWidget {
               radius: 0.01.sw,
               iconSize: kLargeFontSize16.sp,
               isIcon: true,
-            ),
+            ),*/
           ),
           const SizedBox(
             width: 4,

@@ -6,7 +6,6 @@ import '../../core/local_ widget/app_bar_with_preferred_widget.dart';
 import '../../core/local_ widget/custom_button.dart';
 import '../../core/route/pages.dart';
 import '../betting_page/all_widget/build_betting_page_body.dart';
-import '../betting_page/all_widget/catagory_button.dart';
 import 'core/three_d_options.dart';
 
 class ThreeDBettingPage extends StatelessWidget {

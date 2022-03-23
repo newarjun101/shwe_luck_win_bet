@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 import 'package:shwe_luck_win_bet/app/module/binding/betting_page_binding.dart';
+import 'package:shwe_luck_win_bet/app/module/binding/edit_profile_screen_binding.dart';
 import 'package:shwe_luck_win_bet/app/module/binding/feature_main_binding.dart';
 import 'package:shwe_luck_win_bet/app/module/binding/login_screen_binding.dart';
 import 'package:shwe_luck_win_bet/app/module/binding/sign_up_screen_binding.dart';
@@ -16,6 +17,7 @@ import 'package:shwe_luck_win_bet/app/ui/betting_page/betting_page.dart';
 import 'package:shwe_luck_win_bet/app/ui/off_day_screen/off_day_screen.dart';
 import 'package:shwe_luck_win_bet/app/ui/three_d_betting_screen/three_d_betting_page.dart';
 import 'package:shwe_luck_win_bet/app/ui/today_result/today_result.dart';
+import 'package:shwe_luck_win_bet/app/ui/update_profile_screen/edit_profile_screen.dart';
 
 import '../../ui/feature_main/feature_main.dart';
 
@@ -35,15 +37,13 @@ class Routes {
       page: () => const BalanceScreen(),
     ),
     GetPage(
-      name: Pages.lLoginScreen,
-      page: () => const LoginScreen(),
-      binding: LoginScreenBinding()
-    ),
+        name: Pages.lLoginScreen,
+        page: () => const LoginScreen(),
+        binding: LoginScreenBinding()),
     GetPage(
-      name: Pages.lSignUp,
-      page: () => const SignUpScreen(),
-      binding: SignUpScreenBinding()
-    ),
+        name: Pages.lSignUp,
+        page: () => const SignUpScreen(),
+        binding: SignUpScreenBinding()),
     GetPage(
       name: Pages.lOtp,
       page: () => const OtpScreen(),
@@ -60,14 +60,19 @@ class Routes {
       name: Pages.lBetSelected,
       page: () => const BetSelectedScreen(),
     ),
-    GetPage(name: Pages.lTestLocal, page: ()=> HomePage(),
-    binding: TestLocalBinding()),
-    GetPage(name: Pages.lBetting, page: ()=>const BettingPage(),
-    binding: BettingPageBinding()),
-    GetPage(name: Pages.lThreeDBetting,
-        page:()=>const ThreeDBettingPage(),
-        binding: BettingPageBinding()
-    )
-
+    GetPage(
+        name: Pages.lTestLocal,
+        page: () => HomePage(),
+        binding: TestLocalBinding()),
+    GetPage(
+        name: Pages.lBetting,
+        page: () => const BettingPage(),
+        binding: BettingPageBinding()),
+    GetPage(
+        name: Pages.lThreeDBetting,
+        page: () => const ThreeDBettingPage(),
+        binding: BettingPageBinding()),
+    GetPage(name: Pages.lEditProfile, page: ()=> const EditProfileScreen(),
+    binding: EditProfileScreenBinding())
   ];
 }

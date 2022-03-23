@@ -18,9 +18,8 @@ class BuildHomeMainBody extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-
-          CustomCarouselSlider(),
-         /* const ImageWithBorderRadius(
+          const CustomCarouselSlider(),
+          /* const ImageWithBorderRadius(
             imgUrl:
                 "https://cdn.pixabay.com/photo/2021/11/10/18/10/aces-6784543_960_720.jpg",
           ),*/
@@ -28,13 +27,13 @@ class BuildHomeMainBody extends StatelessWidget {
             child: Row(
               children: [
                 CardButtonContainer(
-                  onClick: () => Get.toNamed(Pages.lTodayResult),
+                  onClick: () => Get.toNamed(Pages.lBetting),
                   isComming: false,
                   title: '2D',
                 ),
                 CardButtonContainer(
                   onClick: () {
-                    print("hello world");
+                    Get.toNamed(Pages.lThreeDBetting);
                   },
                   isComming: false,
                   title: '3D',
@@ -52,14 +51,13 @@ class BuildHomeMainBody extends StatelessWidget {
                 ),
                 CardButtonContainer(
                   onClick: () {
-
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
-                        return customDialog(context,"Hello world", Text("hello world"));
+                        return customDialog(
+                            context, "Hello world", Text("hello world"));
                       },
                     );
-
                   },
                   isComming: true,
                   title: 'Slots',

@@ -14,6 +14,7 @@ class Pages {
   static String lBetSelected = "/bet-selected";
   static String lTestLocal = "/local";
   static String lThreeDBetting = "/three-d";
+  static String lEditProfile = "/edit-profile";
 
 
 }
