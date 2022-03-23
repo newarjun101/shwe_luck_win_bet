@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/constants/default_values.dart';
+import 'package:shwe_luck_win_bet/app/core/local_%20widget/custom_dialog.dart';
 import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 import 'package:shwe_luck_win_bet/app/ui/home_page/core/card_container_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -50,7 +51,16 @@ class BuildHomeMainBody extends StatelessWidget {
                   title: 'ဘောလုံး',
                 ),
                 CardButtonContainer(
-                  onClick: () {},
+                  onClick: () {
+
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return customDialog(context,"Hello world", Text("hello world"));
+                      },
+                    );
+
+                  },
                   isComming: true,
                   title: 'Slots',
                 ),
