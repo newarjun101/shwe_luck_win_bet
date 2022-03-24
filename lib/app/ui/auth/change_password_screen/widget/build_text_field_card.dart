@@ -105,7 +105,7 @@ class BuildTextFieldCard extends StatelessWidget {
                 }
               },
               child: Text(
-                "အကောင့်အသစ်ဖွင့်မည်",
+                "Change Password",
                 style: TextStyle(
                     //     color: Theme.of(context).colorScheme.primaryContainer,
                     fontSize: kLargeFontSize16.sp,
