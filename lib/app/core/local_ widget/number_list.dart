@@ -23,7 +23,7 @@ class NumberList extends StatelessWidget {
                     color: bettingPageController.selectedIndex.value== index?Theme.of(context).colorScheme.secondary: Color(0xff0F2810).withOpacity(0.9) ,
                     borderRadius: BorderRadius.circular(0.009.sh),
                     border: Border.all(color: Colors.grey.withOpacity(0.8))),
-                padding: EdgeInsets.all(0.01.sh),
+                padding: EdgeInsets.all(0.001.sh),
                 child: InkWell(
                   splashColor: Theme.of(context).colorScheme.onPrimary,
                   onTap: () => bettingPageController.onSelecteNumber(index),
@@ -35,7 +35,7 @@ class NumberList extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           color: Theme.of(context).colorScheme.secondaryVariant,
-                          fontSize: kMediumFontSize14.sp,
+                          fontSize: kSmallFontSize12.sp,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -45,7 +45,7 @@ class NumberList extends StatelessWidget {
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 7, crossAxisSpacing: 10, mainAxisSpacing: 10),
+            crossAxisCount: 7, crossAxisSpacing: 8, mainAxisSpacing: 8),
       ),
     );
   }

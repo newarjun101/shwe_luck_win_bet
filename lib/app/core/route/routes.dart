@@ -8,6 +8,7 @@ import 'package:shwe_luck_win_bet/app/module/binding/sign_up_screen_binding.dart
 import 'package:shwe_luck_win_bet/app/testing_app/binding/test_local_binding.dart';
 import 'package:shwe_luck_win_bet/app/testing_app/test_localization.dart';
 import 'package:shwe_luck_win_bet/app/ui/auth/account_success_screen/account_success_screen.dart';
+import 'package:shwe_luck_win_bet/app/ui/auth/change_password_screen/change_password_screen.dart';
 import 'package:shwe_luck_win_bet/app/ui/auth/loging_screen/login_screen.dart';
 import 'package:shwe_luck_win_bet/app/ui/auth/otp_screen/otp_screen.dart';
 import 'package:shwe_luck_win_bet/app/ui/auth/sign_up_screen/sign_up_screen.dart';
@@ -73,6 +74,10 @@ class Routes {
         page: () => const ThreeDBettingPage(),
         binding: BettingPageBinding()),
     GetPage(name: Pages.lEditProfile, page: ()=> const EditProfileScreen(),
-    binding: EditProfileScreenBinding())
+    binding: EditProfileScreenBinding()),
+    GetPage(
+        name: Pages.lChangePassword,
+        page: () => const ChangePasswordScreen(),
+        binding: SignUpScreenBinding()),
   ];
 }

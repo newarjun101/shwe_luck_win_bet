@@ -38,14 +38,17 @@ class ThreeDOptions extends StatelessWidget {
             width: 4,
           ),
           Expanded(
-            child: CustomTextFormField(
-                controller: passwordController,
-                 icon: Icons.paid,
-                hint: "3000",
-                bgColor: Theme.of(context).colorScheme.primaryContainer,
-                textColor: Theme.of(context).colorScheme.onPrimary,
-                validator: checkIsEmpty,
-                isPassword: false),
+            child: SizedBox(
+              height: 0.056.sh,
+              child: CustomTextFormField(
+                  controller: passwordController,
+                   icon: Icons.paid,
+                  hint: "3000",
+                  bgColor: Theme.of(context).colorScheme.primaryContainer,
+                  textColor: Theme.of(context).colorScheme.onPrimary,
+                  validator: checkIsEmpty,
+                  isPassword: false),
+            ),
 
             /*CustomButton(
               textColor: Theme.of(context).colorScheme.onPrimary,
