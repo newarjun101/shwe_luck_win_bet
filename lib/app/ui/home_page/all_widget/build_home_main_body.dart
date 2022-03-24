@@ -45,7 +45,13 @@ class BuildHomeMainBody extends StatelessWidget {
             child: Row(
               children: [
                 CardButtonContainer(
-                  onClick: () {},
+                  onClick: () { showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return customDialog(
+                          context, "Football", const Center(child: Text("Comming Soon")));
+                    },
+                  );},
                   isComming: true,
                   title: 'ဘောလုံး',
                 ),
@@ -55,7 +61,7 @@ class BuildHomeMainBody extends StatelessWidget {
                       context: context,
                       builder: (BuildContext context) {
                         return customDialog(
-                            context, "Hello world", Text("hello world"));
+                            context, "Slot", const Center(child: Text("Comming Soon")));
                       },
                     );
                   },

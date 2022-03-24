@@ -68,7 +68,7 @@ class BuildChangePasswordBody extends StatelessWidget {
 
 
                     Text(
-                      "အကောင့်အသစ်ဖွင့်ရန်",
+                      "Change Password",
                       style: TextStyle(
                           color: Theme.of(context).colorScheme.primaryContainer,
                         //  fontWeight: FontWeight.bold,
@@ -82,22 +82,6 @@ class BuildChangePasswordBody extends StatelessWidget {
                 ),
               ),
             ),
-            Positioned(
-              bottom: 8.h,
-              left: 0,
-              right: 0,
-              child: InkWell(
-                onTap: ()=> Get.offNamed(Pages.lLoginScreen),
-                child: Text(
-                  "လော့ဂ်အင်",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.secondary,
-                      fontWeight: FontWeight.bold,
-                      fontSize: kMediumFontSize14.sp),
-                ),
-              ),
-            )
           ],
         );
       }

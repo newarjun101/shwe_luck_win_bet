@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/local_%20widget/custom_button.dart';
+import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 import 'package:shwe_luck_win_bet/app/module/controller/edit_profile_screen_controller.dart';
 import 'package:shwe_luck_win_bet/app/ui/profile_page/all_widget/profile_widget.dart';
 
@@ -24,6 +25,9 @@ class BuildEditProfileScreenBody extends StatelessWidget {
       child: Center(
         child: ListView(
           children: [
+            SizedBox(
+              height: 20.h,
+            ),
             CircleAvatar(
               radius: 0.074.sh,
               backgroundColor: Theme.of(context).colorScheme.secondary,
@@ -110,7 +114,7 @@ class BuildEditProfileScreenBody extends StatelessWidget {
               height: kDefaultMargin.sh*3,
             ),
             GestureDetector(
-              onTap: ()=> print("hello world"),
+              onTap: ()=> Get.toNamed(Pages.lChangePassword),
               child: Text(
                 "Change Password",
                 textAlign: TextAlign.center,
