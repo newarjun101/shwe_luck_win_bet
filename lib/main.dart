@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -15,7 +14,7 @@ void main() async {
 
   await GetStorage.init();
   runApp(const MyApp());
-/*  runApp(DevicePreview(
+ /* runApp(DevicePreview(
     enabled: !kReleaseMode,
     builder: (context) => const MyApp(), // Wrap your app
   ));*/
@@ -50,7 +49,7 @@ class MyApp extends StatelessWidget {
             'US',
           ),
           getPages: Routes().routerPage,
-        initialRoute: Pages.lEditProfile
+        initialRoute: Pages.lINITIAL
       );
     });
   }

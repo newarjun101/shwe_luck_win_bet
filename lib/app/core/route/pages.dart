@@ -15,6 +15,7 @@ class Pages {
   static String lTestLocal = "/local";
   static String lThreeDBetting = "/three-d";
   static String lEditProfile = "/edit-profile";
+  static String lChangePassword = "/change-password";
 
 
 }
