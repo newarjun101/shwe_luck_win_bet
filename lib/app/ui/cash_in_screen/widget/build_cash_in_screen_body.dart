@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/constants/default_values.dart';
 import 'package:shwe_luck_win_bet/app/core/local_%20widget/custom_button.dart';
 import 'package:shwe_luck_win_bet/app/core/validation/validation.dart';
+import 'package:shwe_luck_win_bet/app/module/controller/cash_in_cash_out_screen_controller.dart';
 
 import '../../../core/local_ widget/custom_text_form_field.dart';
 
 class BuildCashInScreenBody extends StatelessWidget {
+
+
   BuildCashInScreenBody({Key? key}) : super(key: key);
 
 
@@ -16,6 +20,8 @@ class BuildCashInScreenBody extends StatelessWidget {
  final TextEditingController amountController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    final paymentController = Get.find<CashInCashOutScreenController>();
+
     return SingleChildScrollView(
       child: Container(
         width: double.infinity,
@@ -72,7 +78,7 @@ class BuildCashInScreenBody extends StatelessWidget {
             ),
             SizedBox(
               height: 0.07.sh,
-              child: CustomButton(onClick: ()=> print("Hello World"), title: "Cash In",
+              child: CustomButton(onClick: ()=>  paymentController.showPaymentTypeWidget(context), title: "Cash In",
                   bgColor: Theme.of(context).colorScheme.secondary,
                   textColor: Theme.of(context).colorScheme.onPrimary, radius: 4, iconSize: 24, isIcon: false),
             ),
