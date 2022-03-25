@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/extension/extension_form_validate.dart';
+import 'package:shwe_luck_win_bet/app/core/local_%20widget/custom_dialog.dart';
 import 'package:shwe_luck_win_bet/app/module/controller/login_screen_controller.dart';
 import '../../../../core/constants/default_values.dart';
 import '../../../../core/local_ widget/custom_text_form_field.dart';
@@ -57,10 +58,21 @@ class BuildLoginCard extends StatelessWidget {
               color: Theme.of(context).colorScheme.secondary,
               onPressed: () {
                 if (_key.currentState!.validate()) {
-                  debugPrint("working");
-                   Get.toNamed(Pages.lOtp);
-                }
 
+                  customDialog(
+                      context,
+                      "Loading",
+                      const SizedBox(
+                          width: 10,
+                          height: 20,
+                          child: Center(child: CircularProgressIndicator())));
+
+                  loginController.login(
+                      phone: userNameController.text,
+                      password: passwordController.text);
+                  Get.back();
+                  // Get.toNamed(Pages.lOtp);
+                }
               },
               child: Text(
                 "လော့အင်ဝင်မည်",

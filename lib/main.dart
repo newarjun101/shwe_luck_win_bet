@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
             'US',
           ),
           getPages: Routes().routerPage,
-        initialRoute: Pages.lCashOut
+        initialRoute: Pages.lLoginScreen
       );
     });
   }
