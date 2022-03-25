@@ -29,7 +29,7 @@ class CustomButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(title,style: TextStyle(color: textColor),),
+            Text(title,style: TextStyle(color: textColor,fontSize: kMediumFontSize14.sp,fontWeight: FontWeight.bold),),
           // const SizedBox(width: 4,),
            isIcon? Padding(
              padding: EdgeInsets.only(left: 4.w),
