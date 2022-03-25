@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 
- Widget customDialog(context,String title, Widget child) {
-  return
-    SimpleDialog(
-
-      title: Text(title,textAlign: TextAlign.center,),
-      children: <Widget>[
-    child
-      ],
-    );
+customDialog(context, String title, Widget child) {
+  return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            title,
+            textAlign: TextAlign.center,
+          ),
+          actions:  <Widget>[child],
+        );
+      });
 }

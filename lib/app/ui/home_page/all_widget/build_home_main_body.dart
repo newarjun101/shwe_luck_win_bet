@@ -26,48 +26,60 @@ class BuildHomeMainBody extends StatelessWidget {
           FittedBox(
             child: Row(
               children: [
-                CardButtonContainer(
-                  onClick: () => Get.toNamed(Pages.lBetting),
-                  isComming: false,
-                  title: '2D',
+                Image.asset(
+                  "assets/images/two_d.jpg",
+                  width: 0.45.sw,
+                  height: 0.2.sh,
+                  fit: BoxFit.contain,
                 ),
-                CardButtonContainer(
+                Image.asset(
+                  "assets/images/three_d.jpg",
+                  width: 0.45.sw,
+                  height: 0.2.sh,
+                  fit: BoxFit.contain,
+                )
+
+                /*           CardButtonContainer(
                   onClick: () {
                     Get.toNamed(Pages.lThreeDBetting);
                   },
                   isComming: false,
                   title: '3D',
-                ),
+                ),*/
               ],
             ),
+          ),
+          SizedBox(
+            height: kDefaultMargin.sh,
           ),
           FittedBox(
             child: Row(
               children: [
-                CardButtonContainer(
-                  onClick: () { showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return customDialog(
-                          context, "Football", const Center(child: Text("Comming Soon")));
-                    },
-                  );},
-                  isComming: true,
-                  title: 'ဘောလုံး',
+                Image.asset(
+                  "assets/images/football.jpg",
+                  width: 0.45.sw,
+                  height: 0.2.sh,
+                  fit: BoxFit.contain,
                 ),
-                CardButtonContainer(
+                Image.asset(
+                  "assets/images/football.jpg",
+                  width: 0.45.sw,
+                  height: 0.2.sh,
+                  fit: BoxFit.contain,
+                ),
+             /*   CardButtonContainer(
                   onClick: () {
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
-                        return customDialog(
-                            context, "Slot", const Center(child: Text("Comming Soon")));
+                        return customDialog(context, "Slot",
+                            const Center(child: Text("Comming Soon")));
                       },
                     );
                   },
                   isComming: true,
                   title: 'Slots',
-                ),
+                ),*/
               ],
             ),
           )
