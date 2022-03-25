@@ -16,6 +16,8 @@ class Pages {
   static String lThreeDBetting = "/three-d";
   static String lEditProfile = "/edit-profile";
   static String lChangePassword = "/change-password";
+  static String lCashIn= "/cash-in";
+  static String lCashOut = "/cash-out";
 
 
 }

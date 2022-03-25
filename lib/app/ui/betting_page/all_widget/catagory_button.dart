@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 import 'package:shwe_luck_win_bet/app/ui/betting_page/all_widget/quick_betting_bottom_sheet.dart';
+import 'package:shwe_luck_win_bet/app/ui/betting_page/all_widget/quick_betting_list.dart';
 
 import '../../../core/constants/default_values.dart';
 import '../../../core/local_ widget/custom_button.dart';
@@ -46,7 +47,7 @@ class CatagoryButton extends StatelessWidget {
               bgColor: Theme.of(context).colorScheme.primaryVariant,
               onClick: () {
 
-                quickBettingBottomSheet(context);
+                quickBettingBottomSheet(context : context,child : const QuickBettingList(),height: 0.7);
               },
               radius: 0.01.sw,
               iconSize: kLargeFontSize16.sp,

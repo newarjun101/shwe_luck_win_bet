@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 import 'package:shwe_luck_win_bet/app/module/binding/betting_page_binding.dart';
+import 'package:shwe_luck_win_bet/app/module/binding/cash_in_cash_out_screen_binding.dart';
 import 'package:shwe_luck_win_bet/app/module/binding/edit_profile_screen_binding.dart';
 import 'package:shwe_luck_win_bet/app/module/binding/feature_main_binding.dart';
 import 'package:shwe_luck_win_bet/app/module/binding/login_screen_binding.dart';
@@ -15,11 +16,12 @@ import 'package:shwe_luck_win_bet/app/ui/auth/sign_up_screen/sign_up_screen.dart
 import 'package:shwe_luck_win_bet/app/ui/balance_page/balance_screen.dart';
 import 'package:shwe_luck_win_bet/app/ui/bet_selected_screen/bet_selected_screen.dart';
 import 'package:shwe_luck_win_bet/app/ui/betting_page/betting_page.dart';
+import 'package:shwe_luck_win_bet/app/ui/cash_in_screen/cash_in_screen.dart';
+import 'package:shwe_luck_win_bet/app/ui/cash_out_screen/cash_out_screen.dart';
 import 'package:shwe_luck_win_bet/app/ui/off_day_screen/off_day_screen.dart';
 import 'package:shwe_luck_win_bet/app/ui/three_d_betting_screen/three_d_betting_page.dart';
 import 'package:shwe_luck_win_bet/app/ui/today_result/today_result.dart';
 import 'package:shwe_luck_win_bet/app/ui/update_profile_screen/edit_profile_screen.dart';
-
 import '../../ui/feature_main/feature_main.dart';
 
 class Routes {
@@ -79,5 +81,13 @@ class Routes {
         name: Pages.lChangePassword,
         page: () => const ChangePasswordScreen(),
         binding: SignUpScreenBinding()),
+    GetPage(
+        name: Pages.lCashOut,
+        page: () => const CashOutScreen(),
+        binding: CashInCashOutScreenBinding()),
+    GetPage(
+        name: Pages.lCashIn,
+        page: () => const CashInScreen(),
+        binding: CashInCashOutScreenBinding()),
   ];
 }

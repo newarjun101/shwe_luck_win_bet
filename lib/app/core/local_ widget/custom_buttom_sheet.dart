@@ -3,11 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/local_%20widget/quick_bet_button_row.dart';
 
-import '../../../core/constants/default_values.dart';
-import '../../../core/local_ widget/button_quick_bet.dart';
-import '../../../core/local_ widget/custom_button.dart';
+import '../constants/default_values.dart';
 
-void quickBettingBottomSheet({required BuildContext context,required Widget child,required double height}) {
+
+void customBottomSheet({required BuildContext context,required Widget child,required double height}) {
   showModalBottomSheet(
     isScrollControlled: true,
     shape: RoundedRectangleBorder(
