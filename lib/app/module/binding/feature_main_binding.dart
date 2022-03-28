@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:shwe_luck_win_bet/app/module/controller/betting_page_controller.dart';
 import 'package:shwe_luck_win_bet/app/module/controller/feature_main_controller.dart';
 
 import '../controller/home_main_page_controller.dart';
@@ -11,7 +10,6 @@ class FeatureMainBinding extends Bindings {
     // TODO: implement dependencies
 
     Get.lazyPut(() => FeatureMainController());
-    Get.lazyPut(() => BettingPageController());
     Get.lazyPut(() => HomeMainPageController());
   }
 }

@@ -53,7 +53,7 @@ class MyApp extends StatelessWidget {
             'US',
           ),
           getPages: Routes().routerPage,
-        initialRoute:token.read(TOKEN)==""|| token.read(TOKEN)==null ?  Pages.lLoginScreen : Pages.lINITIAL
+        initialRoute:token.read(TOKEN)==""|| token.read(TOKEN)==null ?  Pages.lLoginScreen : Pages.lThreeDBetting
       );
     });
   }
