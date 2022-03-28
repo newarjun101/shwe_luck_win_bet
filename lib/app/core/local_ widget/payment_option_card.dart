@@ -15,36 +15,39 @@ class PaymentOptionCard extends StatelessWidget {
       height: 0.23.sh,
       width: 0.43.sw,
 
-      child: Card(
+      child: GestureDetector(
+        onTap: onClick,
+        child: Card(
 
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.h)
-        ),
-        color: Theme.of(context).primaryColor,
-        child: Padding(
-          padding:  EdgeInsets.all(kDefaultMargin.sh*1.5),
-          child: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center ,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.h)
+          ),
+          color: Theme.of(context).primaryColor,
+          child: Padding(
+            padding:  EdgeInsets.all(kDefaultMargin.sh*1.5),
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center ,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
 
-                    ClipRRect(
-                        borderRadius: BorderRadius.circular(6.0.h),child: Image.asset(images[0],height: 0.08.sh,width: 0.08.sh,fit: BoxFit.cover,)),
-                    SizedBox(width: 6.h,),
-                    ClipRRect(
-                        borderRadius: BorderRadius.circular(6.0.h),child: Image.asset(images[1],height: 0.08.sh,width: 0.08.sh,fit: BoxFit.cover,)),
-                  ]
-                ),
-                SizedBox(height: 6.h,),
-                Text( title,style: TextStyle(color: Theme.of(context).colorScheme.secondary,
-                    fontSize: kLargeFontSize16.sp,fontWeight: FontWeight.bold),),
+                      ClipRRect(
+                          borderRadius: BorderRadius.circular(6.0.h),child: Image.asset(images[0],height: 0.08.sh,width: 0.08.sh,fit: BoxFit.cover,)),
+                      SizedBox(width: 6.h,),
+                      ClipRRect(
+                          borderRadius: BorderRadius.circular(6.0.h),child: Image.asset(images[1],height: 0.08.sh,width: 0.08.sh,fit: BoxFit.cover,)),
+                    ]
+                  ),
+                  SizedBox(height: 6.h,),
+                  Text( title,style: TextStyle(color: Theme.of(context).colorScheme.secondary,
+                      fontSize: kLargeFontSize16.sp,fontWeight: FontWeight.bold),),
 
-              ],
+                ],
+              ),
             ),
           ),
         ),

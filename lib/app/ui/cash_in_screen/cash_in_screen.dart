@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shwe_luck_win_bet/app/module/controller/cash_in_cash_out_screen_controller.dart';
 import 'package:shwe_luck_win_bet/app/ui/cash_in_screen/widget/build_cash_in_screen_body.dart';
 
 import '../../core/local_ widget/app_bar_with_profile.dart';
@@ -8,6 +10,9 @@ class CashInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final controller = Get.find<CashInCashOutScreenController>();
+    controller.getAllPayment();
     return Scaffold(
         backgroundColor: Theme.of(context).primaryColor.withOpacity(0.8),
         appBar: const AppBarWithProfile(

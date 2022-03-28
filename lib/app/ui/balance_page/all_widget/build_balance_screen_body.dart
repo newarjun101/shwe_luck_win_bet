@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/constants/default_values.dart';
 import 'package:shwe_luck_win_bet/app/core/local_%20widget/payment_option_card.dart';
+import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 import 'package:shwe_luck_win_bet/app/ui/balance_page/all_widget/balance_container.dart';
 import 'package:shwe_luck_win_bet/app/ui/balance_page/all_widget/transfer_history.dart';
 
@@ -34,9 +36,9 @@ class BuildBalanceScreenBody extends StatelessWidget {
              mainAxisAlignment: MainAxisAlignment.center,
              children: [
                PaymentOptionCard(images:const ['assets/images/k_pay.png','assets/images/wave.png'],
-                   title: "ငွေဖြည့်မည်", onClick: ()=> print("Hello wordl")),
+                   title: "ငွေဖြည့်မည်", onClick: ()=>Get.toNamed(Pages.lCashIn)),
                PaymentOptionCard(images:const ['assets/images/k_pay.png','assets/images/wave.png'],
-                   title: "ငွေထုတ်မည်", onClick: ()=> print("Hello wordl")),
+                   title: "ငွေထုတ်မည်", onClick: ()=> Get.toNamed(Pages.lCashOut),),
 
              ],
            ) ,
