@@ -57,7 +57,10 @@ class BuildLoginCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(4.h)),
               color: Theme.of(context).colorScheme.secondary,
               onPressed: () {
-                if (_key.currentState!.validate()) {
+                loginController.login(
+                    phone: userNameController.text,
+                    password: passwordController.text);
+               /* if (_key.currentState!.validate()) {
 
                   customDialog(
                       context,
@@ -67,12 +70,10 @@ class BuildLoginCard extends StatelessWidget {
                           height: 20,
                           child: Center(child: CircularProgressIndicator())));
 
-                  loginController.login(
-                      phone: userNameController.text,
-                      password: passwordController.text);
+
                   Get.back();
                   // Get.toNamed(Pages.lOtp);
-                }
+                }*/
               },
               child: Text(
                 "လော့အင်ဝင်မည်",

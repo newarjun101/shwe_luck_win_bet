@@ -5,11 +5,9 @@
 import 'package:meta/meta.dart';
 import 'dart:convert';
 
-LoginResponseModel loginResponseModelFromJson(String str) =>
-    LoginResponseModel.fromJson(json.decode(str));
+LoginResponseModel loginResponseModelFromJson(String str) => LoginResponseModel.fromJson(json.decode(str));
 
-String loginResponseModelToJson(LoginResponseModel data) =>
-    json.encode(data.toJson());
+String loginResponseModelToJson(LoginResponseModel data) => json.encode(data.toJson());
 
 class LoginResponseModel {
   LoginResponseModel({
@@ -26,22 +24,21 @@ class LoginResponseModel {
   final Data? data;
   final String? token;
 
-  factory LoginResponseModel.fromJson(Map<String, dynamic> json) =>
-      LoginResponseModel(
-        result: json["result"],
-        status: json["status"],
-        message: json["message"],
-        data: Data?.fromJson(json["data"]),
-        token: json["token"],
-      );
+  factory LoginResponseModel.fromJson(Map<String, dynamic> json) => LoginResponseModel(
+    result: json["result"],
+    status: json["status"],
+    message: json["message"],
+    data: Data?.fromJson(json["data"]) ,
+    token: json["token"]!,
+  );
 
   Map<String, dynamic> toJson() => {
-        "result": result,
-        "status": status,
-        "message": message,
-        "data": data!.toJson(),
-        "token": token,
-      };
+    "result": result,
+    "status": status,
+    "message": message,
+    "data": data?.toJson(),
+    "token": token!,
+  };
 }
 
 class Data {
@@ -52,10 +49,10 @@ class Data {
   final int userId;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-        userId: json["user_id"],
-      );
+    userId: json["user_id"],
+  );
 
   Map<String, dynamic> toJson() => {
-        "user_id": userId,
-      };
+    "user_id": userId,
+  };
 }

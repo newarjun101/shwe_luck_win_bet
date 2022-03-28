@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
-
+///get of get storage
+const String TOKEN = "";
 ///font size for the whole application
 const double kSmallFontSize12 = 12.0;
 const double kMediumFontSize14 = 14.0;

@@ -1,10 +1,10 @@
+/*
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
 import 'package:shwe_luck_win_bet/app/core/constants/api_consts.dart';
 
 import 'app_exception.dart';
-
 
 class ApiBaseHelper {
   String _baseUrl = BASE_URL; // initialize api url
@@ -30,11 +30,12 @@ class ApiBaseHelper {
     return responseJson;
   }
 
-  Future<dynamic> getWithHeader(String uri,Map<String,String> headerValue) async{
+  Future<dynamic> getWithHeader(
+      String uri, Map<String, String> headerValue) async {
     dynamic responseJson;
     try {
       var url = Uri.parse(_baseUrl + uri);
-      final response = await http.get(url,headers: headerValue);
+      final response = await http.get(url, headers: headerValue);
       responseJson = _returnResponse(response);
     } on SocketException {
       throw FetchDataException('No Internet connection');
@@ -48,7 +49,7 @@ class ApiBaseHelper {
     try {
       var url = Uri.parse(_baseUrl + uri);
       final response =
-      await http.post(url,headers : getHeader(),body: jsonEncode(body));
+          await http.post(url, headers: getHeader(), body: jsonEncode(body));
       responseJson = _returnResponse(response);
     } on SocketException {
       throw FetchDataException('No Internet connection');
@@ -61,6 +62,7 @@ class ApiBaseHelper {
     switch (response.statusCode) {
       case 200:
         var responseJson = response.body;
+        print("200");
         return responseJson;
       case 201:
         var responseJson = response.body;
@@ -83,8 +85,78 @@ class ApiBaseHelper {
   // handing with header
   dynamic getHeader() {
     return {
+     "Content-Type": "application/json",
+     // "Accept": "application/json",
+    };
+  }
+}
+*/
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:http/http.dart' as http;
+import 'package:shwe_luck_win_bet/app/core/constants/api_consts.dart';
+import 'package:shwe_luck_win_bet/app/core/data/service/api_response.dart';
+import 'package:shwe_luck_win_bet/app/core/data/service/api_result.dart';
+import 'package:shwe_luck_win_bet/app/core/data/service/status.dart';
+
+
+/**
+ * We wil use this class for the http services sucs as Get,post,delete ,etc.
+ */
+class  ApiBaseHelper {
+  late String baseUrl;
+
+  ApiBaseHelper() {
+    initData();
+  }
+
+  Future<dynamic> getData(uri) async {
+    try {
+      // ,headers: getHeader()
+      var url = Uri.parse(baseUrl + uri);
+      http.Response response = await http.get(url);
+      if (response.statusCode == 200) {
+        return ApiResult(Status.eCOMPLETED, "", response.body);
+      } else {
+        return    ApiResult(Status.eERROR, "", response.body);
+      }
+    } on FormatException catch (_) {
+      return    ApiResult(Status.eERROR, "", "");
+    } on SocketException catch (_) {
+       return ApiResult(Status.eERROR, "", "");
+    } catch (e) {
+      return ApiResult(Status.eERROR, "", "");
+    }
+  }
+
+  Future<dynamic> post(uri,body) async {
+    try {
+      // ,headers: getHeader()
+      var url = Uri.parse(baseUrl + uri);
+      http.Response response = await http.post(url,headers:getHeader(),body: jsonEncode(body) );
+      if (response.statusCode == 200) {
+        print("no error");
+        return ApiResponse(Status.eCOMPLETED, "", response.body);
+      } else {
+        return    ApiResult(Status.eERROR, "", response.body);
+      }
+    } on FormatException catch (_) {
+      return    ApiResult(Status.eERROR, "", "");
+    } on SocketException catch (_) {
+      return ApiResult(Status.eERROR, "", "");
+    } catch (e) {
+      return ApiResult(Status.eERROR, "", "");
+    }
+  }
+
+  dynamic getHeader() {
+    return {
       "Content-Type": "application/json",
       "Accept": "application/json",
     };
+  }
+  initData() {
+    baseUrl = "$BASE_URL";
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:shwe_luck_win_bet/app/core/constants/default_values.dart';
 import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 import 'package:shwe_luck_win_bet/app/core/route/routes.dart';
 import 'package:shwe_luck_win_bet/app/testing_app/controller/test_local_controller.dart';
@@ -23,9 +24,12 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final token = GetStorage();
     final controller = Get.put(TestLocalController());
     return ScreenUtilInit(builder: () {
       return GetMaterialApp(
@@ -49,7 +53,7 @@ class MyApp extends StatelessWidget {
             'US',
           ),
           getPages: Routes().routerPage,
-        initialRoute: Pages.lLoginScreen
+        initialRoute:token.read(TOKEN)==""|| token.read(TOKEN)==null ?  Pages.lLoginScreen : Pages.lINITIAL
       );
     });
   }
