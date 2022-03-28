@@ -9,11 +9,11 @@ class BuildThreeDBettingPageBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       // alignment: Alignment.center,
-      children: [
+      children: const[
 
-        const SizedBox(height: 12),
-        NumberList(mNumberList: mNumberList,),
-        const SizedBox(height: 113)
+        SizedBox(height: 12),
+        NumberList(mNumberList: [],),
+         SizedBox(height: 113)
 
       ],
     );

@@ -22,6 +22,7 @@ import 'package:shwe_luck_win_bet/app/ui/off_day_screen/off_day_screen.dart';
 import 'package:shwe_luck_win_bet/app/ui/three_d_betting_screen/three_d_betting_page.dart';
 import 'package:shwe_luck_win_bet/app/ui/today_result/today_result.dart';
 import 'package:shwe_luck_win_bet/app/ui/update_profile_screen/edit_profile_screen.dart';
+import '../../module/binding/three_d_binding.dart';
 import '../../ui/feature_main/feature_main.dart';
 
 class Routes {
@@ -74,7 +75,8 @@ class Routes {
     GetPage(
         name: Pages.lThreeDBetting,
         page: () => const ThreeDBettingPage(),
-        binding: BettingPageBinding()),
+        binding: ThreeDBinding()),
+
     GetPage(name: Pages.lEditProfile, page: ()=> const EditProfileScreen(),
     binding: EditProfileScreenBinding()),
     GetPage(
