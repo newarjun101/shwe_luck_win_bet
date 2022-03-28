@@ -2,6 +2,7 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:shwe_luck_win_bet/app/core/constants/default_values.dart';
 import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 
@@ -28,7 +29,10 @@ class BuildSettingList extends StatelessWidget {
               Icon(EvaIcons.power,size: kExtraBigLargeFontSize24.sp,),
               SizedBox(width: kDefaultMargin.sh,),
               GestureDetector(
-                  onTap: ()=> Get.offAllNamed(Pages.lLoginScreen),
+                  onTap: () {
+                    GetStorage().remove(TOKEN);
+                    Get.offAndToNamed(Pages.lLoginScreen);
+                  },
                   child: Text("လော့အောက်",style: TextStyle(fontSize: kMediumFontSize14.sp),))
             ],
           ),

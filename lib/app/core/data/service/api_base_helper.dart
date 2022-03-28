@@ -94,59 +94,65 @@ class ApiBaseHelper {
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:shwe_luck_win_bet/app/core/constants/api_consts.dart';
+import 'package:shwe_luck_win_bet/app/core/constants/default_values.dart';
 import 'package:shwe_luck_win_bet/app/core/data/service/api_response.dart';
 import 'package:shwe_luck_win_bet/app/core/data/service/api_result.dart';
 import 'package:shwe_luck_win_bet/app/core/data/service/status.dart';
 
-
 /**
  * We wil use this class for the http services sucs as Get,post,delete ,etc.
  */
-class  ApiBaseHelper {
+class ApiBaseHelper {
   late String baseUrl;
 
   ApiBaseHelper() {
     initData();
   }
 
-  Future<dynamic> getData(uri) async {
+  Future<dynamic> getData(uri, {bool? isHeader}) async {
     try {
       // ,headers: getHeader()
       var url = Uri.parse(baseUrl + uri);
-      http.Response response = await http.get(url);
+      http.Response response = await http.get(url,
+          headers: isHeader ?? false ? getHeaderWithToken() : getHeader());
       if (response.statusCode == 200) {
-        return ApiResult(Status.eCOMPLETED, "", response.body);
+        return ApiResponse(Status.eCOMPLETED, "", response.body);
       } else {
-        return    ApiResult(Status.eERROR, "", response.body);
+        return ApiResponse(Status.eERROR, "", response.body);
       }
     } on FormatException catch (_) {
-      return    ApiResult(Status.eERROR, "", "");
+      return ApiResponse(Status.eERROR, "", "");
     } on SocketException catch (_) {
-       return ApiResult(Status.eERROR, "", "");
+      return ApiResponse(Status.eERROR, "", "");
     } catch (e) {
-      return ApiResult(Status.eERROR, "", "");
+      return ApiResponse(Status.eERROR, "", "");
     }
   }
 
-  Future<dynamic> post(uri,body) async {
+  Future<dynamic> post(uri, body, {required bool isHeader}) async {
     try {
       // ,headers: getHeader()
       var url = Uri.parse(baseUrl + uri);
-      http.Response response = await http.post(url,headers:getHeader(),body: jsonEncode(body) );
+      http.Response response = await http.post(url,
+          headers: isHeader ? getHeaderWithToken() : getHeader(),
+          body: jsonEncode(body));
+      print(response.body);
       if (response.statusCode == 200) {
         print("no error");
         return ApiResponse(Status.eCOMPLETED, "", response.body);
       } else {
-        return    ApiResult(Status.eERROR, "", response.body);
+        return ApiResponse(
+            Status.eERROR, response.statusCode.toString(), response.body);
       }
     } on FormatException catch (_) {
-      return    ApiResult(Status.eERROR, "", "");
+      return ApiResponse(Status.eERROR, "", "");
     } on SocketException catch (_) {
-      return ApiResult(Status.eERROR, "", "");
+      return ApiResponse(Status.eERROR, "", "");
     } catch (e) {
-      return ApiResult(Status.eERROR, "", "");
+      return ApiResponse(Status.eERROR, "", "");
     }
   }
 
@@ -156,6 +162,15 @@ class  ApiBaseHelper {
       "Accept": "application/json",
     };
   }
+
+  dynamic getHeaderWithToken() {
+    return {
+      'Authorization': 'Bearer ${GetStorage().read(TOKEN)}',
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+    };
+  }
+
   initData() {
     baseUrl = "$BASE_URL";
   }

@@ -59,7 +59,7 @@ class BuildLoginCard extends StatelessWidget {
               onPressed: () {
                 loginController.login(
                     phone: userNameController.text,
-                    password: passwordController.text);
+                    password: passwordController.text,context: context);
                /* if (_key.currentState!.validate()) {
 
                   customDialog(
