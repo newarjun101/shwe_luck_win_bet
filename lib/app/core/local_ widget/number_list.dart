@@ -6,7 +6,7 @@ import 'package:shwe_luck_win_bet/app/core/data/model/lottery/three__d_model.dar
 
 class NumberList extends StatelessWidget {
   final List mNumberList;
-  final VoidCallback onClick;
+
 
   const NumberList({Key? key, required this.mNumberList }) : super(key: key);
 
