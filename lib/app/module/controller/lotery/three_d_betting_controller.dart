@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/data/model/lottery/three__d_model.dart';
 import 'package:shwe_luck_win_bet/app/core/data/model/lottery/three_d_all_data_model.dart';
@@ -5,12 +7,15 @@ import 'package:shwe_luck_win_bet/app/core/data/repo/lottery/three_d_repo.dart';
 import 'package:shwe_luck_win_bet/app/core/data/service/api_result.dart';
 import 'package:shwe_luck_win_bet/app/core/data/service/status.dart';
 
+import '../../../core/extension/number_list.dart';
+
 class ThreeDBettingController extends GetxController {
   late ThreeDRepo _threeDRepo;
   RxBool haveLoading = false.obs;
   late int selectedIndex;
   List<ThreeDAllDataModel> mThreeDList = [];
   RxBool isSelectedIndex = false.obs;
+  List<String> numberList = threeDNumberGenerate;
 
   RxList<ThreeDAllDataModel> mSelectedItem = RxList([]);
 
@@ -67,8 +72,8 @@ class ThreeDBettingController extends GetxController {
   }
 
   removeSelectedIndex(ThreeDAllDataModel selectedItem, index) {
+    makeR();
     int a = 123;
-    print(a.round());
 
     for (int i = 0; i < mThreeDList.length; i++) {
       if (mThreeDList[i] == selectedItem) {
@@ -78,5 +83,33 @@ class ThreeDBettingController extends GetxController {
     }
     mSelectedItem.remove(selectedItem);
     update();
+  }
+
+  makeR() {
+    Set test = {};
+    for (int i = 0; i < numberList.length; i++) {
+      List spitNum = numberList[i].split('');
+      for (int x = 0; x < spitNum.length; x++) {
+        for (int y = 0; y < spitNum.length; y++) {
+          for (int z = 0; z < spitNum.length; z++) {
+            if (x != y && y != z && z != x) {
+              test.add("${spitNum[x]}${spitNum[y]}${spitNum[z]}");
+            }
+          }
+        }
+      }
+    }
+
+    for(int i =0;i<mThreeDList.length;i++) {
+
+      for(ThreeDAllDataModel select in mSelectedItem) {
+
+        if(mThreeDList[i].betNumber == select.betNumber) {
+
+          print("Hello World");
+        }
+
+      }
+    }
   }
 }
