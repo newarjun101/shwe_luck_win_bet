@@ -18,7 +18,7 @@ class ThreeDRepo {
 
   Future<ApiResult<ThreeDModel>> getThreeD() async {
     try {
-      ApiResponse response = await _apiBaseHelper.getData(rThreeD);
+      ApiResponse response = await _apiBaseHelper.getData(rThreeD,isHeader: false);
       ThreeDModel mThreeD = threeDModelFromJson(response.mData);
       if (response.status == Status.eCOMPLETED) {
         return ApiResult(Status.eCOMPLETED, "", mThreeD);
@@ -26,8 +26,28 @@ class ThreeDRepo {
         return ApiResult(Status.eERROR, response.message, mThreeD);
       }
     } catch (e) {
-      debugPrint(e.toString());
-      return ApiResult(Status.eERROR, e.toString(), ThreeDModel(categoryId: -1, sections: [], id:-1, odd: '', updatedAt: DateTime.now(), threed: [], name: '', createdAt: DateTime.now(), overallAmounts: []));
+throw Exception();
+    }
+  }
+
+  Future<ApiResult<ThreeDModel>> getProfile() async {
+    try {
+      ApiResponse response =
+      await _apiBaseHelper.getData(rThreeD,isHeader: false);
+
+      ThreeDModel model = threeDModelFromJson(response.mData);
+
+      if (response.status == Status.eCOMPLETED) {
+        return ApiResult(Status.eCOMPLETED, "", model);
+      } else {
+        print("error on else");
+        return ApiResult(Status.eERROR, response.message, model);
+      }
+    } catch (e) {
+      debugPrint("catch error on Paymetn Repo ${e.toString()}");
+      return ApiResult(Status.eERROR, e.toString(),
+          ThreeDModel(categoryId: -1, sections: [], id:-1, odd: '', updatedAt: DateTime.now(), threed: [], name: '', createdAt: DateTime.now(), overallAmounts: [])
+      );
     }
   }
 }

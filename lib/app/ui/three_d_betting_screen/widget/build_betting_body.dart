@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../core/local_ widget/number_list.dart';
+import 'build_three_d_grid_number_list.dart';
 List<String> mNumberList = List<String>.generate(1000, (counter) => "$counter");
 class BuildThreeDBettingPageBody extends StatelessWidget {
   const BuildThreeDBettingPageBody({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class BuildThreeDBettingPageBody extends StatelessWidget {
       children: const[
 
         SizedBox(height: 12),
-        NumberList(mNumberList: [],),
+        BuildThreeDGridNumber(),
          SizedBox(height: 113)
 
       ],

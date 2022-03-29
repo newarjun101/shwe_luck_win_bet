@@ -132,14 +132,13 @@ class ApiBaseHelper {
     }
   }
 
-  Future<dynamic> post(uri, body, {required bool isHeader}) async {
+  Future<dynamic> post(uri, body, {bool? isHeader}) async {
     try {
       // ,headers: getHeader()
       var url = Uri.parse(baseUrl + uri);
       http.Response response = await http.post(url,
-          headers: isHeader ? getHeaderWithToken() : getHeader(),
+          headers: isHeader ??false ? getHeaderWithToken() : getHeader(),
           body: jsonEncode(body));
-      print(response.body);
       if (response.statusCode == 200) {
         print("no error");
         return ApiResponse(Status.eCOMPLETED, "", response.body);
