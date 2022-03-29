@@ -8,12 +8,12 @@ import 'package:shwe_luck_win_bet/app/core/data/service/status.dart';
 class ThreeDBettingController extends GetxController {
   late ThreeDRepo _threeDRepo;
   RxBool haveLoading = false.obs;
-  late int  selectedIndex;
-
-  List<ThreeDAllDataModel> mThreeDList = RxList([]);
+  late int selectedIndex;
+  List<ThreeDAllDataModel> mThreeDList = [];
   RxBool isSelectedIndex = false.obs;
 
-  RxList<Threed> mSelectedItem = RxList([]);
+  RxList<ThreeDAllDataModel> mSelectedItem = RxList([]);
+
   ThreeDBettingController() {
     _threeDRepo = Get.put(ThreeDRepo());
     fetchThreeDList();
@@ -23,15 +23,23 @@ class ThreeDBettingController extends GetxController {
   fetchThreeDList() async {
     haveLoading.value = true;
     try {
-     ApiResult<ThreeDModel> _result = await _threeDRepo.getThreeD();
+      ApiResult<ThreeDModel> _result = await _threeDRepo.getThreeD();
       if (_result.status == Status.eCOMPLETED) {
-      //  mThreeDList.addAll(_result.mData.threed);
-   mThreeDList =    _result.mData.threed.map((e) => ThreeDAllDataModel(id: e.id,
-            betNumber: e.betNumber, hotAmountLimit: e.hotAmountLimit,
-            defaultAmount: e.defaultAmount, subCategoryId: e.subCategoryId, closeNumber: e.closeNumber,
-            currentLimit: e.currentLimit, createdAt: e.createdAt, updatedAt: e.updatedAt,
-            status: e.status, isSelected: false)).toList();
-
+        //  mThreeDList.addAll(_result.mData.threed);
+        mThreeDList = _result.mData.threed
+            .map((e) => ThreeDAllDataModel(
+                id: e.id,
+                betNumber: e.betNumber,
+                hotAmountLimit: e.hotAmountLimit,
+                defaultAmount: e.defaultAmount,
+                subCategoryId: e.subCategoryId,
+                closeNumber: e.closeNumber,
+                currentLimit: e.currentLimit,
+                createdAt: e.createdAt,
+                updatedAt: e.updatedAt,
+                status: e.status,
+                isSelected: false))
+            .toList();
 
         print(mThreeDList);
         haveLoading.value = false;
@@ -42,11 +50,33 @@ class ThreeDBettingController extends GetxController {
       haveLoading.value = false;
       print(e.toString());
     }
+    update();
   }
 
   getSelectedIndex(index) {
-
-   // mThreeDList[index].isSelected = !isSelectedIndex.value;
+    RxBool test = mThreeDList[index].isSelected.obs;
+    mThreeDList[index].isSelected = !mThreeDList[index].isSelected;
     print(mThreeDList[index].isSelected);
+
+    if (mThreeDList[index].isSelected == true) {
+      mSelectedItem.add(mThreeDList[index]);
+    } else {
+      mSelectedItem.remove(mThreeDList[index]);
+    }
+    update();
+  }
+
+  removeSelectedIndex(ThreeDAllDataModel selectedItem, index) {
+    int a = 123;
+    print(a.round());
+
+    for (int i = 0; i < mThreeDList.length; i++) {
+      if (mThreeDList[i] == selectedItem) {
+        mThreeDList[i].isSelected = false;
+        // mSelectedItem.remove(index);
+      }
+    }
+    mSelectedItem.remove(selectedItem);
+    update();
   }
 }

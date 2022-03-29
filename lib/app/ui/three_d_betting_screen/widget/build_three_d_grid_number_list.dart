@@ -18,8 +18,8 @@ class BuildThreeDGridNumber extends StatelessWidget {
     final controller = Get.find<ThreeDBettingController>();
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: kDefaultMargin.sh),
-      child: Obx(
-        () => controller.mThreeDList.isEmpty
+      child: GetBuilder<ThreeDBettingController>(
+        builder: ( controller) => controller.mThreeDList.isEmpty
             ? SizedBox(
                 height: 30.h,
                 width: 30.h,
@@ -31,7 +31,7 @@ class BuildThreeDGridNumber extends StatelessWidget {
                     onTap:()=> controller.getSelectedIndex(index),
                     child: Container(
                         decoration: BoxDecoration(
-                            //      color: bettingPageController.selectedIndex.value== index?Theme.of(context).colorScheme.secondary: Color(0xff0F2810).withOpacity(0.9) ,
+                                  color: controller.mThreeDList[index].isSelected==true?Theme.of(context).colorScheme.secondary: Color(0xff0F2810).withOpacity(0.9) ,
                             borderRadius: BorderRadius.circular(0.009.sh),
                             border:
                                 Border.all(color: Colors.grey.withOpacity(0.8))),
