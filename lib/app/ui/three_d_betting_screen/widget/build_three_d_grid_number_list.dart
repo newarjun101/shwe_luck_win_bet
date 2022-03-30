@@ -25,34 +25,9 @@ class BuildThreeDGridNumber extends StatelessWidget {
                 width: 30.h,
                 child: const CircularProgressIndicator())
             : GridView.builder(
-                itemCount: controller.mThreeDList.length,
+                itemCount:  controller.mThreeDList.length,
                 itemBuilder: (context, index) {
-                  return  controller.isThreeDRound.isTrue? GestureDetector(
-                    onTap:()=> controller.getSelectedIndex(index),
-                    child: Container(
-                        decoration: BoxDecoration(
-                            color: controller.mThreeDList[index].isSelected==true?Theme.of(context).colorScheme.secondary: Color(0xff0F2810).withOpacity(0.9) ,
-                            borderRadius: BorderRadius.circular(0.009.sh),
-                            border:
-                            Border.all(color: Colors.grey.withOpacity(0.8))),
-                        padding: EdgeInsets.all(0.001.sh),
-                        child: InkWell(
-                          splashColor: Theme.of(context).colorScheme.onPrimary,
-                          //     onTap: () => bettingPageController.onSelecteNumber(index),
-                          child: Center(
-                            child: Text(
-                              controller.mThreeDList[index].betNumber.toString(),
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .secondaryVariant,
-                                  fontSize: kSmallFontSize12.sp,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        )),
-                  ) :GestureDetector(
+                  return  GestureDetector(
                     onTap:()=> controller.getSelectedIndex(index),
                     child: Container(
                         decoration: BoxDecoration(

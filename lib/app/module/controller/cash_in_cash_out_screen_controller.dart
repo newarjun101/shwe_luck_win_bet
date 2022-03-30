@@ -50,7 +50,7 @@ class CashInCashOutScreenController extends GetxController {
       required int amount,
       required String phone}) async {
     Map test = {
-      "user_id": GetStorage().read(User_ID),
+      "user_id": GetStorage().read(USER_ID),
       "payment_id": mSelectedPaymentIndex.value,
       "account_name": name,
       "transaction_id": transitionId,
@@ -81,14 +81,17 @@ class CashInCashOutScreenController extends GetxController {
       required int amount,
       required String phone}) async {
     Map body = {
-      "user_id": GetStorage().read(User_ID),
+      "user_id": GetStorage().read(USER_ID),
       "payment_id": mSelectedPaymentIndex.value,
       "account_name": name,
       "amount": amount,
       "user_phone": phone
     };
     customDialog(
-        context, "Loading", const Center(child: CircularProgressIndicator()));
+        context, "Loading",const Center (
+
+        child:SizedBox (      width: 20,
+            height: 20,child: CircularProgressIndicator())));
     haveLoading = true.obs;
     try {
       ApiResult result = await _paymentRepo.cashOutRequest(body);

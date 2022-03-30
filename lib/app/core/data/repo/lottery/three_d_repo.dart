@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/data/model/lottery/three__d_model.dart';
@@ -18,9 +20,9 @@ class ThreeDRepo {
 
   Future<ApiResult<ThreeDModel>> getThreeD() async {
     try {
-      ApiResponse response = await _apiBaseHelper.getData(rThreeD,isHeader: false);
+      ApiResponse response =
+          await _apiBaseHelper.getData(rThreeD, isHeader: false);
 
-      print(response.mData);
       ThreeDModel mThreeD = threeDModelFromJson(response.mData);
       if (response.status == Status.eCOMPLETED) {
         return ApiResult(Status.eCOMPLETED, "", mThreeD);
@@ -29,28 +31,31 @@ class ThreeDRepo {
       }
     } catch (e) {
       print(e.toString());
-throw Exception();
+      throw Exception();
     }
   }
 
-  Future<ApiResult<ThreeDModel>> getProfile() async {
+
+  Future<ApiResult<String>> betThreeD(body) async {
     try {
       ApiResponse response =
-      await _apiBaseHelper.getData(rThreeD,isHeader: false);
+      await _apiBaseHelper.post(rBetThreeD, body, isHeader: true);
 
-      ThreeDModel model = threeDModelFromJson(response.mData);
-
+      Map<String, dynamic> mMap = jsonDecode(response.mData);
       if (response.status == Status.eCOMPLETED) {
-        return ApiResult(Status.eCOMPLETED, "", model);
+        return ApiResult(Status.eCOMPLETED, "Success", mMap["message"]);
       } else {
-        print("error on else");
-        return ApiResult(Status.eERROR, response.message, model);
+        print('error');
+        return ApiResult(Status.eERROR, response.message, "Fail");
       }
     } catch (e) {
-      debugPrint("catch error on Paymetn Repo ${e.toString()}");
-      return ApiResult(Status.eERROR, e.toString(),
-          ThreeDModel(categoryId: -1, sections: [], id:-1, odd: '', updatedAt: DateTime.now(), threed: [], name: '', createdAt: DateTime.now(), overallAmounts: [])
+      print(e.toString());
+      return ApiResult(
+        Status.eERROR,
+        e.toString(),
+        "Fail",
       );
     }
+    throw Exception();
   }
 }

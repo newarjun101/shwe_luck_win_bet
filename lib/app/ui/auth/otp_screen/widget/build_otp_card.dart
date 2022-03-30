@@ -29,15 +29,7 @@ class BuildOtpCard extends StatelessWidget {
 
 
 
-           /* Align(
-              alignment: Alignment.centerRight,
-              child: Text(
-                "Expire in 2 mins",
-                style: TextStyle(
-                       color: Theme.of(context).colorScheme.primaryContainer,
-                    fontSize: kMediumFontSize14.sp,),
-              ),
-            ),*/
+
             SizedBox(
               height: 3.h,
             ),

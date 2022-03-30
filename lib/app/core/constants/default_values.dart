@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 ///get of get storage
 const String TOKEN = "TOKEN";
-const String User_ID = "USER_ID";
+const String USER_ID = "USER_ID";
 
 ///font size for the whole application
 const double kSmallFontSize12 = 12.0;

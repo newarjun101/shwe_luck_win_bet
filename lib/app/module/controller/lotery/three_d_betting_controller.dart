@@ -1,12 +1,16 @@
 import 'dart:collection';
 
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:shwe_luck_win_bet/app/core/data/model/lottery/three__d_model.dart';
 import 'package:shwe_luck_win_bet/app/core/data/model/lottery/three_d_all_data_model.dart';
 import 'package:shwe_luck_win_bet/app/core/data/repo/lottery/three_d_repo.dart';
 import 'package:shwe_luck_win_bet/app/core/data/service/api_result.dart';
 import 'package:shwe_luck_win_bet/app/core/data/service/status.dart';
-
+import 'package:shwe_luck_win_bet/app/core/local_%20widget/custom_dialog.dart';
+import '../../../core/constants/default_values.dart';
 import '../../../core/extension/number_list.dart';
 
 class ThreeDBettingController extends GetxController {
@@ -16,8 +20,9 @@ class ThreeDBettingController extends GetxController {
   List<ThreeDAllDataModel> mThreeDList = [];
   RxBool isSelectedIndex = false.obs;
   List<String> numberList = threeDNumberGenerate;
-  RxBool isThreeDRound = false.obs;
-
+  bool isThreeDRound = false;
+  RxInt odd = 0.obs;
+  RxInt price = 100.obs;
   RxList<ThreeDAllDataModel> mSelectedItem = RxList([]);
 
   ThreeDBettingController() {
@@ -47,22 +52,20 @@ class ThreeDBettingController extends GetxController {
                 isSelected: false))
             .toList();
 
-        print(mThreeDList);
+        odd.value = int.parse(_result.mData.odd);
+
         haveLoading.value = false;
       } else {
         haveLoading.value = false;
       }
     } catch (e) {
       haveLoading.value = false;
-      print(e.toString());
     }
     update();
   }
 
   getSelectedIndex(index) {
-    RxBool test = mThreeDList[index].isSelected.obs;
     mThreeDList[index].isSelected = !mThreeDList[index].isSelected;
-    print(mThreeDList[index].isSelected);
 
     if (mThreeDList[index].isSelected == true) {
       mSelectedItem.add(mThreeDList[index]);
@@ -73,22 +76,18 @@ class ThreeDBettingController extends GetxController {
   }
 
   removeSelectedIndex(ThreeDAllDataModel selectedItem, index) {
-    makeR();
-    int a = 123;
-
     for (int i = 0; i < mThreeDList.length; i++) {
-      if (mThreeDList[i] == selectedItem) {
+      if (mThreeDList[i].id == selectedItem.id) {
         mThreeDList[i].isSelected = false;
-        // mSelectedItem.remove(index);
+        mSelectedItem.remove(selectedItem);
       }
     }
-    mSelectedItem.remove(selectedItem);
     update();
   }
 
   makeR() {
-
     Set rNum = {};
+    List<ThreeDAllDataModel> mTest = [];
     for (int i = 0; i < mSelectedItem.length; i++) {
       List spitNum = mSelectedItem[i].betNumber.toString().split('');
       for (int x = 0; x < spitNum.length; x++) {
@@ -101,14 +100,63 @@ class ThreeDBettingController extends GetxController {
         }
       }
     }
-    mSelectedItem.clear();
+    print("haha list $rNum");
     for (int i = 0; i < mThreeDList.length; i++) {
       for (String num in rNum) {
-        if (mThreeDList[i].betNumber.toString() == num) {
-          print(mThreeDList[i].id);
-          //mSelectedItem.add(mThreeDList[i]);
+        if (mThreeDList[i].betNumber.toString() == num.toString()) {
+          mTest.add(ThreeDAllDataModel(
+              id: mThreeDList[i].id,
+              betNumber: mThreeDList[i].betNumber,
+              hotAmountLimit: mThreeDList[i].hotAmountLimit,
+              defaultAmount: mThreeDList[i].defaultAmount,
+              subCategoryId: mThreeDList[i].subCategoryId,
+              closeNumber: mThreeDList[i].closeNumber,
+              currentLimit: mThreeDList[i].currentLimit,
+              createdAt: mThreeDList[i].createdAt,
+              updatedAt: mThreeDList[i].updatedAt,
+              status: mThreeDList[i].status,
+              isSelected: true));
         }
       }
+    }
+    mSelectedItem.clear();
+    mSelectedItem.addAll(mTest);
+    update();
+  }
+
+  bettingThreeD(context) async {
+    List<Map> betObject = mSelectedItem
+        .map((data) => {
+              "bet_id": data.id,
+              "bet_number": data.betNumber,
+              "amount": price.value,
+              "odd": odd.value,
+              "sub_category_id": data.subCategoryId,
+              "section": "16:00:00"
+            })
+        .toList();
+    Map<String, dynamic> body = {
+      "user_id": GetStorage().read(USER_ID),
+      "sub_category": "ထိုင်ဝမ် 2D",
+      "section": "3:00 PM",
+      "bet_obj": betObject
+    };
+    customDialog(
+        context,
+        "Loading",
+        SizedBox(
+          height: 20,
+          width: 20,
+          child: Center(child: CircularProgressIndicator()),
+        ));
+    try {
+      ApiResult result = await _threeDRepo.betThreeD(body);
+      Get.back();
+      print(result.status);
+    } catch (e) {
+      Get.back();
+      print("Hello World");
+      // Get.back();
     }
   }
 }

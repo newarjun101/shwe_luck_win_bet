@@ -42,7 +42,7 @@ class LoginScreenController extends GetxController {
         isLoginSuccess.value = true;
         errorMessage.value = "";
         box.write(TOKEN,result.mData.token);
-        box.write(User_ID,result.mData.data?.userId);
+        box.write(USER_ID,result.mData.data?.userId);
         print(box.read(TOKEN));
         Get.back();
         print("login success");

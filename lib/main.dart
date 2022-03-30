@@ -12,10 +12,9 @@ import 'package:device_preview/device_preview.dart';
 import 'app/testing_app/local_string.dart';
 
 void main() async {
-
   await GetStorage.init();
   runApp(const MyApp());
- /* runApp(DevicePreview(
+  /* runApp(DevicePreview(
     enabled: !kReleaseMode,
     builder: (context) => const MyApp(), // Wrap your app
   ));*/
@@ -24,8 +23,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -33,28 +30,29 @@ class MyApp extends StatelessWidget {
     final controller = Get.put(TestLocalController());
     return ScreenUtilInit(builder: () {
       return GetMaterialApp(
-        title: 'Whole Snack',
-        builder: (context, widget) {
-          //add this line
-          ScreenUtil.setContext(context);
-          return MediaQuery(
-            //Setting font does not change with system font size
-            data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
-            child: widget!,
-          );
-        },
-        // builder: DevicePreview.appBuilder,
-        theme: StyleTheme().getTheme(),
-        debugShowCheckedModeBanner: false,
+          title: 'Whole Snack',
+          builder: (context, widget) {
+            //add this line
+            ScreenUtil.setContext(context);
+            return MediaQuery(
+              //Setting font does not change with system font size
+              data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+              child: widget!,
+            );
+          },
+          // builder: DevicePreview.appBuilder,
+          theme: StyleTheme().getTheme(),
+          debugShowCheckedModeBanner: false,
           translations: LocaleString(),
           locale: controller.addToLocale(),
-          fallbackLocale:const Locale(
+          fallbackLocale: const Locale(
             'en',
             'US',
           ),
           getPages: Routes().routerPage,
-        initialRoute:token.read(TOKEN)==""|| token.read(TOKEN)==null ?  Pages.lLoginScreen : Pages.lOtp
-      );
+          initialRoute: token.read(TOKEN) == "" || token.read(TOKEN) == null
+              ? Pages.lLoginScreen
+              : Pages.lThreeDBetting);
     });
   }
 }

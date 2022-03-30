@@ -31,8 +31,8 @@ class CustomCarouselSlider extends StatelessWidget {
                         borderRadius: BorderRadius.circular(0.04.sh)),
                     child: ClipRRect(
                         borderRadius: BorderRadius.circular(0.04.sh),
-                        child: Image.network(
-                          image,
+                        child: Image.asset(
+                          "assets/images.banner.jpg",
                           fit: BoxFit.fill,
                         ))))
                 .toList(),

@@ -41,7 +41,7 @@ class ThreeDModel {
     updatedAt: DateTime.parse(json["updated_at"]),
     sections: List<Section>.from(json["sections"].map((x) => Section.fromJson(x))),
     threed: List<Threed>.from(json["threed"].map((x) => Threed.fromJson(x))),
-    overallAmounts: List<OverallAmount>.from(json["overall_amounts"].map((x) => OverallAmount.fromJson(x))),
+    overallAmounts:List<OverallAmount>.from(json["overall_amounts"]).isEmpty? [] :  List<OverallAmount>.from(json["overall_amounts"].map((x) => OverallAmount.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -69,23 +69,23 @@ class OverallAmount {
   final int id;
   final String amountLimit;
   final int subCategoryId;
-  final DateTime createdAt;
-  final DateTime updatedAt;
+  final String createdAt;
+  final String updatedAt;
 
   factory OverallAmount.fromJson(Map<String, dynamic> json) => OverallAmount(
-    id: json["id"],
-    amountLimit: json["amount_limit"],
-    subCategoryId: json["sub_category_id"],
-    createdAt: DateTime.parse(json["created_at"]),
-    updatedAt: DateTime.parse(json["updated_at"]),
+    id: json["id"]??-1,
+    amountLimit: json["amount_limit"]??"null",
+    subCategoryId: json["sub_category_id"]??-1,
+    createdAt: json["created_at"]??"null",
+    updatedAt: json["updated_at"]??"null",
   );
 
   Map<String, dynamic> toJson() => {
     "id": id,
     "amount_limit": amountLimit,
     "sub_category_id": subCategoryId,
-    "created_at": createdAt.toIso8601String(),
-    "updated_at": updatedAt.toIso8601String(),
+    "created_at": createdAt,
+    "updated_at": updatedAt
   };
 }
 

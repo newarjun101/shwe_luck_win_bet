@@ -15,8 +15,9 @@ class ThreeDOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final GlobalKey<FormState> _key = GlobalKey<FormState>();
     final controller = Get.find<ThreeDBettingController>();
-    TextEditingController passwordController = TextEditingController();
+    TextEditingController priceController = TextEditingController();
     return Container(
       width: 1.sh,
       padding: EdgeInsets.symmetric(
@@ -29,9 +30,10 @@ class ThreeDOptions extends StatelessWidget {
             title: 'R',
             bgColor: Colors.green,
             onClick: () {
-
-              controller.isThreeDRound.toggle();
               controller.makeR();
+              if (controller.mSelectedItem.isNotEmpty) {
+                Get.toNamed(Pages.lBetSelected);
+              }
             },
             radius: 0.01.sw,
             icon: Icons.paid,
@@ -44,14 +46,20 @@ class ThreeDOptions extends StatelessWidget {
           Expanded(
             child: SizedBox(
               height: 0.056.sh,
-              child: CustomTextFormField(
-                  controller: passwordController,
-                  icon: Icons.paid,
-                  hint: "3000",
-                  bgColor: Theme.of(context).colorScheme.primaryContainer,
-                  textColor: Theme.of(context).colorScheme.onPrimary,
-                  validator: checkIsEmpty,
-                  isPassword: false),
+              child: Form(
+                key : _key,
+                child: Obx(
+                  () => CustomTextFormField(
+                      controller: priceController,
+                      icon: Icons.paid,
+                      hint: controller.price.value.toString(),
+                      bgColor: Theme.of(context).colorScheme.primaryContainer,
+                      textColor: Theme.of(context).colorScheme.onPrimary,
+                      validator: checkIsEmpty,
+                      isPhone: true,
+                      isPassword: false),
+                ),
+              ),
             ),
 
             /*CustomButton(
@@ -77,7 +85,16 @@ class ThreeDOptions extends StatelessWidget {
                 title: 'ထိုးမည်',
                 bgColor: Theme.of(context).colorScheme.secondary,
                 onClick: () {
-                  Get.toNamed(Pages.lBetSelected);
+                  if(priceController.text.length<3) {
+
+                    controller.price.value = 100;
+                  } else {
+                    controller.price.value = int.parse(priceController.text);
+                  }
+                  if (controller.mSelectedItem.isNotEmpty && controller.price.value !=null ) {
+                   Get.toNamed(Pages.lBetSelected);
+
+                  }
                 },
                 radius: 0.01.sw,
                 iconSize: kLargeFontSize16.sp,
@@ -87,11 +104,15 @@ class ThreeDOptions extends StatelessWidget {
                 right: 0,
                 top: 0,
                 child: CircleAvatar(
-                  radius: 10.h,
+                    radius: 10.h,
                     backgroundColor: Colors.red,
                     child: Obx(() => Text(
                           controller.mSelectedItem.length.toString(),
-                          style: TextStyle(color: Theme.of(context).colorScheme.primaryContainer,fontSize:kSmallFontSize12.sp),
+                          style: TextStyle(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .primaryContainer,
+                              fontSize: kSmallFontSize12.sp),
                         ))),
               )
             ],
