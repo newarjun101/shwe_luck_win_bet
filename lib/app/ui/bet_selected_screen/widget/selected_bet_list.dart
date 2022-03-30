@@ -1,14 +1,17 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/constants/default_values.dart';
 import 'package:shwe_luck_win_bet/app/ui/bet_selected_screen/widget/custom_data_table_for_selected_bet.dart';
 
 class SelectedBetList extends StatelessWidget {
   const SelectedBetList({Key? key}) : super(key: key);
 
+
   @override
   Widget build(BuildContext context) {
+
     return Container(
       margin: EdgeInsets.all(kDefaultMargin.sh * 2),
       padding: EdgeInsets.all(kDefaultMargin.sh),
@@ -58,7 +61,7 @@ class SelectedBetList extends StatelessWidget {
               Text("Total Price - ",textAlign: TextAlign.end,
                 style: TextStyle(color: Theme.of(context).colorScheme.primaryContainer,
                   fontSize: kSmallFontSize12.sp,fontWeight: FontWeight.bold),),
-              Text("500 MMK",textAlign: TextAlign.end,
+              Text("hi",textAlign: TextAlign.end,
                 style: TextStyle(color: Theme.of(context).colorScheme.primaryContainer,
                     fontSize: kLargeFontSize16.sp,fontWeight: FontWeight.bold),),
             ],

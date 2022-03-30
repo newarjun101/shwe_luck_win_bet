@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/ui/bet_selected_screen/widget/selected_bet_list.dart';
 import 'package:shwe_luck_win_bet/app/ui/off_day_screen/widget/off_day_list.dart';
 
 import '../../../core/constants/default_values.dart';
+import '../../../module/controller/lotery/three_d_betting_controller.dart';
 
 class BuildBetSelectedScreenBody extends StatelessWidget {
   const BuildBetSelectedScreenBody({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<ThreeDBettingController>();
     return  Stack(
       children: [
         Container(
@@ -48,6 +51,7 @@ class BuildBetSelectedScreenBody extends StatelessWidget {
           color: Theme.of(context).colorScheme.secondary,
           onPressed: () {
 
+            controller.bettingThreeD(context);
           },
           child: Text(
             "ထိုးမည်",

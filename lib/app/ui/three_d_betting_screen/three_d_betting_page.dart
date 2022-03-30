@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/module/controller/lotery/three_d_betting_controller.dart';
+import 'package:shwe_luck_win_bet/app/ui/three_d_betting_screen/widget/build_betting_body.dart';
 
 import '../../core/local_ widget/app_bar_with_preferred_widget.dart';
 import '../../core/local_ widget/custom_button.dart';
@@ -15,7 +16,7 @@ class ThreeDBettingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final controlle = Get.find<ThreeDBettingController>();
+    final controller = Get.find<ThreeDBettingController>();
     return Scaffold(
       body: Scaffold(
         backgroundColor: Theme.of(context).primaryColor.withOpacity(0.8),
@@ -42,7 +43,7 @@ class ThreeDBettingPage extends StatelessWidget {
               ),
             ),
 
-            const BuildBettingPageBody(),
+            const BuildThreeDBettingPageBody(),
           ],
         ),
         floatingActionButton: SizedBox(

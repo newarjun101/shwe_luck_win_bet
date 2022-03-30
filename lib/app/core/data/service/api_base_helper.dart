@@ -113,33 +113,38 @@ class ApiBaseHelper {
   }
 
   Future<dynamic> getData(uri, {bool? isHeader}) async {
+    print("calling");
     try {
       // ,headers: getHeader()
       var url = Uri.parse(baseUrl + uri);
       http.Response response = await http.get(url,
           headers: isHeader ?? false ? getHeaderWithToken() : getHeader());
+
+
       if (response.statusCode == 200) {
         return ApiResponse(Status.eCOMPLETED, "", response.body);
       } else {
         return ApiResponse(Status.eERROR, "", response.body);
       }
     } on FormatException catch (_) {
+
+
       return ApiResponse(Status.eERROR, "", "");
     } on SocketException catch (_) {
       return ApiResponse(Status.eERROR, "", "");
     } catch (e) {
+
       return ApiResponse(Status.eERROR, "", "");
     }
   }
 
-  Future<dynamic> post(uri, body, {required bool isHeader}) async {
+  Future<dynamic> post(uri, body, {bool? isHeader}) async {
     try {
       // ,headers: getHeader()
       var url = Uri.parse(baseUrl + uri);
       http.Response response = await http.post(url,
-          headers: isHeader ? getHeaderWithToken() : getHeader(),
+          headers: isHeader ??false ? getHeaderWithToken() : getHeader(),
           body: jsonEncode(body));
-      print(response.body);
       if (response.statusCode == 200) {
         print("no error");
         return ApiResponse(Status.eCOMPLETED, "", response.body);

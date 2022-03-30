@@ -26,14 +26,6 @@ class LoginScreenController extends GetxController {
     _authRepo = AuthRepo();
   }
 
-  /* login() async {
-
-    http.Response res = await http.post(
-        Uri.parse(BASE_URL + "login"),
-        headers: {"Content-Type" : "application/json"},
-        body: jsonEncode(<String, dynamic>{"phone":09788216, "password":password})
-    );
-  }*/
   Future<void> login(
       {required String phone,
       required String password,
@@ -50,12 +42,14 @@ class LoginScreenController extends GetxController {
         isLoginSuccess.value = true;
         errorMessage.value = "";
         box.write(TOKEN,result.mData.token);
-        box.write(User_ID,result.mData.data?.userId);
+        box.write(USER_ID,result.mData.data?.userId);
         print(box.read(TOKEN));
         Get.back();
+        print("login success");
         Get.offAndToNamed(Pages.lINITIAL);
       } else {
         Get.back();
+        print("login else error ${result.errorMessage}");
         isLoginError.value = true;
         isLoginSuccess.value = false;
         errorMessage.value = result.errorMessage;
