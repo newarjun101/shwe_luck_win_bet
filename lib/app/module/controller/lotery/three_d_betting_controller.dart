@@ -7,6 +7,7 @@ import 'package:get_storage/get_storage.dart';
 import 'package:shwe_luck_win_bet/app/core/data/model/lottery/three__d_model.dart';
 import 'package:shwe_luck_win_bet/app/core/data/model/lottery/three_d_all_data_model.dart';
 import 'package:shwe_luck_win_bet/app/core/data/repo/lottery/three_d_repo.dart';
+import 'package:shwe_luck_win_bet/app/core/data/repo/lottery/two_d_repo.dart';
 import 'package:shwe_luck_win_bet/app/core/data/service/api_result.dart';
 import 'package:shwe_luck_win_bet/app/core/data/service/status.dart';
 import 'package:shwe_luck_win_bet/app/core/local_%20widget/custom_dialog.dart';
@@ -28,6 +29,7 @@ class ThreeDBettingController extends GetxController {
   ThreeDBettingController() {
     _threeDRepo = Get.put(ThreeDRepo());
     fetchThreeDList();
+    TwoDRepo().getThreeD();
   }
 
   ///Fetch all data from api
@@ -72,6 +74,8 @@ class ThreeDBettingController extends GetxController {
     } else {
       mSelectedItem.remove(mThreeDList[index]);
     }
+    checkBySelectedItem();
+
     update();
   }
 
@@ -82,6 +86,7 @@ class ThreeDBettingController extends GetxController {
         mSelectedItem.remove(selectedItem);
       }
     }
+    checkBySelectedItem();
     update();
   }
 
@@ -121,6 +126,8 @@ class ThreeDBettingController extends GetxController {
     }
     mSelectedItem.clear();
     mSelectedItem.addAll(mTest);
+    checkBySelectedItem();
+
     update();
   }
 
@@ -144,7 +151,7 @@ class ThreeDBettingController extends GetxController {
     customDialog(
         context,
         "Loading",
-        SizedBox(
+        const SizedBox(
           height: 20,
           width: 20,
           child: Center(child: CircularProgressIndicator()),
@@ -158,5 +165,21 @@ class ThreeDBettingController extends GetxController {
       print("Hello World");
       // Get.back();
     }
+  }
+
+  checkBySelectedItem() {
+    RxList<ThreeDAllDataModel> mmSelected = RxList([]);
+    for (int i = 0; i < mThreeDList.length; i++) {
+      for (ThreeDAllDataModel selectedItem in mSelectedItem) {
+        if (mThreeDList[i].id == selectedItem.id) {
+          mThreeDList[i].isSelected = true;
+          mmSelected.add(selectedItem);
+        } else {
+          // mThreeDList[i].isSelected = false;
+        }
+      }
+    }
+    mSelectedItem.clear();
+    mSelectedItem.addAll(mmSelected);
   }
 }
