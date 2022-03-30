@@ -19,6 +19,8 @@ class ThreeDRepo {
   Future<ApiResult<ThreeDModel>> getThreeD() async {
     try {
       ApiResponse response = await _apiBaseHelper.getData(rThreeD,isHeader: false);
+
+      print(response.mData);
       ThreeDModel mThreeD = threeDModelFromJson(response.mData);
       if (response.status == Status.eCOMPLETED) {
         return ApiResult(Status.eCOMPLETED, "", mThreeD);
@@ -26,6 +28,7 @@ class ThreeDRepo {
         return ApiResult(Status.eERROR, response.message, mThreeD);
       }
     } catch (e) {
+      print(e.toString());
 throw Exception();
     }
   }

@@ -13,7 +13,7 @@ class BuildOtpCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController otpController = TextEditingController();
-    TextEditingController passwordController = TextEditingController();
+    TextEditingController phoneController = TextEditingController();
     return Container(
       padding:  EdgeInsets.all(kDefaultMargin.sh),
       margin:  EdgeInsets.all(kDefaultMargin.sh),
@@ -29,19 +29,26 @@ class BuildOtpCard extends StatelessWidget {
 
 
 
-            Align(
+           /* Align(
               alignment: Alignment.centerRight,
               child: Text(
-                "Expire in 6s",
+                "Expire in 2 mins",
                 style: TextStyle(
                        color: Theme.of(context).colorScheme.primaryContainer,
                     fontSize: kMediumFontSize14.sp,),
               ),
-            ),
+            ),*/
             SizedBox(
               height: 3.h,
             ),
-
+            CustomTextFormField(
+                controller: phoneController,
+                icon: Icons.phone_iphone_sharp,
+                hint: "Phone Number",
+                isPassword: false),
+            SizedBox(
+              height: kDefaultMargin.sh*2,
+            ),
             CustomTextFormField(
                 controller: otpController,
                 icon: Icons.phone_iphone_sharp,

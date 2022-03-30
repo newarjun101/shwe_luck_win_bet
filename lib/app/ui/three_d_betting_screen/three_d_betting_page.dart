@@ -16,7 +16,7 @@ class ThreeDBettingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final controlle = Get.find<ThreeDBettingController>();
+    final controller = Get.find<ThreeDBettingController>();
     return Scaffold(
       body: Scaffold(
         backgroundColor: Theme.of(context).primaryColor.withOpacity(0.8),

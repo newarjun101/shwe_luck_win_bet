@@ -28,7 +28,11 @@ class ThreeDOptions extends StatelessWidget {
             textColor: Theme.of(context).colorScheme.onPrimary,
             title: 'R',
             bgColor: Colors.green,
-            onClick: () {},
+            onClick: () {
+
+              controller.isThreeDRound.toggle();
+              controller.makeR();
+            },
             radius: 0.01.sw,
             icon: Icons.paid,
             iconSize: kMediumFontSize14.sp,

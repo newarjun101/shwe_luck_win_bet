@@ -11,15 +11,15 @@ String threeDModelToJson(ThreeDModel data) => json.encode(data.toJson());
 
 class ThreeDModel {
   ThreeDModel({
-   required this.id,
-   required this.name,
-   required this.categoryId,
-   required this.odd,
-   required this.createdAt,
-   required this.updatedAt,
-   required this.sections,
-   required this.threed,
-   required this.overallAmounts,
+    required this.id,
+    required this.name,
+    required this.categoryId,
+    required this.odd,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.sections,
+    required this.threed,
+    required this.overallAmounts,
   });
 
   final int id;
@@ -59,11 +59,11 @@ class ThreeDModel {
 
 class OverallAmount {
   OverallAmount({
-   required this.id,
-   required this.amountLimit,
-   required this.subCategoryId,
-   required this.createdAt,
-   required this.updatedAt,
+    required this.id,
+    required this.amountLimit,
+    required this.subCategoryId,
+    required this.createdAt,
+    required this.updatedAt,
   });
 
   final int id;
@@ -91,17 +91,17 @@ class OverallAmount {
 
 class Section {
   Section({
-   required this.id,
-   required this.timeSection,
-   required this.closeTime,
-   required this.createdAt,
-   required this.updatedAt,
-   required this.pivot,
+    required this.id,
+    required this.timeSection,
+    required this.closeTime,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.pivot,
   });
 
   final int id;
   final String timeSection;
-  final String closeTime;
+  final dynamic closeTime;
   final DateTime createdAt;
   final DateTime updatedAt;
   final Pivot pivot;
@@ -127,8 +127,8 @@ class Section {
 
 class Pivot {
   Pivot({
-   required this.subCategoryId,
-   required this.sectionId,
+    required this.subCategoryId,
+    required this.sectionId,
   });
 
   final int subCategoryId;
@@ -147,16 +147,16 @@ class Pivot {
 
 class Threed {
   Threed({
-   required this.id,
-   required this.betNumber,
-   required this.hotAmountLimit,
-   required this.defaultAmount,
-   required this.subCategoryId,
-   required this.closeNumber,
-   required this.currentLimit,
-   required this.createdAt,
-   required this.updatedAt,
-   required this.status,
+    required this.id,
+    required this.betNumber,
+    required this.hotAmountLimit,
+    required this.defaultAmount,
+    required this.subCategoryId,
+    required this.closeNumber,
+    required this.currentLimit,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.status,
   });
 
   final int id;
@@ -167,19 +167,19 @@ class Threed {
   final int closeNumber;
   final String currentLimit;
   final dynamic createdAt;
-  final String updatedAt;
+  final dynamic updatedAt;
   final int status;
 
   factory Threed.fromJson(Map<String, dynamic> json) => Threed(
-    id: json["id"],
-    betNumber: json["bet_number"],
-    hotAmountLimit: json["hot_amount_limit"],
-    defaultAmount: json["default_amount"],
-    subCategoryId: json["sub_category_id"],
+    id: json["id"] ,
+    betNumber: json["bet_number"]??"null",
+    hotAmountLimit: json["hot_amount_limit"]??"null",
+    defaultAmount: json["default_amount"]??"null",
+    subCategoryId: json["sub_category_id"]??"null",
     closeNumber: json["close_number"],
     currentLimit: json["current_limit"],
-    createdAt: json["created_at"],
-    updatedAt: json["updated_at"] == null ? "" :json["updated_at"],
+    createdAt: json["created_at"]??"null",
+    updatedAt: json["updated_at"]??"null",
     status: json["status"],
   );
 
@@ -192,7 +192,7 @@ class Threed {
     "close_number": closeNumber,
     "current_limit": currentLimit,
     "created_at": createdAt,
-    "updated_at": updatedAt == null ? null : updatedAt,
+    "updated_at": updatedAt,
     "status": status,
   };
 }

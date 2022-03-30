@@ -16,6 +16,7 @@ class ThreeDBettingController extends GetxController {
   List<ThreeDAllDataModel> mThreeDList = [];
   RxBool isSelectedIndex = false.obs;
   List<String> numberList = threeDNumberGenerate;
+  RxBool isThreeDRound = false.obs;
 
   RxList<ThreeDAllDataModel> mSelectedItem = RxList([]);
 
@@ -86,29 +87,27 @@ class ThreeDBettingController extends GetxController {
   }
 
   makeR() {
-    Set test = {};
-    for (int i = 0; i < numberList.length; i++) {
-      List spitNum = numberList[i].split('');
+
+    Set rNum = {};
+    for (int i = 0; i < mSelectedItem.length; i++) {
+      List spitNum = mSelectedItem[i].betNumber.toString().split('');
       for (int x = 0; x < spitNum.length; x++) {
         for (int y = 0; y < spitNum.length; y++) {
           for (int z = 0; z < spitNum.length; z++) {
             if (x != y && y != z && z != x) {
-              test.add("${spitNum[x]}${spitNum[y]}${spitNum[z]}");
+              rNum.add("${spitNum[x]}${spitNum[y]}${spitNum[z]}");
             }
           }
         }
       }
     }
-
-    for(int i =0;i<mThreeDList.length;i++) {
-
-      for(ThreeDAllDataModel select in mSelectedItem) {
-
-        if(mThreeDList[i].betNumber == select.betNumber) {
-
-          print("Hello World");
+    mSelectedItem.clear();
+    for (int i = 0; i < mThreeDList.length; i++) {
+      for (String num in rNum) {
+        if (mThreeDList[i].betNumber.toString() == num) {
+          print(mThreeDList[i].id);
+          //mSelectedItem.add(mThreeDList[i]);
         }
-
       }
     }
   }
