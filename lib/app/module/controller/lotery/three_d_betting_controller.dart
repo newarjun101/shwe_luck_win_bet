@@ -72,6 +72,8 @@ class ThreeDBettingController extends GetxController {
     } else {
       mSelectedItem.remove(mThreeDList[index]);
     }
+    checkBySelectedItem();
+
     update();
   }
 
@@ -121,6 +123,8 @@ class ThreeDBettingController extends GetxController {
     }
     mSelectedItem.clear();
     mSelectedItem.addAll(mTest);
+    checkBySelectedItem();
+
     update();
   }
 
@@ -158,5 +162,24 @@ class ThreeDBettingController extends GetxController {
       print("Hello World");
       // Get.back();
     }
+  }
+
+
+  checkBySelectedItem(){
+
+    RxList<ThreeDAllDataModel> mmSelected = RxList([]);
+    for (int i = 0; i < mThreeDList.length; i++) {
+
+      for(ThreeDAllDataModel selectedItem in mSelectedItem) {
+        if (mThreeDList[i].id == selectedItem.id) {
+        mThreeDList[i].isSelected = true;
+        mmSelected.add(selectedItem);
+      } else {
+          mThreeDList[i].isSelected = false;
+        }
+      }
+    }
+    mSelectedItem.clear();
+    mSelectedItem.addAll(mmSelected);
   }
 }

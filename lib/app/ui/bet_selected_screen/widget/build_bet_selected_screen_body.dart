@@ -52,6 +52,7 @@ class BuildBetSelectedScreenBody extends StatelessWidget {
           onPressed: () {
 
             controller.bettingThreeD(context);
+            controller.checkBySelectedItem();
           },
           child: Text(
             "ထိုးမည်",

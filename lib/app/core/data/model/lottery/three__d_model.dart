@@ -5,7 +5,8 @@
 import 'package:meta/meta.dart';
 import 'dart:convert';
 
-ThreeDModel threeDModelFromJson(String str) => ThreeDModel.fromJson(json.decode(str));
+ThreeDModel threeDModelFromJson(String str) =>
+    ThreeDModel.fromJson(json.decode(str));
 
 String threeDModelToJson(ThreeDModel data) => json.encode(data.toJson());
 
@@ -33,28 +34,35 @@ class ThreeDModel {
   final List<OverallAmount> overallAmounts;
 
   factory ThreeDModel.fromJson(Map<String, dynamic> json) => ThreeDModel(
-    id: json["id"],
-    name: json["name"],
-    categoryId: json["category_id"],
-    odd: json["odd"],
-    createdAt: DateTime.parse(json["created_at"]),
-    updatedAt: DateTime.parse(json["updated_at"]),
-    sections: List<Section>.from(json["sections"].map((x) => Section.fromJson(x))),
-    threed: List<Threed>.from(json["threed"].map((x) => Threed.fromJson(x))),
-    overallAmounts:List<OverallAmount>.from(json["overall_amounts"]).isEmpty? [] :  List<OverallAmount>.from(json["overall_amounts"].map((x) => OverallAmount.fromJson(x))),
-  );
+        id: json["id"],
+        name: json["name"],
+        categoryId: json["category_id"],
+        odd: json["odd"],
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
+        sections: List<Section>.from(
+            json["sections"].map((x) => Section.fromJson(x))),
+        threed:
+            List<Threed>.from(json["threed"].map((x) => Threed.fromJson(x))),
+        overallAmounts: List<OverallAmount>.from(json["overall_amounts"])
+                .isEmpty
+            ? []
+            : List<OverallAmount>.from(
+                json["overall_amounts"].map((x) => OverallAmount.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-    "category_id": categoryId,
-    "odd": odd,
-    "created_at": createdAt.toIso8601String(),
-    "updated_at": updatedAt.toIso8601String(),
-    "sections": List<dynamic>.from(sections.map((x) => x.toJson())),
-    "threed": List<dynamic>.from(threed.map((x) => x.toJson())),
-    "overall_amounts": List<dynamic>.from(overallAmounts.map((x) => x.toJson())),
-  };
+        "id": id,
+        "name": name,
+        "category_id": categoryId,
+        "odd": odd,
+        "created_at": createdAt.toIso8601String(),
+        "updated_at": updatedAt.toIso8601String(),
+        "sections": List<dynamic>.from(sections.map((x) => x.toJson())),
+        "threed": List<dynamic>.from(threed.map((x) => x.toJson())),
+        "overall_amounts":
+            List<dynamic>.from(overallAmounts.map((x) => x.toJson())),
+      };
 }
 
 class OverallAmount {
@@ -73,20 +81,20 @@ class OverallAmount {
   final String updatedAt;
 
   factory OverallAmount.fromJson(Map<String, dynamic> json) => OverallAmount(
-    id: json["id"]??-1,
-    amountLimit: json["amount_limit"]??"null",
-    subCategoryId: json["sub_category_id"]??-1,
-    createdAt: json["created_at"]??"null",
-    updatedAt: json["updated_at"]??"null",
-  );
+        id: json["id"] ?? -1,
+        amountLimit: json["amount_limit"] ?? "null",
+        subCategoryId: json["sub_category_id"] ?? -1,
+        createdAt: json["created_at"] ?? "null",
+        updatedAt: json["updated_at"] ?? "null",
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "amount_limit": amountLimit,
-    "sub_category_id": subCategoryId,
-    "created_at": createdAt,
-    "updated_at": updatedAt
-  };
+        "id": id,
+        "amount_limit": amountLimit,
+        "sub_category_id": subCategoryId,
+        "created_at": createdAt,
+        "updated_at": updatedAt
+      };
 }
 
 class Section {
@@ -107,22 +115,22 @@ class Section {
   final Pivot pivot;
 
   factory Section.fromJson(Map<String, dynamic> json) => Section(
-    id: json["id"],
-    timeSection: json["time_section"],
-    closeTime: json["close_time"],
-    createdAt: DateTime.parse(json["created_at"]),
-    updatedAt: DateTime.parse(json["updated_at"]),
-    pivot: Pivot.fromJson(json["pivot"]),
-  );
+        id: json["id"],
+        timeSection: json["time_section"],
+        closeTime: json["close_time"],
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
+        pivot: Pivot.fromJson(json["pivot"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "time_section": timeSection,
-    "close_time": closeTime,
-    "created_at": createdAt.toIso8601String(),
-    "updated_at": updatedAt.toIso8601String(),
-    "pivot": pivot.toJson(),
-  };
+        "id": id,
+        "time_section": timeSection,
+        "close_time": closeTime,
+        "created_at": createdAt.toIso8601String(),
+        "updated_at": updatedAt.toIso8601String(),
+        "pivot": pivot.toJson(),
+      };
 }
 
 class Pivot {
@@ -135,14 +143,14 @@ class Pivot {
   final int sectionId;
 
   factory Pivot.fromJson(Map<String, dynamic> json) => Pivot(
-    subCategoryId: json["sub_category_id"],
-    sectionId: json["section_id"],
-  );
+        subCategoryId: json["sub_category_id"],
+        sectionId: json["section_id"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "sub_category_id": subCategoryId,
-    "section_id": sectionId,
-  };
+        "sub_category_id": subCategoryId,
+        "section_id": sectionId,
+      };
 }
 
 class Threed {
@@ -171,28 +179,28 @@ class Threed {
   final int status;
 
   factory Threed.fromJson(Map<String, dynamic> json) => Threed(
-    id: json["id"] ,
-    betNumber: json["bet_number"]??"null",
-    hotAmountLimit: json["hot_amount_limit"]??"null",
-    defaultAmount: json["default_amount"]??"null",
-    subCategoryId: json["sub_category_id"]??"null",
-    closeNumber: json["close_number"],
-    currentLimit: json["current_limit"],
-    createdAt: json["created_at"]??"null",
-    updatedAt: json["updated_at"]??"null",
-    status: json["status"],
-  );
+        id: json["id"],
+        betNumber: json["bet_number"] ?? "null",
+        hotAmountLimit: json["hot_amount_limit"] ?? "null",
+        defaultAmount: json["default_amount"] ?? "null",
+        subCategoryId: json["sub_category_id"] ?? "null",
+        closeNumber: json["close_number"],
+        currentLimit: json["current_limit"],
+        createdAt: json["created_at"] ?? "null",
+        updatedAt: json["updated_at"] ?? "null",
+        status: json["status"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "bet_number": betNumber,
-    "hot_amount_limit": hotAmountLimit,
-    "default_amount": defaultAmount,
-    "sub_category_id": subCategoryId,
-    "close_number": closeNumber,
-    "current_limit": currentLimit,
-    "created_at": createdAt,
-    "updated_at": updatedAt,
-    "status": status,
-  };
+        "id": id,
+        "bet_number": betNumber,
+        "hot_amount_limit": hotAmountLimit,
+        "default_amount": defaultAmount,
+        "sub_category_id": subCategoryId,
+        "close_number": closeNumber,
+        "current_limit": currentLimit,
+        "created_at": createdAt,
+        "updated_at": updatedAt,
+        "status": status,
+      };
 }
