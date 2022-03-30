@@ -44,7 +44,7 @@ class BettingPage extends StatelessWidget {
             ),
           ),
 
-          const BuildBettingPageBody(),
+        //  const BuildBettingPageBody(),
         ],
       ),
       floatingActionButton: SizedBox(

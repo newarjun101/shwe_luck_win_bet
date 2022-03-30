@@ -27,8 +27,8 @@ class ThreeDModel {
   final String name;
   final int categoryId;
   final String odd;
-  final DateTime createdAt;
-  final DateTime updatedAt;
+  final String createdAt;
+  final String updatedAt;
   final List<Section> sections;
   final List<Threed> threed;
   final List<OverallAmount> overallAmounts;
@@ -38,8 +38,8 @@ class ThreeDModel {
         name: json["name"],
         categoryId: json["category_id"],
         odd: json["odd"],
-        createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
+        createdAt: json["created_at"]??"",
+        updatedAt: json["updated_at"]??"",
         sections: List<Section>.from(
             json["sections"].map((x) => Section.fromJson(x))),
         threed:
@@ -56,8 +56,8 @@ class ThreeDModel {
         "name": name,
         "category_id": categoryId,
         "odd": odd,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
+        "created_at": createdAt,
+        "updated_at": updatedAt,
         "sections": List<dynamic>.from(sections.map((x) => x.toJson())),
         "threed": List<dynamic>.from(threed.map((x) => x.toJson())),
         "overall_amounts":
@@ -110,16 +110,16 @@ class Section {
   final int id;
   final String timeSection;
   final dynamic closeTime;
-  final DateTime createdAt;
-  final DateTime updatedAt;
+  final String createdAt;
+  final String updatedAt;
   final Pivot pivot;
 
   factory Section.fromJson(Map<String, dynamic> json) => Section(
         id: json["id"],
         timeSection: json["time_section"],
-        closeTime: json["close_time"],
-        createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
+        closeTime: json["close_time"]??"null",
+        createdAt:json["created_at"]??"null",
+        updatedAt: json["updated_at"]??"null",
         pivot: Pivot.fromJson(json["pivot"]),
       );
 
@@ -127,8 +127,8 @@ class Section {
         "id": id,
         "time_section": timeSection,
         "close_time": closeTime,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
+        "created_at": createdAt,
+        "updated_at": updatedAt,
         "pivot": pivot.toJson(),
       };
 }

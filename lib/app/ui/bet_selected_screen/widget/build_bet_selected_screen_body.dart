@@ -13,55 +13,52 @@ class BuildBetSelectedScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<ThreeDBettingController>();
-    return  Stack(
+    return Stack(
       children: [
         Container(
           height: double.infinity,
-
           width: double.infinity,
           alignment: Alignment.center,
           decoration: BoxDecoration(
               color: Theme.of(context).primaryColor.withOpacity(0.7),
               image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: const AssetImage('assets/images/bg.png',),
-                  colorFilter: ColorFilter.mode(Theme.of(context).primaryColor.withOpacity(0.27),  BlendMode.modulate)
-              )
-          ),
+                  image: const AssetImage(
+                    'assets/images/bg.png',
+                  ),
+                  colorFilter: ColorFilter.mode(
+                      Theme.of(context).primaryColor.withOpacity(0.27),
+                      BlendMode.modulate))),
         ),
-      Positioned(
+        Positioned(
             top: 0,
-           bottom: 48.h,
+            bottom: 48.h,
             right: 0,
             left: 0,
             child: const SelectedBetList()),
-
         Positioned(
-
           bottom: 16.h,
           right: 16.w,
           left: 16.w,
-          child:  MaterialButton(
-          minWidth: double.infinity,
-          height: 0.068.sh,
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(4.h)
+          child: MaterialButton(
+            minWidth: double.infinity,
+            height: 0.068.sh,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(4.h)),
+            color: Theme.of(context).colorScheme.secondary,
+            onPressed: () {
+              controller.bettingThreeD(context);
+              controller.checkBySelectedItem();
+            },
+            child: Text(
+              "ထိုးမည်",
+              style: TextStyle(
+                  //     color: Theme.of(context).colorScheme.primaryContainer,
+                  fontSize: kLargeFontSize16.sp,
+                  fontWeight: FontWeight.bold),
+            ),
           ),
-
-          color: Theme.of(context).colorScheme.secondary,
-          onPressed: () {
-
-            controller.bettingThreeD(context);
-            controller.checkBySelectedItem();
-          },
-          child: Text(
-            "ထိုးမည်",
-            style: TextStyle(
-              //     color: Theme.of(context).colorScheme.primaryContainer,
-                fontSize: kLargeFontSize16.sp,fontWeight: FontWeight.bold),
-          ),
-        ),)
-
+        )
       ],
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shwe_luck_win_bet/app/core/data/repo/lottery/two_d_repo.dart';
 import 'package:shwe_luck_win_bet/app/ui/bet_selected_screen/widget/build_bet_selected_screen_body.dart';
 import '../../core/local_ widget/app_bar_with_profile.dart';
 
@@ -7,6 +8,8 @@ class BetSelectedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    TwoDRepo().getThreeD();
     return const Scaffold(
      appBar :  AppBarWithProfile(
         profileUrl:
