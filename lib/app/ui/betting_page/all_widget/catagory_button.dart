@@ -19,6 +19,8 @@ class CatagoryButton extends StatelessWidget {
   Widget build(BuildContext context) {
     TextEditingController passwordController = TextEditingController();
 
+    final controller = Get.find<TwoDBettingController>();
+
     return Container(
       width: 1.sh,
       padding: EdgeInsets.symmetric(
@@ -27,7 +29,7 @@ class CatagoryButton extends StatelessWidget {
       child: FittedBox(
         child: Row(
           children: [
-            CustomButton(
+         /*   CustomButton(
               textColor: Theme.of(context).colorScheme.onPrimary,
               title: '0 - 100',
               bgColor: Theme.of(context).colorScheme.primaryVariant,
@@ -42,7 +44,7 @@ class CatagoryButton extends StatelessWidget {
             ),
             const SizedBox(
               width: 4,
-            ),
+            ),*/
             CustomButton(
               textColor: Theme.of(context).colorScheme.onPrimary,
               title: 'Quick',
@@ -62,7 +64,7 @@ class CatagoryButton extends StatelessWidget {
               textColor: Theme.of(context).colorScheme.secondaryVariant,
               title: 'R',
               bgColor: Colors.green,
-              onClick: () {},
+              onClick: () {controller.removeSelectedItem();},
               radius: 0.01.sw,
               icon: Icons.paid,
               iconSize: kLargeFontSize16.sp,
@@ -86,14 +88,45 @@ class CatagoryButton extends StatelessWidget {
             const SizedBox(
               width: 4,
             ),
-            CustomButton(
-              textColor: Theme.of(context).colorScheme.onPrimary,
-              title: 'ထိုးမည်',
-              bgColor: Theme.of(context).colorScheme.secondary,
-              onClick: () {},
-              radius: 0.01.sw,
-              iconSize: kLargeFontSize16.sp,
-              isIcon: false,
+            Stack(
+              children: [
+                CustomButton(
+                  textColor: Theme.of(context).colorScheme.onPrimary,
+                  title: 'ထိုးမည်',
+                  bgColor: Theme.of(context).colorScheme.secondary,
+                  onClick: () {
+                   /* if(controller.text.length<3) {
+
+                      controller.price.value = 100;
+                    } else {
+                      controller.price.value = int.parse(priceController.text);
+                    }*/
+                    if (controller.mSelectedItem.isNotEmpty && controller.price.value !=null ) {
+                     // Get.toNamed(Pages.lBetSelected);
+                      print("hello world");
+
+                    }
+                  },
+                  radius: 0.01.sw,
+                  iconSize: kLargeFontSize16.sp,
+                  isIcon: false,
+                ),
+                Positioned(
+                  right: 0,
+                  top: 0,
+                  child: CircleAvatar(
+                      radius: 10.h,
+                      backgroundColor: Colors.red,
+                      child: Obx(() => Text(
+                        controller.mSelectedItem.length.toString(),
+                        style: TextStyle(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .primaryContainer,
+                            fontSize: kSmallFontSize12.sp),
+                      ))),
+                )
+              ],
             ),
           ],
         ),

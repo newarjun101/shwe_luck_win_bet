@@ -30,13 +30,35 @@ class QuickBettingList extends StatelessWidget {
             .onPrimary,
             fontSize: kSmallFontSize12.sp,
             fontWeight: FontWeight.bold),),
-        QuickBetButtonRow(
-            mDataList: mType, onPress: () => controller.firstNumberGreaterThanSecond()),
+        Wrap(
+          children: [
+            QuickBetButtonRow(
+               title : 'ကြီး', onPress: () => controller.firstNumberGreaterThanSecond()),
+            QuickBetButtonRow(
+               title : 'ငယ်', onPress: () => controller.secondNumberGreaterThanFirst()),
+            QuickBetButtonRow(
+                title : 'စုံ', onPress: () => controller.evenNumber()),
+            QuickBetButtonRow(
+                title : 'မ', onPress: () => controller.oddNumber()),
+
+            QuickBetButtonRow(
+                title : 'စုံစုံ', onPress: () => controller.bothEven()),
+            QuickBetButtonRow(
+                title : 'စုံမ', onPress: () => controller.firstEvenSecondOdd()),
+            QuickBetButtonRow(
+                title : 'မစုံ', onPress: () => controller.firstOddSecondEven()),
+            QuickBetButtonRow(
+                title : 'မမ', onPress: () => controller.bothOdd()),
+            QuickBetButtonRow(
+                title : 'အပူး', onPress: () => controller.bothSameValue()),
+          //  ,  , , ,
+          ],
+        ),
         SizedBox(
           height: 4.h,
         ),
-        QuickBetButtonRow(
-            mDataList: mNumber, onPress: () => print("hahahah")),
+  /*      QuickBetButtonRow(
+            mDataList: mNumber, onPress: () => print("hahahah")),*/
         SizedBox(
           height: kDefaultMargin.sh,
         ),
@@ -46,8 +68,8 @@ class QuickBettingList extends StatelessWidget {
             .onPrimary,
             fontSize: kSmallFontSize12.sp,
             fontWeight: FontWeight.bold),),
-        QuickBetButtonRow(
-            mDataList: mNumber, onPress: () => print("hahahah")),
+    /*    QuickBetButtonRow(
+            mDataList: mNumber, onPress: () => print("hahahah")),*/
         SizedBox(
           height: kDefaultMargin.sh,
         ),
@@ -57,8 +79,8 @@ class QuickBettingList extends StatelessWidget {
             .onPrimary,
             fontSize: kSmallFontSize12.sp,
             fontWeight: FontWeight.bold),),
-        QuickBetButtonRow(
-            mDataList: mNumber, onPress: () => print("hahahah")),
+  /*      QuickBetButtonRow(
+            mDataList: mNumber, onPress: () => print("hahahah")),*/
         SizedBox(
           height: kDefaultMargin.sh,
         ),
@@ -68,13 +90,13 @@ class QuickBettingList extends StatelessWidget {
             .onPrimary,
             fontSize: kSmallFontSize12.sp,
             fontWeight: FontWeight.bold),),
-        QuickBetButtonRow(
-            mDataList: mAngel1, onPress: () => print("hahahah")),
+ /*       QuickBetButtonRow(
+            mDataList: mAngel1, onPress: () => print("hahahah")),*/
         SizedBox(
           height: 4.h,
         ),
-        QuickBetButtonRow(
-            mDataList: mAngel2, onPress: () => print("hahahah")),
+/*        QuickBetButtonRow(
+            mDataList: mAngel2, onPress: () => print("hahahah")),*/
         SizedBox(
           height: kDefaultMargin.sh,
         ),

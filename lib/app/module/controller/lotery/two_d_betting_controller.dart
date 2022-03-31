@@ -78,6 +78,42 @@ class TwoDBettingController extends GetxController {
     update();
   }
 
+  ///round 3 d
+  makeR() {
+    Set rNum = {};
+    List<TwoDListModel> mTest = [];
+    String makeR; // Music 𝄞 for the win
+    for (int i = 0; i < mSelectedItem.length; i++) {
+      rNum.add(mSelectedItem[i].betNumber);
+      makeR = mSelectedItem[i].betNumber.split('').reversed.join();
+      rNum.add(makeR);
+    }
+
+    for (int i = 0; i < mTwoDList.length; i++) {
+      for (String num in rNum) {
+        if (mTwoDList[i].betNumber.toString() == num.toString()) {
+          mTest.add(TwoDListModel(
+              id: mTwoDList[i].id,
+              betNumber: mTwoDList[i].betNumber,
+              hotAmountLimit: mTwoDList[i].hotAmountLimit,
+              defaultAmount: mTwoDList[i].defaultAmount,
+              subCategoryId: mTwoDList[i].subCategoryId,
+              closeNumber: mTwoDList[i].closeNumber,
+              currentLimit: mTwoDList[i].currentLimit,
+              createdAt: mTwoDList[i].createdAt,
+              updatedAt: mTwoDList[i].updatedAt,
+              status: mTwoDList[i].status,
+              isSelected: true));
+        }
+      }
+    }
+    mSelectedItem.clear();
+    mSelectedItem.addAll(mTest);
+    checkBySelectedItem();
+
+    update();
+  }
+
   getSelectedIndex(index) {
     print("working");
 
@@ -87,7 +123,7 @@ class TwoDBettingController extends GetxController {
       mTwoDList[index].defaultAmount = price.value.toString();
       mSelectedItem.add(mTwoDList[index]);
     } else {
-      mSelectedItem.remove(mTwoDList[index]);
+    //  removeSelectedIndex(mTwoDList[index], index);
     }
     // checkBySelectedItem();
     update();
@@ -361,14 +397,39 @@ class TwoDBettingController extends GetxController {
     print(mSelectedItem.length);
   }
 
-  checkFirstSecond({required String digit,bool? isFirst}) {
-
+  checkFirstSecond({required String digit, bool? isFirst}) {
     removeSelectedItem();
     String value;
     RxList<TwoDListModel> mmSelected = RxList([]);
     for (int i = 0; i < mTwoDList.length; i++) {
       value = mTwoDList[i].betNumber.toString();
-      if (isFirst??false?digit==value[0] : digit==value[1] ) {
+      if (isFirst ?? false ? digit == value[0] : digit == value[1]) {
+        mmSelected.add(TwoDListModel(
+            id: mTwoDList[i].id,
+            betNumber: mTwoDList[i].betNumber,
+            hotAmountLimit: mTwoDList[i].hotAmountLimit,
+            defaultAmount: mTwoDList[i].defaultAmount,
+            subCategoryId: mTwoDList[i].subCategoryId,
+            closeNumber: mTwoDList[i].closeNumber,
+            currentLimit: mTwoDList[i].currentLimit,
+            createdAt: mTwoDList[i].createdAt,
+            updatedAt: mTwoDList[i].updatedAt,
+            status: mTwoDList[i].status,
+            isSelected: true));
+      }
+    }
+    mSelectedItem.addAll(mmSelected);
+    checkBySelectedItem();
+    print(mSelectedItem.length);
+  }
+
+  selectByLength({required int startLength, required int endLength}) {
+    removeSelectedItem();
+    String value;
+    RxList<TwoDListModel> mmSelected = RxList([]);
+    for (int i = 0; i < mTwoDList.length; i++) {
+      value = mTwoDList[i].betNumber.toString();
+      if (mTwoDList.length > startLength && mTwoDList.length < endLength) {
         mmSelected.add(TwoDListModel(
             id: mTwoDList[i].id,
             betNumber: mTwoDList[i].betNumber,
