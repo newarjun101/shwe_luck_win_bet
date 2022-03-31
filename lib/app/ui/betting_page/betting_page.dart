@@ -17,17 +17,16 @@ class BettingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FeatureMainController mFeatureController =
-    Get.find<FeatureMainController>();
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor.withOpacity(0.8),
-      appBar:const   AppBarWithPreferredWidget(
+      appBar: const AppBarWithPreferredWidget(
         profileUrl:
-        "https://cdn.pixabay.com/photo/2015/11/30/14/10/batman-1070422_960_720.jpg",
+            "https://cdn.pixabay.com/photo/2015/11/30/14/10/batman-1070422_960_720.jpg",
         name: 'Aj MM',
         phone: '096',
         balance: '40000',
-        notification: '10', mPreferredWidget: CatagoryButton(),
+        notification: '10',
+        mPreferredWidget: CatagoryButton(),
       ),
       body: Stack(
         children: [
@@ -38,16 +37,17 @@ class BettingPage extends StatelessWidget {
             decoration: BoxDecoration(
                 image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: const AssetImage('assets/images/bg.png',),
-                    colorFilter: ColorFilter.mode(Theme.of(context).primaryColor.withOpacity(0.27),  BlendMode.modulate)
-                )
-            ),
+                    image: const AssetImage(
+                      'assets/images/bg.png',
+                    ),
+                    colorFilter: ColorFilter.mode(
+                        Theme.of(context).primaryColor.withOpacity(0.27),
+                        BlendMode.modulate))),
           ),
-
-        //  const BuildBettingPageBody(),
+           const BuildBettingPageBody(),
         ],
       ),
-      floatingActionButton: SizedBox(
+      /*floatingActionButton: SizedBox(
         width: 0.3.sw,
         child: CustomButton(
           isIcon: false,
@@ -55,15 +55,13 @@ class BettingPage extends StatelessWidget {
           radius: 0.1.sw,
           bgColor: Theme.of(context).colorScheme.secondary,
           onClick: () {
-
             Get.toNamed(Pages.lBetSelected);
           },
           iconSize: 0,
           textColor: Theme.of(context).colorScheme.onPrimary,
         ),
-      ),
+      ),*/
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-
     );
   }
 }

@@ -24,6 +24,11 @@ class ThreeDBettingController extends GetxController {
   bool isThreeDRound = false;
   RxInt odd = 0.obs;
   RxInt price = 100.obs;
+  RxBool isError = false.obs;
+  RxString errorMessage = "".obs;
+  RxBool isErrorBetting = false.obs;
+  RxString errorBettingMessage = "".obs;
+
   RxList<ThreeDAllDataModel> mSelectedItem = RxList([]);
 
   ThreeDBettingController() {
@@ -57,11 +62,16 @@ class ThreeDBettingController extends GetxController {
         odd.value = int.parse(_result.mData.odd);
 
         haveLoading.value = false;
+        isError.value = false;
       } else {
         haveLoading.value = false;
+        errorMessage.value = _result.errorMessage;
+        isError.value = true;
       }
     } catch (e) {
       haveLoading.value = false;
+      isError.value = true;
+      errorMessage.value = e.toString();
     }
     update();
   }
@@ -70,6 +80,7 @@ class ThreeDBettingController extends GetxController {
     mThreeDList[index].isSelected = !mThreeDList[index].isSelected;
 
     if (mThreeDList[index].isSelected == true) {
+      mThreeDList[index].defaultAmount = price.value.toString();
       mSelectedItem.add(mThreeDList[index]);
     } else {
       mSelectedItem.remove(mThreeDList[index]);
@@ -90,6 +101,7 @@ class ThreeDBettingController extends GetxController {
     update();
   }
 
+  ///round 3 d
   makeR() {
     Set rNum = {};
     List<ThreeDAllDataModel> mTest = [];
@@ -131,6 +143,7 @@ class ThreeDBettingController extends GetxController {
     update();
   }
 
+  ///3d htoe meee
   bettingThreeD(context) async {
     List<Map> betObject = mSelectedItem
         .map((data) => {
@@ -158,12 +171,19 @@ class ThreeDBettingController extends GetxController {
         ));
     try {
       ApiResult result = await _threeDRepo.betThreeD(body);
-      Get.back();
-      print(result.status);
+      if (result.status == Status.eCOMPLETED) {
+        removeSelectedItem();
+        Get.back();
+        debugPrint("no error");
+      } else {
+        Get.back();
+        print(result.status);
+        print("erorro on else");
+      }
     } catch (e) {
       Get.back();
-      print("Hello World");
       // Get.back();
+      print("errro on else");
     }
   }
 
@@ -181,5 +201,26 @@ class ThreeDBettingController extends GetxController {
     }
     mSelectedItem.clear();
     mSelectedItem.addAll(mmSelected);
+  }
+
+  ///remove item from selected item
+  removeSelectedItem() {
+    RxList<ThreeDAllDataModel> mmSelected = RxList([]);
+    for (int i = 0; i < mThreeDList.length; i++) {
+      for (ThreeDAllDataModel selectedItem in mSelectedItem) {
+        if (mThreeDList[i].id == selectedItem.id) {
+          //  selectedItem.isSelected = false;
+          mThreeDList[i].isSelected = false;
+        }
+      }
+    }
+    mSelectedItem.clear();
+//    mSelectedItem.addAll(mmSelected);
+    // checkBySelectedItem();
+    update();
+  }
+
+  countPrice() {
+    price.value *= mSelectedItem.length;
   }
 }

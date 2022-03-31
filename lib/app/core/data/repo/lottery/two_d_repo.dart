@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:shwe_luck_win_bet/app/core/data/model/lottery/tow_d_main_model.dart';
 import 'package:shwe_luck_win_bet/app/core/data/service/api_base_helper.dart';
 import 'package:shwe_luck_win_bet/app/ui/betting_page/all_widget/tow_d_number_list.dart';
 
@@ -16,17 +17,17 @@ class TwoDRepo {
     _apiBaseHelper = Get.put(ApiBaseHelper());
   }
 
-  Future<ApiResult<ThreeDModel>> getThreeD() async {
+  Future<ApiResult<TwoDMainModel>> getThreeD() async {
     try {
       ApiResponse response =
       await _apiBaseHelper.getData(rTwoD, isHeader: false);
-      ThreeDModel mThreeD = threeDModelFromJson(response.mData);
+      TwoDMainModel mTwoD = twoDMainModelFromJson(response.mData);
       if (response.status == Status.eCOMPLETED) {
-        print(mThreeD);
-        return ApiResult(Status.eCOMPLETED, "", mThreeD);
+        print(mTwoD);
+        return ApiResult(Status.eCOMPLETED, "", mTwoD);
       } else {
         print("error");
-        return ApiResult(Status.eERROR, response.message, mThreeD);
+        return ApiResult(Status.eERROR, response.message, mTwoD);
       }
     } catch (e) {
       print(e.toString());
