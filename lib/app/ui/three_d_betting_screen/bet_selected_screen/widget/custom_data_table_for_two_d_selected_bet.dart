@@ -3,17 +3,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/constants/default_values.dart';
 import 'package:shwe_luck_win_bet/app/module/controller/lotery/three_d_betting_controller.dart';
+import 'package:shwe_luck_win_bet/app/module/controller/lotery/two_d_betting_controller.dart';
 
 
 
 
-class CustomDataTableForSelectedBet extends StatelessWidget {
-  const CustomDataTableForSelectedBet({Key? key}) : super(key: key);
+class CustomDataTableForTwoSelectedBet extends StatelessWidget {
+  const CustomDataTableForTwoSelectedBet({Key? key}) : super(key: key);
 
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<ThreeDBettingController>();
+    final controller = Get.find<TwoDBettingController>();
     return  Obx(
         () => controller.mSelectedItem.isEmpty? Text("No Data",style: TextStyle(color: Theme.of(context).colorScheme.primaryContainer,fontSize: kLargeFontSize16.sp),)  :
         FittedBox(

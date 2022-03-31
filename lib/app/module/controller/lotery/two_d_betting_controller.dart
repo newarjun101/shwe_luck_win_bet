@@ -397,13 +397,13 @@ class TwoDBettingController extends GetxController {
     print(mSelectedItem.length);
   }
 
-  checkFirstSecond({required String digit, bool? isFirst}) {
+  getByNumber({required String digit, bool? isFirstStart}) {
     removeSelectedItem();
     String value;
     RxList<TwoDListModel> mmSelected = RxList([]);
     for (int i = 0; i < mTwoDList.length; i++) {
       value = mTwoDList[i].betNumber.toString();
-      if (isFirst ?? false ? digit == value[0] : digit == value[1]) {
+      if (isFirstStart?? false ? digit == value[0] : digit == value[1]) {
         mmSelected.add(TwoDListModel(
             id: mTwoDList[i].id,
             betNumber: mTwoDList[i].betNumber,
