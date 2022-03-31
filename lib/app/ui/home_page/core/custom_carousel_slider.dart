@@ -32,13 +32,13 @@ class CustomCarouselSlider extends StatelessWidget {
                     child: ClipRRect(
                         borderRadius: BorderRadius.circular(0.04.sh),
                         child: Image.asset(
-                          "assets/images.banner.jpg",
+                          "assets/images/banner.jpg",
                           fit: BoxFit.fill,
                         ))))
                 .toList(),
             options: CarouselOptions(
                 autoPlay: true,
-                autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                autoPlayAnimationDuration: const Duration(milliseconds: 400),
                 enlargeCenterPage: true,
                 enableInfiniteScroll: true,
                 aspectRatio: 16 / 9,

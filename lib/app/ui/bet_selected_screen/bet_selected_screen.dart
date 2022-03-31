@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:shwe_luck_win_bet/app/core/data/repo/lottery/two_d_repo.dart';
+import 'package:shwe_luck_win_bet/app/module/controller/lotery/three_d_betting_controller.dart';
+import 'package:shwe_luck_win_bet/app/module/controller/lotery/two_d_betting_controller.dart';
 import 'package:shwe_luck_win_bet/app/ui/bet_selected_screen/widget/build_bet_selected_screen_body.dart';
 import '../../core/local_ widget/app_bar_with_profile.dart';
 
 class BetSelectedScreen extends StatelessWidget {
+
+
   const BetSelectedScreen({Key? key}) : super(key: key);
 
   @override

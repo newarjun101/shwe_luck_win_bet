@@ -4,9 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/constants/default_values.dart';
 import 'package:shwe_luck_win_bet/app/ui/bet_selected_screen/widget/custom_data_table_for_selected_bet.dart';
+import 'package:shwe_luck_win_bet/app/ui/betting_page/bet_selected_screen/widget/custom_data_table_for_two_d_selected_bet.dart';
 
-class SelectedBetList extends StatelessWidget {
-  const SelectedBetList({Key? key}) : super(key: key);
+class TwoDSelectedBetList extends StatelessWidget {
+  const TwoDSelectedBetList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,7 @@ class SelectedBetList extends StatelessWidget {
             SizedBox(
               height: kDefaultMargin.sh,
             ),
-            const CustomDataTableForSelectedBet(),
+            const CustomDataTableForTwoSelectedBet(),
             Divider(
               height: 1,
               color: Theme.of(context).colorScheme.secondary,

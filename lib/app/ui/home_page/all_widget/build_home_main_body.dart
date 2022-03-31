@@ -26,17 +26,23 @@ class BuildHomeMainBody extends StatelessWidget {
           FittedBox(
             child: Row(
               children: [
-                Image.asset(
-                  "assets/images/two_d.jpg",
-                  width: 0.45.sw,
-                  height: 0.2.sh,
-                  fit: BoxFit.contain,
+                GestureDetector(
+                  onTap : ()=> Get.toNamed(Pages.lBetting),
+                  child: Image.asset(
+                    "assets/images/two_d.jpg",
+                    width: 0.45.sw,
+                    height: 0.2.sh,
+                    fit: BoxFit.contain,
+                  ),
                 ),
-                Image.asset(
-                  "assets/images/three_d.jpg",
-                  width: 0.45.sw,
-                  height: 0.2.sh,
-                  fit: BoxFit.contain,
+                GestureDetector(
+                  onTap : ()=> Get.toNamed(Pages.lThreeDBetting),
+                  child: Image.asset(
+                    "assets/images/three_d.jpg",
+                    width: 0.45.sw,
+                    height: 0.2.sh,
+                    fit: BoxFit.contain,
+                  ),
                 )
 
                 /*           CardButtonContainer(

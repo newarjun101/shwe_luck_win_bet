@@ -3,20 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/constants/default_values.dart';
 import 'package:shwe_luck_win_bet/app/module/controller/lotery/three_d_betting_controller.dart';
-List<String> mDataColumnTitleList = [
-  "ဂဏန်း","အဆ","ထိုးနှုန်း","ပြင်","ဖျက်"
-];
 
-List<Map<String,dynamic>> mBettingData = [
 
-  {"id" : "1","number" : '02',"times" : "700","price" : "900" },
-  {"id" : "1","number" : '02',"times" : "700","price" : "900" },
-  {"id" : "1","number" : '02',"times" : "700","price" : "900" },
-  {"id" : "1","number" : '02',"times" : "700","price" : "900" },
-  {"id" : "1","number" : '02',"times" : "700","price" : "900" },
-  {"id" : "1","number" : '02',"times" : "700","price" : "900" },
-  {"id" : "1","number" : '02',"times" : "700","price" : "900" },
-];
+
 
 class CustomDataTableForSelectedBet extends StatelessWidget {
   const CustomDataTableForSelectedBet({Key? key}) : super(key: key);
