@@ -7,4 +7,3 @@ const String profile = "profile";
 const String rThreeD = "sub-category/4/threed";
 const String rBetThreeD = "betting-mobile";
 const String rTwoD = "sub-category/2/thai-twod";
-const String rBetThreeD = "";
