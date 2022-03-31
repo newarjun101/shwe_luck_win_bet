@@ -8,69 +8,69 @@ import 'package:shwe_luck_win_bet/app/ui/bet_selected_screen/widget/custom_data_
 class SelectedBetList extends StatelessWidget {
   const SelectedBetList({Key? key}) : super(key: key);
 
-
   @override
   Widget build(BuildContext context) {
-
     return Container(
-      margin: EdgeInsets.all(kDefaultMargin.sh * 2),
-      padding: EdgeInsets.all(kDefaultMargin.sh),
-      decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
-        borderRadius: BorderRadius.circular(kDefaultMargin.sh)
-
-      ),
-      
-      child: ListView(
-        children: [
-          SizedBox(
-            height: kDefaultMargin.sh,
-          ),
-          Text(
-            "",
-            style: TextStyle(
-              shadows: [
-                Shadow(
-                    color: Theme.of(context).colorScheme.primaryContainer ,
-                    offset: const Offset(0, -20))
-              ],
-              color: Colors.transparent,
-              fontSize: kLargeFontSize16.sp,
-              fontWeight: FontWeight.bold,
-              decoration: TextDecoration.underline,
-              decorationColor: Theme.of(context).colorScheme.secondary,
-              decorationThickness: 2,
-              decorationStyle: TextDecorationStyle.solid,
+        margin: EdgeInsets.all(kDefaultMargin.sh * 2),
+        padding: EdgeInsets.all(kDefaultMargin.sh),
+        decoration: BoxDecoration(
+            color: Theme.of(context).primaryColor,
+            borderRadius: BorderRadius.circular(kDefaultMargin.sh)),
+        child: ListView(
+          children: [
+            SizedBox(
+              height: kDefaultMargin.sh,
             ),
-          ),
-          SizedBox(
-            height: kDefaultMargin.sh,
-          ),
-      const CustomDataTableForSelectedBet(),
-          Divider(
-            height: 1,
-            color: Theme.of(context).colorScheme.secondary,
-          ),
-
-          SizedBox(
-            height: kDefaultMargin.sh,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              Text("Total Price - ",textAlign: TextAlign.end,
-                style: TextStyle(color: Theme.of(context).colorScheme.primaryContainer,
-                  fontSize: kSmallFontSize12.sp,fontWeight: FontWeight.bold),),
-              Text("hi",textAlign: TextAlign.end,
-                style: TextStyle(color: Theme.of(context).colorScheme.primaryContainer,
-                    fontSize: kLargeFontSize16.sp,fontWeight: FontWeight.bold),),
-            ],
-          )
-
-
-
-        ],
-      )
-    );
+            Text(
+              "",
+              style: TextStyle(
+                shadows: [
+                  Shadow(
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                      offset: const Offset(0, -20))
+                ],
+                color: Colors.transparent,
+                fontSize: kLargeFontSize16.sp,
+                fontWeight: FontWeight.bold,
+                decoration: TextDecoration.underline,
+                decorationColor: Theme.of(context).colorScheme.secondary,
+                decorationThickness: 2,
+                decorationStyle: TextDecorationStyle.solid,
+              ),
+            ),
+            SizedBox(
+              height: kDefaultMargin.sh,
+            ),
+            const CustomDataTableForSelectedBet(),
+            Divider(
+              height: 1,
+              color: Theme.of(context).colorScheme.secondary,
+            ),
+            SizedBox(
+              height: kDefaultMargin.sh,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  "Total Price - ",
+                  textAlign: TextAlign.end,
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                      fontSize: kSmallFontSize12.sp,
+                      fontWeight: FontWeight.bold),
+                ),
+                Text(
+                  "hi",
+                  textAlign: TextAlign.end,
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.primaryContainer,
+                      fontSize: kLargeFontSize16.sp,
+                      fontWeight: FontWeight.bold),
+                ),
+              ],
+            )
+          ],
+        ));
   }
 }

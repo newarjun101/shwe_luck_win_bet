@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
+import 'package:shwe_luck_win_bet/app/module/controller/lotery/two_d_betting_controller.dart';
 import 'package:shwe_luck_win_bet/app/ui/betting_page/all_widget/quick_betting_bottom_sheet.dart';
 import 'package:shwe_luck_win_bet/app/ui/betting_page/all_widget/quick_betting_list.dart';
 
@@ -17,6 +18,7 @@ class CatagoryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController passwordController = TextEditingController();
+
     return Container(
       width: 1.sh,
       padding: EdgeInsets.symmetric(

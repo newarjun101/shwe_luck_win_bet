@@ -31,7 +31,7 @@ class ButtonQuickBet extends StatelessWidget {
         //padding: EdgeInsets.all(0.01.sh),
         child: InkWell(
           splashColor: Theme.of(context).colorScheme.onPrimary,
-          onTap: () => onPress,
+          onTap: onPress,
           child: Center(
             child: Text(
               title,

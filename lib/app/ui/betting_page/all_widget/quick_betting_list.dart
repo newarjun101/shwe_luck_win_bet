@@ -5,12 +5,15 @@ import 'package:get/get.dart';
 import '../../../core/constants/default_values.dart';
 import '../../../core/local_ widget/button_quick_bet.dart';
 import '../../../core/local_ widget/quick_bet_button_row.dart';
+import '../../../module/controller/lotery/two_d_betting_controller.dart';
 
 class QuickBettingList extends StatelessWidget {
   const QuickBettingList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<TwoDBettingController>();
+
     return  ListView(
       // crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -28,7 +31,7 @@ class QuickBettingList extends StatelessWidget {
             fontSize: kSmallFontSize12.sp,
             fontWeight: FontWeight.bold),),
         QuickBetButtonRow(
-            mDataList: mType, onPress: () => print("hahahah")),
+            mDataList: mType, onPress: () => controller.firstNumberGreaterThanSecond()),
         SizedBox(
           height: 4.h,
         ),
@@ -109,6 +112,7 @@ class QuickBettingList extends StatelessWidget {
   }
 }
 List <dynamic> mNumber = ['0', "1", '2', '3', '4', '5', '6', '7', '8', '9'];
+
 List <dynamic> mType = ['ကြီး', "ငယ်", 'မ', 'စုံ', 'စုံစုံ', 'စုံမ', 'မစုံ', 'မမ', 'အပူး'];
 List<dynamic> mAngel1 = ["07", "18", "24", "35", "69"];
 List<dynamic> mAngel2 = ["07", "18", "24", "35", "69"];
