@@ -3,11 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/module/controller/lotery/two_d_betting_controller.dart';
 import 'package:shwe_luck_win_bet/app/ui/bet_selected_screen/widget/selected_bet_list.dart';
-import 'package:shwe_luck_win_bet/app/ui/three_d_betting_screen/bet_selected_screen/widget/two_d_selected_bet_list.dart';
+import 'package:shwe_luck_win_bet/app/ui/betting_page/bet_selected_screen/widget/two_d_selected_bet_list.dart';
 
 import '../../../../core/constants/default_values.dart';
-
-
 
 class BuildTwoDBetSelectedBody extends StatelessWidget {
   const BuildTwoDBetSelectedBody({Key? key}) : super(key: key);
@@ -49,7 +47,7 @@ class BuildTwoDBetSelectedBody extends StatelessWidget {
                 borderRadius: BorderRadius.circular(4.h)),
             color: Theme.of(context).colorScheme.secondary,
             onPressed: () {
-            //  controller.bettingThreeD(context);
+              //  controller.bettingThreeD(context);
               controller.checkBySelectedItem();
             },
             child: Text(

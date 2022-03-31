@@ -5,10 +5,11 @@ import 'package:shwe_luck_win_bet/app/core/local_%20widget/button_quick_bet.dart
 
 class QuickBetButtonRow extends StatelessWidget {
   final String title;
+  final double? width;
   final VoidCallback onPress;
 
   const QuickBetButtonRow(
-      {Key? key, required this.title, required this.onPress})
+      {Key? key, required this.title, required this.onPress, this.width})
       : super(key: key);
 
   @override
@@ -23,7 +24,7 @@ class QuickBetButtonRow extends StatelessWidget {
           fontSize: kMediumFontSize14,
           onPress: onPress,
           height: 0.05,
-          width: 0.055),
+          width: width??0.055),
     );
   }
 }

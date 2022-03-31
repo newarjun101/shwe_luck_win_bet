@@ -181,21 +181,40 @@ class QuickBettingList extends StatelessWidget {
               fontWeight: FontWeight.bold),
         ),
         Wrap(
-          children: mPair
-              .map((e) => Padding(
-                    padding: EdgeInsets.only(left: 2.h, right: 2.h),
-                    child: ButtonQuickBet(
-                        title: e.toString(),
-                        radius: 0.009,
-                        bgColor: Theme.of(context).hintColor,
-                        textColor:
-                            Theme.of(context).colorScheme.primaryContainer,
-                        fontSize: kMediumFontSize14,
-                        onPress: () => print("Hello World"),
-                        height: 0.05,
-                        width: 0.075),
-                  ))
-              .toList(),
+          children: [
+            QuickBetButtonRow(
+              title: '0-19',
+              onPress: () =>
+                  controller.selectByLength(startLength: 0, endLength: 19),
+              width: 0.08,
+            ),
+            QuickBetButtonRow(
+              title: '20-39',
+              onPress: () =>
+                  controller.selectByLength(startLength: 20, endLength: 39),
+              width: 0.08,
+            ),
+            QuickBetButtonRow(
+              title: '40-59',
+              onPress: () =>
+                  controller.selectByLength(startLength: 40, endLength: 59),
+              width: 0.08,
+            ),
+            QuickBetButtonRow(
+              title: '60-79',
+              onPress: () =>
+                  controller.selectByLength(startLength: 60, endLength: 79),
+              width: 0.08,
+            ),
+            QuickBetButtonRow(
+              title: '80-99',
+              onPress: () =>
+                  controller.selectByLength(startLength: 80, endLength: 99),
+              width: 0.08,
+            ),
+
+            //  ,  , , ,
+          ],
         ),
         SizedBox(
           height: kDefaultMargin.sh,
@@ -207,17 +226,6 @@ class QuickBettingList extends StatelessWidget {
 
 List<dynamic> mNumber = ['0', "1", '2', '3', '4', '5', '6', '7', '8', '9'];
 
-List<dynamic> mType = [
-  'ကြီး',
-  "ငယ်",
-  'မ',
-  'စုံ',
-  'စုံစုံ',
-  'စုံမ',
-  'မစုံ',
-  'မမ',
-  'အပူး'
-];
 List<dynamic> mAngel1 = ["07", "18", "24", "35", "69"];
 List<dynamic> mAngel2 = ["07", "18", "24", "35", "69"];
 List<dynamic> mPair = ["00-19", "20-39", "40-59", "60-79", "80-99"];

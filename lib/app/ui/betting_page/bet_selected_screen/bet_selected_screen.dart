@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:shwe_luck_win_bet/app/ui/three_d_betting_screen/bet_selected_screen/widget/build_two_d_bet_selected_screen_body.dart';
 
 import '../../../core/local_ widget/app_bar_with_profile.dart';
+import '../bet_selected_screen/widget/build_two_d_bet_selected_screen_body.dart';
+
+
+
+
 
 
 class TwoDBetSelectedScreen extends StatelessWidget {

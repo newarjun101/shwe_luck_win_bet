@@ -102,7 +102,7 @@ class CatagoryButton extends StatelessWidget {
                       controller.price.value = int.parse(priceController.text);
                     }*/
                     if (controller.mSelectedItem.isNotEmpty && controller.price.value !=null ) {
-                     // Get.toNamed(Pages.lBetSelected);
+                      Get.toNamed(Pages.lTowDSelected);
                       print("hello world");
 
                     }

@@ -18,6 +18,7 @@ class Pages {
   static String lChangePassword = "/change-password";
   static String lCashIn= "/cash-in";
   static String lCashOut = "/cash-out";
+  static String lTowDSelected = "/twod-selected";
 
 
 }

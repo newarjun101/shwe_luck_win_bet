@@ -427,9 +427,7 @@ class TwoDBettingController extends GetxController {
     removeSelectedItem();
     String value;
     RxList<TwoDListModel> mmSelected = RxList([]);
-    for (int i = 0; i < mTwoDList.length; i++) {
-      value = mTwoDList[i].betNumber.toString();
-      if (mTwoDList.length > startLength && mTwoDList.length < endLength) {
+    for (int i= startLength; i<=endLength;i++) {
         mmSelected.add(TwoDListModel(
             id: mTwoDList[i].id,
             betNumber: mTwoDList[i].betNumber,
@@ -442,7 +440,7 @@ class TwoDBettingController extends GetxController {
             updatedAt: mTwoDList[i].updatedAt,
             status: mTwoDList[i].status,
             isSelected: true));
-      }
+
     }
     mSelectedItem.addAll(mmSelected);
     checkBySelectedItem();
