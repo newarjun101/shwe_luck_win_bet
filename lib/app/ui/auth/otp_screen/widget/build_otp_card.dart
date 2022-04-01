@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/local_%20widget/custom_button.dart';
 import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
+import 'package:shwe_luck_win_bet/app/core/validation/validation.dart';
 import 'package:shwe_luck_win_bet/app/module/controller/sign_up_screen_controller.dart';
 
 import '../../../../core/constants/default_values.dart';
@@ -41,13 +42,19 @@ class BuildOtpCard extends StatelessWidget {
                         icon: Icons.phone_iphone_sharp,
                         hint: "Phone Number",
                         isPhone: true,
+                        validator: checkValidPhone,
                         isPassword: false),
                   ),
                   SizedBox(
                     width: kDefaultMargin.sw,
                   ),
                   CustomButton(
-                      onClick: () => signUpController.callOtp(),
+                      onClick: () {
+                        if (_key.currentState!.validate()) {
+                          signUpController.getOtp(
+                              phone: phoneController.text, context: context);
+                        }
+                      },
                       title: "Get Otp",
                       bgColor: Theme.of(context).colorScheme.secondary,
                       textColor: Theme.of(context).colorScheme.onPrimary,
@@ -73,7 +80,13 @@ class BuildOtpCard extends StatelessWidget {
                   ? SizedBox(
                       height: 0.06.sh,
                       child: CustomButton(
-                          onClick: () => print("Hello world"),
+                          onClick: () {
+                            if (_key.currentState!.validate()) {
+                              signUpController.confirmOtp(
+                                  otpCode: otpController.text,
+                                  context: context);
+                            }
+                          },
                           title: "Confirm Otp",
                           bgColor: Theme.of(context).colorScheme.secondary,
                           textColor: Theme.of(context).colorScheme.onPrimary,
@@ -81,7 +94,7 @@ class BuildOtpCard extends StatelessWidget {
                           iconSize: 20,
                           isIcon: false),
                     )
-                  : SizedBox(),
+                  : const SizedBox(),
             ],
           ),
         ),

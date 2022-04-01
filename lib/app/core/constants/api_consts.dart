@@ -8,3 +8,5 @@ const String zThreeD = "sub-category/4/threed";
 const String zBetThreeD = "betting-mobile";
 const String zTwoD = "sub-category/2/thai-twod";
 const String zOtpRequest = "sendOtp";
+const String zOtpVerify = "verifyOtp";
+const String zRegister = "register";

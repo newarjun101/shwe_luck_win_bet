@@ -72,11 +72,32 @@ class AuthRepo {
   }
 
   ///will use to request otp
-  Future<ApiResult<LoginResponseModel>> opt(body) async {
+  Future<ApiResult<String>> optRequestResponse({apiRoute, body}) async {
     try {
       ApiResponse response =
-          await _apiBaseHelper.post(zOtpRequest, body, isHeader: false);
+          await _apiBaseHelper.post(apiRoute, body, isHeader: false);
+      print(response.mData);
 
+      if (response.status == Status.eCOMPLETED) {
+        return ApiResult(Status.eCOMPLETED, "Success", jsonEncode(response.mData));
+      } else {
+        return ApiResult(Status.eERROR, response.message,  jsonEncode(response.mData));
+      }
+    } catch (e) {
+      return ApiResult(
+        Status.eERROR,
+        e.toString(),
+       e.toString()
+      );
+    }
+    throw Exception();
+  }
+
+///to register user data after phone and otp confirm
+  Future<ApiResult<dynamic>> userDataRegister(body) async {
+    try {
+      ApiResponse response =
+      await _apiBaseHelper.post(zLogin, body, isHeader: false);
       LoginResponseModel model = loginResponseModelFromJson(response.mData);
       if (response.status == Status.eCOMPLETED) {
         return ApiResult(Status.eCOMPLETED, "Success", model);
