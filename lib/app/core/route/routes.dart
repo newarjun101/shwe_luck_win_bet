@@ -54,6 +54,7 @@ class Routes {
     GetPage(
       name: Pages.lOtp,
       page: () => const OtpScreen(),
+      binding: SignUpScreenBinding()
     ),
     GetPage(
       name: Pages.lAccountSuccess,

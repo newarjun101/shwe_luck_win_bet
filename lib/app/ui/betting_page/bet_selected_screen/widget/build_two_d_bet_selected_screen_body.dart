@@ -47,7 +47,7 @@ class BuildTwoDBetSelectedBody extends StatelessWidget {
                 borderRadius: BorderRadius.circular(4.h)),
             color: Theme.of(context).colorScheme.secondary,
             onPressed: () {
-              //  controller.bettingThreeD(context);
+                controller.bettingTwoD(context);
               controller.checkBySelectedItem();
             },
             child: Text(

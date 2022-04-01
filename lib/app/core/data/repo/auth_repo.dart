@@ -24,7 +24,7 @@ class AuthRepo {
   Future<ApiResult<LoginResponseModel>> login(body) async {
     try {
       ApiResponse response =
-          await _apiBaseHelper.post(LOGIN, body, isHeader: false);
+          await _apiBaseHelper.post(zLogin, body, isHeader: false);
 
       LoginResponseModel model = loginResponseModelFromJson(response.mData);
       if (response.status == Status.eCOMPLETED) {
@@ -45,7 +45,7 @@ class AuthRepo {
   Future<ApiResult<ProfileModel>> getProfile() async {
     try {
       ApiResponse response =
-          await _apiBaseHelper.getData(profile, isHeader: true);
+          await _apiBaseHelper.getData(zProfile, isHeader: true);
       Map mMap = jsonDecode(response.mData);
       ProfileModel model = profileModelFromJson(jsonEncode(mMap["data"]));
 
@@ -57,7 +57,39 @@ class AuthRepo {
       }
     } catch (e) {
       debugPrint("catch error on Paymetn Repo ${e.toString()}");
-      return ApiResult(Status.eERROR, e.toString(),ProfileModel(profileImage: "", name: '', userCode: '', refeeralCode: null, id: -1, phone: '', balance: ''));
+      return ApiResult(
+          Status.eERROR,
+          e.toString(),
+          ProfileModel(
+              profileImage: "",
+              name: '',
+              userCode: '',
+              refeeralCode: null,
+              id: -1,
+              phone: '',
+              balance: ''));
     }
+  }
+
+  ///will use to request otp
+  Future<ApiResult<LoginResponseModel>> opt(body) async {
+    try {
+      ApiResponse response =
+          await _apiBaseHelper.post(zOtpRequest, body, isHeader: false);
+
+      LoginResponseModel model = loginResponseModelFromJson(response.mData);
+      if (response.status == Status.eCOMPLETED) {
+        return ApiResult(Status.eCOMPLETED, "Success", model);
+      } else {
+        return ApiResult(Status.eERROR, response.message, model);
+      }
+    } catch (e) {
+      return ApiResult(
+        Status.eERROR,
+        e.toString(),
+        _model,
+      );
+    }
+    throw Exception();
   }
 }
