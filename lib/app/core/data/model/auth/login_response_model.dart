@@ -28,8 +28,8 @@ class LoginResponseModel {
     result: json["result"],
     status: json["status"],
     message: json["message"],
-    data: Data?.fromJson(json["data"]) ,
-    token: json["token"]!,
+    data: Data.fromJson(json["data"]?? {}),
+    token: json["token"]??"",
   );
 
   Map<String, dynamic> toJson() => {
@@ -49,7 +49,7 @@ class Data {
   final int userId;
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
-    userId: json["user_id"],
+    userId: json["user_id"]??-1,
   );
 
   Map<String, dynamic> toJson() => {

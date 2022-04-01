@@ -33,30 +33,29 @@ class LoginScreenController extends GetxController {
     Map body = {"phone": phone, "password": password};
 
     try {
-      customDialog(context, "Loading", Text("Loading"));
+      customDialog(context, "Please Wait",const SizedBox( height: 35,width: 20,child: Center(child: const CircularProgressIndicator())));
       isLoginError.value = true;
       isLoginSuccess.value = false;
       ApiResult<LoginResponseModel> result = await _authRepo.login(body);
+      print(result.mData.message);
       if (result.status == Status.eCOMPLETED) {
         isLoginError.value = false;
         isLoginSuccess.value = true;
         errorMessage.value = "";
         box.write(TOKEN,result.mData.token);
         box.write(USER_ID,result.mData.data?.userId);
-        print(box.read(TOKEN));
         Get.back();
         print("login success");
-        Get.offAndToNamed(Pages.lINITIAL);
+    //    Get.offAndToNamed(Pages.lINITIAL);
       } else {
         Get.back();
-        print("login else error ${result.errorMessage}");
         isLoginError.value = true;
         isLoginSuccess.value = false;
-        errorMessage.value = result.errorMessage;
+        print( result.mData.message);
+        errorMessage.value = result.mData.message;
       }
     } catch (e) {
       Get.back();
-      print("error catch ${e.toString()}");
       isLoginSuccess.value = false;
       isLoginError.value = true;
       errorMessage.value = e.toString();

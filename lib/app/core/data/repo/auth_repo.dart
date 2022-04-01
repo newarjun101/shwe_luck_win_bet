@@ -27,10 +27,10 @@ class AuthRepo {
           await _apiBaseHelper.post(zLogin, body, isHeader: false);
 
       LoginResponseModel model = loginResponseModelFromJson(response.mData);
-      if (response.status == Status.eCOMPLETED) {
+      if (model.status == 200) {
         return ApiResult(Status.eCOMPLETED, "Success", model);
       } else {
-        return ApiResult(Status.eERROR, response.message, model);
+        return ApiResult(Status.eERROR, model.message, model);
       }
     } catch (e) {
       return ApiResult(
@@ -39,7 +39,6 @@ class AuthRepo {
         _model,
       );
     }
-    throw Exception();
   }
 
   Future<ApiResult<ProfileModel>> getProfile() async {

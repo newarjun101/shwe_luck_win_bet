@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/extension/extension_form_validate.dart';
+import 'package:shwe_luck_win_bet/app/core/local_%20widget/custom_button.dart';
 import 'package:shwe_luck_win_bet/app/core/local_%20widget/custom_dialog.dart';
 import 'package:shwe_luck_win_bet/app/module/controller/login_screen_controller.dart';
 import '../../../../core/constants/default_values.dart';
@@ -48,41 +49,28 @@ class BuildLoginCard extends StatelessWidget {
                 validator: checkIsEmpty,
                 isPassword: true),
             SizedBox(
+              height: 8.h,
+            ),
+            Obx(()=>         loginController.isLoginError.isTrue?
+            Text(loginController.errorMessage.toString(),style: const TextStyle(color: Colors.red,fontWeight: FontWeight.bold),): const SizedBox(),),
+
+            SizedBox(
               height: kDefaultMargin.sh,
             ),
-            MaterialButton(
-              minWidth: double.infinity,
-              height: 0.068.sh,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(4.h)),
-              color: Theme.of(context).colorScheme.secondary,
-              onPressed: () {
-                loginController.login(
-                    phone: userNameController.text,
-                    password: passwordController.text,context: context);
-               /* if (_key.currentState!.validate()) {
-
-                  customDialog(
-                      context,
-                      "Loading",
-                      const SizedBox(
-                          width: 10,
-                          height: 20,
-                          child: Center(child: CircularProgressIndicator())));
-
-
-                  Get.back();
-                  // Get.toNamed(Pages.lOtp);
-                }*/
-              },
-              child: Text(
-                "လော့အင်ဝင်မည်",
-                style: TextStyle(
-                    //     color: Theme.of(context).colorScheme.primaryContainer,
-                    fontSize: kLargeFontSize16.sp,
-                    fontWeight: FontWeight.bold),
-              ),
-            ),
+            CustomButton(
+                onClick: () {
+                  if (_key.currentState!.validate()) {
+                    loginController.login(
+                        phone: userNameController.text,
+                        password: passwordController.text,context: context);
+                  }
+                },
+                title: "Get Otp",
+                bgColor: Theme.of(context).colorScheme.secondary,
+                textColor: Theme.of(context).colorScheme.onPrimary,
+                radius: 4,
+                iconSize: 20,
+                isIcon: false),
             SizedBox(
               height: 20.h,
             )
