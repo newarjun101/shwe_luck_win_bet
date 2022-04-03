@@ -177,6 +177,6 @@ class ApiBaseHelper {
   }
 
   initData() {
-    baseUrl = "$BASE_URL";
+    baseUrl = "$zBaseUrl";
   }
 }

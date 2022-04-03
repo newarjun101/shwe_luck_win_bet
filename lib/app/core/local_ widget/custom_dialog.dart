@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shwe_luck_win_bet/app/core/constants/default_values.dart';
 
 customDialog(context, String title, Widget child) {
   return showDialog(
       context: context,
-      builder: (BuildContext context) {
+
+      builder: (BuildContext context){
         return AlertDialog(
-          title: Text(
-            title,
-            textAlign: TextAlign.center,
-          ),
-          actions:  <Widget>[child],
+          backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+
+          title: Center(child: Text(title,style: TextStyle(fontSize: kLargeFontSize16.sp,fontWeight: FontWeight.bold),)),
+          content: SizedBox(
+            height: 40,
+              width: 20,
+              child: Center(child: child)),
         );
-      });
+      }
+  );
 }

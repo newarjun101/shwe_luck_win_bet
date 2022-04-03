@@ -29,22 +29,6 @@ class CatagoryButton extends StatelessWidget {
       child: FittedBox(
         child: Row(
           children: [
-         /*   CustomButton(
-              textColor: Theme.of(context).colorScheme.onPrimary,
-              title: '0 - 100',
-              bgColor: Theme.of(context).colorScheme.primaryVariant,
-              onClick: () {
-
-                Get.toNamed(Pages.lOffDay);
-              },
-              radius: 0.01.sw,
-              icon: Icons.keyboard_arrow_down_rounded,
-              iconSize: kLargeFontSize16.sp,
-              isIcon: true,
-            ),
-            const SizedBox(
-              width: 4,
-            ),*/
             CustomButton(
               textColor: Theme.of(context).colorScheme.onPrimary,
               title: 'Quick',
@@ -64,7 +48,7 @@ class CatagoryButton extends StatelessWidget {
               textColor: Theme.of(context).colorScheme.secondaryVariant,
               title: 'R',
               bgColor: Colors.green,
-              onClick: () {controller.removeSelectedItem();},
+              onClick: () {controller.makeR();},
               radius: 0.01.sw,
               icon: Icons.paid,
               iconSize: kLargeFontSize16.sp,

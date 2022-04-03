@@ -19,13 +19,15 @@ class TowDNumberList extends StatelessWidget {
             ? SizedBox(
                 height: 30.h,
                 width: 30.h,
-                child: const CircularProgressIndicator())
+                child: const Center(child: CircularProgressIndicator()))
             : GridView.builder(
                 itemCount: controller.mTwoDList.length,
                 itemBuilder: (context, index) {
                   return Container(
                       decoration: BoxDecoration(
-                                color: controller.mTwoDList[index].isSelected== true ?Theme.of(context).colorScheme.secondary: Color(0xff0F2810).withOpacity(0.9) ,
+                          color: controller.mTwoDList[index].isSelected == true
+                              ? Theme.of(context).colorScheme.secondary
+                              : Color(0xff0F2810).withOpacity(0.9),
                           borderRadius: BorderRadius.circular(0.009.sh),
                           border:
                               Border.all(color: Colors.grey.withOpacity(0.8))),

@@ -20,7 +20,7 @@ class PaymentRepo {
   ///get all payment type
   Future<ApiResult<List<PaymentTypeModel>>> getPaymentType() async {
     try {
-      ApiResponse response = await _apiBaseHelper.getData(paymentMethod);
+      ApiResponse response = await _apiBaseHelper.getData(zPaymentMethod);
       List<PaymentTypeModel> mType = paymentTypeModelFromJson(response.mData);
       if (response.status == Status.eCOMPLETED) {
         return ApiResult(Status.eCOMPLETED, "", mType);
@@ -37,7 +37,7 @@ class PaymentRepo {
   Future<ApiResult<String>> cashInRequest(body) async {
     try {
       ApiResponse response =
-          await _apiBaseHelper.post(cashIn, body, isHeader: true);
+          await _apiBaseHelper.post(zCashIn, body, isHeader: true);
 
       Map<String, dynamic> mMap = jsonDecode(response.mData);
       if (response.status == Status.eCOMPLETED) {
@@ -60,7 +60,7 @@ class PaymentRepo {
   Future<ApiResult<String>> cashOutRequest(body) async {
     try {
       ApiResponse response =
-          await _apiBaseHelper.post(cashOut, body, isHeader: true);
+          await _apiBaseHelper.post(zCashOut, body, isHeader: true);
 
       Map<String, dynamic> mMap = jsonDecode(response.mData);
       if (response.status == Status.eCOMPLETED) {

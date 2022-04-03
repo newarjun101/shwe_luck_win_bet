@@ -21,7 +21,7 @@ class ThreeDRepo {
   Future<ApiResult<ThreeDModel>> getThreeD() async {
     try {
       ApiResponse response =
-          await _apiBaseHelper.getData(rThreeD, isHeader: false);
+          await _apiBaseHelper.getData(zThreeD, isHeader: false);
 
       ThreeDModel mThreeD = threeDModelFromJson(response.mData);
       if (response.status == Status.eCOMPLETED) {
@@ -39,7 +39,7 @@ class ThreeDRepo {
   Future<ApiResult<String>> betThreeD(body) async {
     try {
       ApiResponse response =
-      await _apiBaseHelper.post(rBetThreeD, body, isHeader: true);
+      await _apiBaseHelper.post(zBetThreeD, body, isHeader: true);
 
       Map<String, dynamic> mMap = jsonDecode(response.mData);
       if (response.status == Status.eCOMPLETED) {
