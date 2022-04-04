@@ -34,8 +34,10 @@ class CatagoryButton extends StatelessWidget {
               title: 'Quick',
               bgColor: Theme.of(context).colorScheme.primaryVariant,
               onClick: () {
-
-                quickBettingBottomSheet(context : context,child : const QuickBettingList(),height: 0.7);
+                quickBettingBottomSheet(
+                    context: context,
+                    child: const QuickBettingList(),
+                    height: 0.7);
               },
               radius: 0.01.sw,
               iconSize: kLargeFontSize16.sp,
@@ -48,7 +50,9 @@ class CatagoryButton extends StatelessWidget {
               textColor: Theme.of(context).colorScheme.secondaryVariant,
               title: 'R',
               bgColor: Colors.green,
-              onClick: () {controller.makeR();},
+              onClick: () {
+                controller.makeR();
+              },
               radius: 0.01.sw,
               icon: Icons.paid,
               iconSize: kLargeFontSize16.sp,
@@ -57,9 +61,27 @@ class CatagoryButton extends StatelessWidget {
             const SizedBox(
               width: 4,
             ),
-           SizedBox(
-             width: 0.33.sw,
-             height: 0.056.sh,
+            SizedBox(
+              width: 0.2.sw,
+              child: CustomButton(
+                textColor: Theme.of(context).colorScheme.primaryContainer,
+                title: '',
+                bgColor: Colors.red,
+                onClick: () {
+                  controller.clearAllSelectedItem();
+                },
+                radius: 0.01.sw,
+                icon: Icons.delete_forever_rounded,
+                iconSize: kLargeFontSize16.sp,
+                isIcon: true,
+              ),
+            ),
+            const SizedBox(
+              width: 4,
+            ),
+            SizedBox(
+              width: 0.33.sw,
+              height: 0.056.sh,
               child: CustomTextFormField(
                   controller: passwordController,
                   icon: Icons.paid,
@@ -79,16 +101,10 @@ class CatagoryButton extends StatelessWidget {
                   title: 'ထိုးမည်',
                   bgColor: Theme.of(context).colorScheme.secondary,
                   onClick: () {
-                   /* if(controller.text.length<3) {
-
-                      controller.price.value = 100;
-                    } else {
-                      controller.price.value = int.parse(priceController.text);
-                    }*/
-                    if (controller.mSelectedItem.isNotEmpty && controller.price.value !=null ) {
+                    if (controller.mSelectedItem.isNotEmpty &&
+                        controller.price.value != null) {
                       Get.toNamed(Pages.lTowDSelected);
                       print("hello world");
-
                     }
                   },
                   radius: 0.01.sw,
@@ -102,13 +118,13 @@ class CatagoryButton extends StatelessWidget {
                       radius: 10.h,
                       backgroundColor: Colors.red,
                       child: Obx(() => Text(
-                        controller.mSelectedItem.length.toString(),
-                        style: TextStyle(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .primaryContainer,
-                            fontSize: kSmallFontSize12.sp),
-                      ))),
+                            controller.mSelectedItem.length.toString(),
+                            style: TextStyle(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .primaryContainer,
+                                fontSize: kSmallFontSize12.sp),
+                          ))),
                 )
               ],
             ),

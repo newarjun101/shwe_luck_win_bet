@@ -31,15 +31,18 @@ class BuildCashInScreenBody extends StatelessWidget {
             SizedBox(
               height: 0.07.sh,
             ),
-            CircleAvatar(
+           CircleAvatar(
                 radius: 60.h,
                 backgroundColor: Theme.of(context).primaryColor,
                 child: Center(
-                    child: Icon(
+                    child:Obx(()=>  paymentController.isPaymentSelected.isFalse ? Icon(
                   Icons.paid_outlined,
                   size: 50.sp,
                   color: Theme.of(context).colorScheme.secondary,
-                ))),
+                ) : Text("${paymentController.mPaymentList[paymentController.mSelectedPaymentIndex].name}")
+                ),
+           ),
+           ),
             SizedBox(
               height: kDefaultMargin.sh,
             ),

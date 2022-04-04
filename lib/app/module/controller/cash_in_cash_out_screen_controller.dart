@@ -14,7 +14,8 @@ import '../../core/local_ widget/custom_dialog.dart';
 class CashInCashOutScreenController extends GetxController {
   late PaymentRepo _paymentRepo;
   RxList<PaymentTypeModel> mPaymentList = RxList([]);
-  RxInt mSelectedPaymentIndex = 0.obs;
+  late int mSelectedPaymentIndex =-1;
+  RxBool isPaymentSelected = false.obs;
   RxBool haveLoading = false.obs;
 
   showPaymentTypeWidget(context) {
@@ -38,7 +39,8 @@ class CashInCashOutScreenController extends GetxController {
   }
 
   selectPaymentType(index) {
-    mSelectedPaymentIndex.value = index;
+    mSelectedPaymentIndex = index;
+    isPaymentSelected.value = true;
     Get.back();
     debugPrint(index.toString());
   }
@@ -51,7 +53,7 @@ class CashInCashOutScreenController extends GetxController {
       required String phone}) async {
     Map test = {
       "user_id": GetStorage().read(USER_ID),
-      "payment_id": mSelectedPaymentIndex.value,
+      "payment_id": mSelectedPaymentIndex,
       "account_name": name,
       "transaction_id": transitionId,
       "amount": amount,
@@ -82,7 +84,7 @@ class CashInCashOutScreenController extends GetxController {
       required String phone}) async {
     Map body = {
       "user_id": GetStorage().read(USER_ID),
-      "payment_id": mSelectedPaymentIndex.value,
+      "payment_id": mSelectedPaymentIndex,
       "account_name": name,
       "amount": amount,
       "user_phone": phone
