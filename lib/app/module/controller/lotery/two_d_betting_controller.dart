@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -77,7 +78,7 @@ class TwoDBettingController extends GetxController {
         mSelectedItem.remove(selectedItem);
       }
     }
-    checkBySelectedItem();
+    //  checkBySelectedItem();
     update();
   }
 
@@ -91,366 +92,220 @@ class TwoDBettingController extends GetxController {
       makeR = mSelectedItem[i].betNumber.split('').reversed.join();
       rNum.add(makeR);
     }
-
     for (int i = 0; i < mTwoDList.length; i++) {
       for (String num in rNum) {
-        if (mTwoDList[i].betNumber.toString() == num.toString()) {
-          mTest.add(TwoDListModel(
-              id: mTwoDList[i].id,
-              betNumber: mTwoDList[i].betNumber,
-              hotAmountLimit: mTwoDList[i].hotAmountLimit,
-              defaultAmount: mTwoDList[i].defaultAmount,
-              subCategoryId: mTwoDList[i].subCategoryId,
-              closeNumber: mTwoDList[i].closeNumber,
-              currentLimit: mTwoDList[i].currentLimit,
-              createdAt: mTwoDList[i].createdAt,
-              updatedAt: mTwoDList[i].updatedAt,
-              status: mTwoDList[i].status,
-              isSelected: true));
+        if (mTwoDList[i].betNumber.toString() == num.toString() &&
+            mTwoDList[i].isSelected != true) {
+          mTwoDList[i].isSelected = true;
+          mTest.add(mTwoDList[i]);
         }
       }
     }
-    mSelectedItem.clear();
-    mSelectedItem.addAll(mTest);
-    checkBySelectedItem();
-
+   // mSelectedItem.clear();
+      mSelectedItem.addAll(mTest);
+  //  checkBySelectedItem();
     update();
   }
 
-  getSelectedIndex(index) {
-    print("working");
+  clearAllSelectedItem() {
 
+  }
+
+  getSelectedIndex(index) {
     mTwoDList[index].isSelected = !mTwoDList[index].isSelected;
     print(mTwoDList[index].isSelected);
     if (mTwoDList[index].isSelected == true) {
-      mTwoDList[index].defaultAmount = price.value.toString();
+      //  mTwoDList[index].defaultAmount = price.value.toString();
       mSelectedItem.add(mTwoDList[index]);
     } else {
-      //  removeSelectedIndex(mTwoDList[index], index);
+      mSelectedItem.remove(TwoDListModel(
+          id: mTwoDList[index].id,
+          betNumber: mTwoDList[index].betNumber,
+          hotAmountLimit: mTwoDList[index].hotAmountLimit,
+          defaultAmount: mTwoDList[index].defaultAmount,
+          subCategoryId: mTwoDList[index].subCategoryId,
+          closeNumber: mTwoDList[index].closeNumber,
+          currentLimit: mTwoDList[index].currentLimit,
+          createdAt: mTwoDList[index].createdAt,
+          updatedAt: mTwoDList[index].updatedAt,
+          status: mTwoDList[index].status,
+          isSelected: true));
     }
-    // checkBySelectedItem();
+    checkBySelectedItem();
     update();
   }
 
   checkBySelectedItem() {
-    RxSet<TwoDListModel> mmSelected = RxSet({}
-    );
+    RxList<TwoDListModel> mmSelected = RxList([]);
     for (int i = 0; i < mTwoDList.length; i++) {
       for (TwoDListModel selectedItem in mSelectedItem) {
-        if (mTwoDList[i].id == selectedItem.id) {
+        if (mTwoDList[i].id == selectedItem.id &&
+            mTwoDList[i].isSelected == true) {
           mTwoDList[i].isSelected = true;
           mmSelected.add(selectedItem);
-        } else {
-          // mTwoDList[i].isSelected = false;
         }
       }
     }
+
     mSelectedItem.clear();
     mSelectedItem.addAll(mmSelected);
+    update();
   }
 
   ///remove item from selected item
   removeSelectedItem() {
-   /* RxList<TwoDListModel> mmSelected = RxList([]);
+    //  RxList<TwoDListModel> mmSelected = RxList([]);
     for (int i = 0; i < mTwoDList.length; i++) {
       for (TwoDListModel selectedItem in mSelectedItem) {
         if (mTwoDList[i].id == selectedItem.id) {
-
           mTwoDList[i].isSelected = false;
         }
       }
     }
-    mSelectedItem.clear();
-    update();*/
-  }
-
-  firstNumberGreaterThanSecond() {
-    removeSelectedItem();
-    print("hahahh");
-    String value;
-    RxList<TwoDListModel> mmSelected = RxList([]);
-    for (int i = 0; i < mTwoDList.length; i++) {
-      value = mTwoDList[i].betNumber.toString();
-      if (int.parse(value[0]) > int.parse(value[1])  &&mTwoDList[i].isSelected==false ) {
-        mmSelected.add(TwoDListModel(
-            id: mTwoDList[i].id,
-            betNumber: mTwoDList[i].betNumber,
-            hotAmountLimit: mTwoDList[i].hotAmountLimit,
-            defaultAmount: mTwoDList[i].defaultAmount,
-            subCategoryId: mTwoDList[i].subCategoryId,
-            closeNumber: mTwoDList[i].closeNumber,
-            currentLimit: mTwoDList[i].currentLimit,
-            createdAt: mTwoDList[i].createdAt,
-            updatedAt: mTwoDList[i].updatedAt,
-            status: mTwoDList[i].status,
-            isSelected: true));
-      }
-    }
-    mSelectedItem.addAll(mmSelected);
-    checkBySelectedItem();
     update();
-
-    print(mSelectedItem.length);
   }
 
-  secondNumberGreaterThanFirst() {
-    removeSelectedItem();
-    print("hahahh");
-    String value;
-    RxList<TwoDListModel> mmSelected = RxList([]);
-    for (int i = 0; i < mTwoDList.length; i++) {
-      value = mTwoDList[i].betNumber.toString();
-      if (int.parse(value[0]) > int.parse(value[1]) &&mTwoDList[i].isSelected==false ) {
-        mmSelected.add(TwoDListModel(
-            id: mTwoDList[i].id,
-            betNumber: mTwoDList[i].betNumber,
-            hotAmountLimit: mTwoDList[i].hotAmountLimit,
-            defaultAmount: mTwoDList[i].defaultAmount,
-            subCategoryId: mTwoDList[i].subCategoryId,
-            closeNumber: mTwoDList[i].closeNumber,
-            currentLimit: mTwoDList[i].currentLimit,
-            createdAt: mTwoDList[i].createdAt,
-            updatedAt: mTwoDList[i].updatedAt,
-            status: mTwoDList[i].status,
-            isSelected: true));
-      }
-    }
-    mSelectedItem.addAll(mmSelected);
-    checkBySelectedItem();
-    update();
-    print(mSelectedItem.length);
-  }
+  firstNumberGreaterThanSecond() {}
+
+  secondNumberGreaterThanFirst() {}
 
   oddNumber() {
-    removeSelectedItem();
-
+    //  removeSelectedItem();
     RxList<TwoDListModel> mmSelected = RxList([]);
     for (int i = 0; i < mTwoDList.length; i++) {
-      if (int.parse(mTwoDList[i].betNumber) % 2 != 0) {
-        mmSelected.add(TwoDListModel(
-            id: mTwoDList[i].id,
-            betNumber: mTwoDList[i].betNumber,
-            hotAmountLimit: mTwoDList[i].hotAmountLimit,
-            defaultAmount: mTwoDList[i].defaultAmount,
-            subCategoryId: mTwoDList[i].subCategoryId,
-            closeNumber: mTwoDList[i].closeNumber,
-            currentLimit: mTwoDList[i].currentLimit,
-            createdAt: mTwoDList[i].createdAt,
-            updatedAt: mTwoDList[i].updatedAt,
-            status: mTwoDList[i].status,
-            isSelected: true));
+      if (int.parse(mTwoDList[i].betNumber) % 2 != 0 &&
+          mTwoDList[i].isSelected == false) {
+        mTwoDList[i].isSelected = true;
+        mmSelected.add(mTwoDList[i]);
       }
     }
     mSelectedItem.addAll(mmSelected);
-    checkBySelectedItem();
-    print(mSelectedItem.length);
+//    checkBySelectedItem();
+    update();
   }
 
   evenNumber() {
-    removeSelectedItem();
-
     RxList<TwoDListModel> mmSelected = RxList([]);
     for (int i = 0; i < mTwoDList.length; i++) {
-      if (int.parse(mTwoDList[i].betNumber) % 2 == 0) {
-        mmSelected.add(TwoDListModel(
-            id: mTwoDList[i].id,
-            betNumber: mTwoDList[i].betNumber,
-            hotAmountLimit: mTwoDList[i].hotAmountLimit,
-            defaultAmount: mTwoDList[i].defaultAmount,
-            subCategoryId: mTwoDList[i].subCategoryId,
-            closeNumber: mTwoDList[i].closeNumber,
-            currentLimit: mTwoDList[i].currentLimit,
-            createdAt: mTwoDList[i].createdAt,
-            updatedAt: mTwoDList[i].updatedAt,
-            status: mTwoDList[i].status,
-            isSelected: true));
+      if (int.parse(mTwoDList[i].betNumber) % 2 == 0 &&
+          mTwoDList[i].isSelected == false) {
+        mTwoDList[i].isSelected = true;
+        mmSelected.add(mTwoDList[i]);
       }
     }
     mSelectedItem.addAll(mmSelected);
-    checkBySelectedItem();
-    print(mSelectedItem.length);
+    update();
   }
 
   bothEven() {
-    removeSelectedItem();
-    print("hahahh");
     String value;
     RxList<TwoDListModel> mmSelected = RxList([]);
     for (int i = 0; i < mTwoDList.length; i++) {
       value = mTwoDList[i].betNumber.toString();
-      if (int.parse(value[0]) % 2 == 0 && int.parse(value[1]) % 2 == 0) {
-        mmSelected.add(TwoDListModel(
-            id: mTwoDList[i].id,
-            betNumber: mTwoDList[i].betNumber,
-            hotAmountLimit: mTwoDList[i].hotAmountLimit,
-            defaultAmount: mTwoDList[i].defaultAmount,
-            subCategoryId: mTwoDList[i].subCategoryId,
-            closeNumber: mTwoDList[i].closeNumber,
-            currentLimit: mTwoDList[i].currentLimit,
-            createdAt: mTwoDList[i].createdAt,
-            updatedAt: mTwoDList[i].updatedAt,
-            status: mTwoDList[i].status,
-            isSelected: true));
+      if (int.parse(value[0]) % 2 == 0 &&
+          int.parse(value[1]) % 2 == 0 &&
+          mTwoDList[i].isSelected == false) {
+        mTwoDList[i].isSelected = true;
+        mmSelected.add(mTwoDList[i]);
       }
     }
     mSelectedItem.addAll(mmSelected);
-    checkBySelectedItem();
-    print(mSelectedItem.length);
+    update();
   }
 
   bothOdd() {
-    removeSelectedItem();
-    print("hahahh");
     String value;
     RxList<TwoDListModel> mmSelected = RxList([]);
     for (int i = 0; i < mTwoDList.length; i++) {
       value = mTwoDList[i].betNumber.toString();
-      if (int.parse(value[0]) % 2 != 0 && int.parse(value[1]) % 2 != 0) {
-        mmSelected.add(TwoDListModel(
-            id: mTwoDList[i].id,
-            betNumber: mTwoDList[i].betNumber,
-            hotAmountLimit: mTwoDList[i].hotAmountLimit,
-            defaultAmount: mTwoDList[i].defaultAmount,
-            subCategoryId: mTwoDList[i].subCategoryId,
-            closeNumber: mTwoDList[i].closeNumber,
-            currentLimit: mTwoDList[i].currentLimit,
-            createdAt: mTwoDList[i].createdAt,
-            updatedAt: mTwoDList[i].updatedAt,
-            status: mTwoDList[i].status,
-            isSelected: true));
+      if (int.parse(value[0]) % 2 != 0 &&
+          int.parse(value[1]) % 2 != 0 &&
+          mTwoDList[i].isSelected == false) {
+        mTwoDList[i].isSelected = true;
+        mmSelected.add(mTwoDList[i]);
       }
     }
     mSelectedItem.addAll(mmSelected);
-    checkBySelectedItem();
-    print(mSelectedItem.length);
+    update();
   }
 
   firstEvenSecondOdd() {
-    removeSelectedItem();
-    print("hahahh");
     String value;
     RxList<TwoDListModel> mmSelected = RxList([]);
     for (int i = 0; i < mTwoDList.length; i++) {
       value = mTwoDList[i].betNumber.toString();
-      if (int.parse(value[0]) % 2 == 0 && int.parse(value[1]) % 2 != 0) {
-        mmSelected.add(TwoDListModel(
-            id: mTwoDList[i].id,
-            betNumber: mTwoDList[i].betNumber,
-            hotAmountLimit: mTwoDList[i].hotAmountLimit,
-            defaultAmount: mTwoDList[i].defaultAmount,
-            subCategoryId: mTwoDList[i].subCategoryId,
-            closeNumber: mTwoDList[i].closeNumber,
-            currentLimit: mTwoDList[i].currentLimit,
-            createdAt: mTwoDList[i].createdAt,
-            updatedAt: mTwoDList[i].updatedAt,
-            status: mTwoDList[i].status,
-            isSelected: true));
+      if (int.parse(value[0]) % 2 == 0 &&
+          int.parse(value[1]) % 2 != 0 &&
+          mTwoDList[i].isSelected == false) {
+        mTwoDList[i].isSelected = true;
+        mmSelected.add(mTwoDList[i]);
       }
     }
     mSelectedItem.addAll(mmSelected);
-    checkBySelectedItem();
-    print(mSelectedItem.length);
+    update();
   }
 
   firstOddSecondEven() {
-    removeSelectedItem();
+    ///  removeSelectedItem();
     String value;
     RxList<TwoDListModel> mmSelected = RxList([]);
     for (int i = 0; i < mTwoDList.length; i++) {
       value = mTwoDList[i].betNumber.toString();
-      if (int.parse(value[0]) % 2 != 0 && int.parse(value[1]) % 2 == 0) {
-        mmSelected.add(TwoDListModel(
-            id: mTwoDList[i].id,
-            betNumber: mTwoDList[i].betNumber,
-            hotAmountLimit: mTwoDList[i].hotAmountLimit,
-            defaultAmount: mTwoDList[i].defaultAmount,
-            subCategoryId: mTwoDList[i].subCategoryId,
-            closeNumber: mTwoDList[i].closeNumber,
-            currentLimit: mTwoDList[i].currentLimit,
-            createdAt: mTwoDList[i].createdAt,
-            updatedAt: mTwoDList[i].updatedAt,
-            status: mTwoDList[i].status,
-            isSelected: true));
+      if (int.parse(value[0]) % 2 != 0 &&
+          int.parse(value[1]) % 2 == 0 &&
+          mTwoDList[i].isSelected == false) {
+        mTwoDList[i].isSelected = true;
+        mmSelected.add(mTwoDList[i]);
       }
     }
     mSelectedItem.addAll(mmSelected);
-    checkBySelectedItem();
-    print(mSelectedItem.length);
+    update();
   }
 
   bothSameValue() {
-    removeSelectedItem();
+    //  removeSelectedItem();
     String value;
     RxList<TwoDListModel> mmSelected = RxList([]);
     for (int i = 0; i < mTwoDList.length; i++) {
       value = mTwoDList[i].betNumber.toString();
-      if (value[0] == value[1]) {
-        mmSelected.add(TwoDListModel(
-            id: mTwoDList[i].id,
-            betNumber: mTwoDList[i].betNumber,
-            hotAmountLimit: mTwoDList[i].hotAmountLimit,
-            defaultAmount: mTwoDList[i].defaultAmount,
-            subCategoryId: mTwoDList[i].subCategoryId,
-            closeNumber: mTwoDList[i].closeNumber,
-            currentLimit: mTwoDList[i].currentLimit,
-            createdAt: mTwoDList[i].createdAt,
-            updatedAt: mTwoDList[i].updatedAt,
-            status: mTwoDList[i].status,
-            isSelected: true));
+      if (value[0] == value[1] && mTwoDList[i].isSelected == false) {
+        mTwoDList[i].isSelected = true;
+        mmSelected.add(mTwoDList[i]);
       }
     }
     mSelectedItem.addAll(mmSelected);
-    checkBySelectedItem();
-    print(mSelectedItem.length);
+    update();
   }
 
   getByNumber({required String digit, bool? isFirstStart}) {
-    removeSelectedItem();
+    // removeSelectedItem();
     String value;
     RxList<TwoDListModel> mmSelected = RxList([]);
     for (int i = 0; i < mTwoDList.length; i++) {
       value = mTwoDList[i].betNumber.toString();
-      if (isFirstStart ?? false ? digit == value[0] : digit == value[1]) {
-        mmSelected.add(TwoDListModel(
-            id: mTwoDList[i].id,
-            betNumber: mTwoDList[i].betNumber,
-            hotAmountLimit: mTwoDList[i].hotAmountLimit,
-            defaultAmount: mTwoDList[i].defaultAmount,
-            subCategoryId: mTwoDList[i].subCategoryId,
-            closeNumber: mTwoDList[i].closeNumber,
-            currentLimit: mTwoDList[i].currentLimit,
-            createdAt: mTwoDList[i].createdAt,
-            updatedAt: mTwoDList[i].updatedAt,
-            status: mTwoDList[i].status,
-            isSelected: true));
+      if (isFirstStart ?? false
+          ? digit == value[0]
+          : digit == value[1] && mTwoDList[i].isSelected == false) {
+        mTwoDList[i].isSelected = true;
+        mmSelected.add(mTwoDList[i]);
       }
     }
     mSelectedItem.addAll(mmSelected);
-    checkBySelectedItem();
-    print(mSelectedItem.length);
+    update();
   }
 
   selectByLength({required int startLength, required int endLength}) {
-    removeSelectedItem();
+    //  removeSelectedItem();
     String value;
     RxList<TwoDListModel> mmSelected = RxList([]);
     for (int i = startLength; i <= endLength; i++) {
-      mmSelected.add(TwoDListModel(
-          id: mTwoDList[i].id,
-          betNumber: mTwoDList[i].betNumber,
-          hotAmountLimit: mTwoDList[i].hotAmountLimit,
-          defaultAmount: mTwoDList[i].defaultAmount,
-          subCategoryId: mTwoDList[i].subCategoryId,
-          closeNumber: mTwoDList[i].closeNumber,
-          currentLimit: mTwoDList[i].currentLimit,
-          createdAt: mTwoDList[i].createdAt,
-          updatedAt: mTwoDList[i].updatedAt,
-          status: mTwoDList[i].status,
-          isSelected: true));
+      if (mTwoDList[i].isSelected == false) {
+        mTwoDList[i].isSelected = true;
+        mmSelected.add(mTwoDList[i]);
+      }
     }
     mSelectedItem.addAll(mmSelected);
-    checkBySelectedItem();
-    print(mSelectedItem.length);
+    update();
   }
 
   ///3d htoe meee

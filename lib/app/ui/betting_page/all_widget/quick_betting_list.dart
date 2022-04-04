@@ -32,11 +32,14 @@ class QuickBettingList extends StatelessWidget {
         Wrap(
           children: [
             QuickBetButtonRow(
-                title: 'ကြီး',
-                onPress: () => controller.firstNumberGreaterThanSecond()),
+              title: 'ကြီး',
+              onPress: () =>
+                  controller.selectByLength(startLength: 50, endLength: 99),
+            ),
             QuickBetButtonRow(
                 title: 'ငယ်',
-                onPress: () => controller.secondNumberGreaterThanFirst()),
+                onPress: () =>
+                    controller.selectByLength(startLength: 0, endLength: 49)),
             QuickBetButtonRow(
                 title: 'စုံ', onPress: () => controller.evenNumber()),
             QuickBetButtonRow(
@@ -51,7 +54,7 @@ class QuickBettingList extends StatelessWidget {
             QuickBetButtonRow(title: 'မမ', onPress: () => controller.bothOdd()),
             QuickBetButtonRow(
                 title: 'အပူး', onPress: () => controller.bothSameValue()),
-            //  ,  , , ,
+            //
           ],
         ),
         SizedBox(
