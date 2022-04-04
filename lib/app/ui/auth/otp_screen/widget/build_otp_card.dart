@@ -72,7 +72,7 @@ class BuildOtpCard extends StatelessWidget {
                       icon: Icons.phone_iphone_sharp,
                       hint: "Otp",
                       isPassword: false)
-                  : SizedBox(),
+                  : Text(signUpController.errorMessage.toString(),style: TextStyle(color: Theme.of(context).colorScheme.primaryContainer),),
               SizedBox(
                 height: kDefaultMargin.sh,
               ),

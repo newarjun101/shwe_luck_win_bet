@@ -133,7 +133,8 @@ class TwoDBettingController extends GetxController {
   }
 
   checkBySelectedItem() {
-    RxList<TwoDListModel> mmSelected = RxList([]);
+    RxSet<TwoDListModel> mmSelected = RxSet({}
+    );
     for (int i = 0; i < mTwoDList.length; i++) {
       for (TwoDListModel selectedItem in mSelectedItem) {
         if (mTwoDList[i].id == selectedItem.id) {
@@ -150,17 +151,17 @@ class TwoDBettingController extends GetxController {
 
   ///remove item from selected item
   removeSelectedItem() {
-    RxList<TwoDListModel> mmSelected = RxList([]);
+   /* RxList<TwoDListModel> mmSelected = RxList([]);
     for (int i = 0; i < mTwoDList.length; i++) {
       for (TwoDListModel selectedItem in mSelectedItem) {
         if (mTwoDList[i].id == selectedItem.id) {
-          //  selectedItem.isSelected = false;
+
           mTwoDList[i].isSelected = false;
         }
       }
     }
     mSelectedItem.clear();
-    update();
+    update();*/
   }
 
   firstNumberGreaterThanSecond() {
@@ -170,7 +171,7 @@ class TwoDBettingController extends GetxController {
     RxList<TwoDListModel> mmSelected = RxList([]);
     for (int i = 0; i < mTwoDList.length; i++) {
       value = mTwoDList[i].betNumber.toString();
-      if (int.parse(value[0]) > int.parse(value[1])) {
+      if (int.parse(value[0]) > int.parse(value[1])  &&mTwoDList[i].isSelected==false ) {
         mmSelected.add(TwoDListModel(
             id: mTwoDList[i].id,
             betNumber: mTwoDList[i].betNumber,
@@ -187,6 +188,8 @@ class TwoDBettingController extends GetxController {
     }
     mSelectedItem.addAll(mmSelected);
     checkBySelectedItem();
+    update();
+
     print(mSelectedItem.length);
   }
 
@@ -197,7 +200,7 @@ class TwoDBettingController extends GetxController {
     RxList<TwoDListModel> mmSelected = RxList([]);
     for (int i = 0; i < mTwoDList.length; i++) {
       value = mTwoDList[i].betNumber.toString();
-      if (int.parse(value[0]) > int.parse(value[1])) {
+      if (int.parse(value[0]) > int.parse(value[1]) &&mTwoDList[i].isSelected==false ) {
         mmSelected.add(TwoDListModel(
             id: mTwoDList[i].id,
             betNumber: mTwoDList[i].betNumber,
@@ -214,6 +217,7 @@ class TwoDBettingController extends GetxController {
     }
     mSelectedItem.addAll(mmSelected);
     checkBySelectedItem();
+    update();
     print(mSelectedItem.length);
   }
 

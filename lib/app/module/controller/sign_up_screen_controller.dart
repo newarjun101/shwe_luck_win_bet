@@ -38,19 +38,22 @@ class SignUpScreenController extends GetxController {
     }
   }
 
-  callOtp() {
-    isOtp.value = true;
-  }
-///to get otp
+  ///to get otp
   Future<void> getOtp({required String phone, required context}) async {
     mPhone = phone;
     Map body = {"phone": phone};
 
-    print(body);
     try {
-      customDialog(context, "Loading", Text("Loading"));
+      customDialog(
+          context,
+          "Please Wait",
+          const SizedBox(
+              height: 35,
+              width: 20,
+              child: Center(child: CircularProgressIndicator())));
       isLoginError.value = true;
       isLoginSuccess.value = false;
+
       ApiResult result =
           await _authRepo.optRequestResponse(apiRoute: zOtpRequest, body: body);
       if (result.status == Status.eCOMPLETED) {
@@ -58,30 +61,42 @@ class SignUpScreenController extends GetxController {
         isLoginSuccess.value = true;
         isOtp.value = true;
         errorMessage.value = "";
+        isOtp.value = true;
+
         Get.back();
         print("login success");
         //     Get.offAndToNamed(Pages.lSignUp);
       } else {
         Get.back();
         print("login else error ${result.errorMessage}");
+        print(result.mData["message"]);
         isLoginError.value = true;
         isLoginSuccess.value = false;
-        errorMessage.value = result.errorMessage;
+        isOtp.value = false;
+        errorMessage.value = result.mData["message"];
       }
     } catch (e) {
       Get.back();
       print("error catch ${e.toString()}");
       isLoginSuccess.value = false;
       isLoginError.value = true;
+      isOtp.value = true;
       errorMessage.value = e.toString();
     }
   }
-/// to confirm opt
+
+  /// to confirm opt
   Future<void> confirmOtp({required String otpCode, required context}) async {
     Map body = {"code": otpCode};
 
     try {
-      customDialog(context, "Loading", Text("Loading"));
+      customDialog(
+          context,
+          "Please Wait",
+          const SizedBox(
+              height: 35,
+              width: 20,
+              child: Center(child: CircularProgressIndicator())));
       isLoginError.value = true;
       isLoginSuccess.value = false;
       ApiResult result =
@@ -91,6 +106,53 @@ class SignUpScreenController extends GetxController {
         isLoginSuccess.value = true;
         errorMessage.value = "";
         Get.back();
+        Get.toNamed(Pages.lSignUp);
+        //  Get.offAndToNamed(Pages.lSignUp);
+      } else {
+        Get.back();
+        isLoginError.value = true;
+        isLoginSuccess.value = false;
+        errorMessage.value = result.mData["message"] ?? "";
+        print(result.mData["message"]);
+      }
+    } catch (e) {
+      Get.back();
+      isLoginSuccess.value = false;
+      isLoginError.value = true;
+      errorMessage.value = "Error With Server";
+    }
+  }
+
+  /// to confirm opt
+  Future<void> registerConfirm(
+      {required String password,
+      required String name,
+      required context}) async {
+    Map body = {
+      "name": name,
+      "phone": mPhone,
+      "password": password,
+      "profile_image": ""
+    };
+    print(body);
+    try {
+      customDialog(
+          context,
+          "Please Wait",
+          const SizedBox(
+              height: 35,
+              width: 20,
+              child: Center(child: CircularProgressIndicator())));
+      isLoginError.value = true;
+      isLoginSuccess.value = false;
+      ApiResult result =
+          await _authRepo.optRequestResponse(apiRoute: zRegister, body: body);
+      if (result.status == Status.eCOMPLETED) {
+        isLoginError.value = false;
+        isLoginSuccess.value = true;
+        Get.offAndToNamed(Pages.lLoginScreen);
+        errorMessage.value = "";
+        Get.back();
         print("login success");
         //  Get.offAndToNamed(Pages.lSignUp);
       } else {
@@ -98,48 +160,10 @@ class SignUpScreenController extends GetxController {
         print("login else error ${result.errorMessage}");
         isLoginError.value = true;
         isLoginSuccess.value = false;
-        errorMessage.value = result.errorMessage;
+        errorMessage.value = result.mData["message"] ?? "";
       }
     } catch (e) {
-      Get.back();
-      print("error catch ${e.toString()}");
-      isLoginSuccess.value = false;
-      isLoginError.value = true;
-      errorMessage.value = e.toString();
-    }
-  }
-
-  /// to confirm opt
-  Future<void> registerConfirm({required String password,required String name, required context}) async {
-    Map body = {
-      "name": name,
-      "phone": mPhone,
-      "password": password,
-      "profile_image": imageFile
-    };
-
-    try {
-      customDialog(context, "Loading", Text("Loading"));
-      isLoginError.value = true;
-      isLoginSuccess.value = false;
-      ApiResult result =
-      await _authRepo.optRequestResponse(apiRoute: zRegister, body: body);
-      if (result.status == Status.eCOMPLETED) {
-        isLoginError.value = false;
-        isLoginSuccess.value = true;
-        errorMessage.value = "";
-    //    Get.back();
-        print("login success");
-        //  Get.offAndToNamed(Pages.lSignUp);
-      } else {
-      //  Get.back();
-        print("login else error ${result.errorMessage}");
-        isLoginError.value = true;
-        isLoginSuccess.value = false;
-        errorMessage.value = result.errorMessage;
-      }
-    } catch (e) {
-     /// Get.back();
+      /// Get.back();
       print("error catch ${e.toString()}");
       isLoginSuccess.value = false;
       isLoginError.value = true;

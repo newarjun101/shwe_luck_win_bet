@@ -33,7 +33,7 @@ class LoginScreenController extends GetxController {
     Map body = {"phone": phone, "password": password};
 
     try {
-      customDialog(context, "Please Wait",const SizedBox( height: 35,width: 20,child: Center(child: const CircularProgressIndicator())));
+      customDialog(context, "Please Wait",const SizedBox( height: 35,width: 20,child: Center(child:  CircularProgressIndicator())));
       isLoginError.value = true;
       isLoginSuccess.value = false;
       ApiResult<LoginResponseModel> result = await _authRepo.login(body);
@@ -46,7 +46,7 @@ class LoginScreenController extends GetxController {
         box.write(USER_ID,result.mData.data?.userId);
         Get.back();
         print("login success");
-    //    Get.offAndToNamed(Pages.lINITIAL);
+        Get.offAndToNamed(Pages.lINITIAL);
       } else {
         Get.back();
         isLoginError.value = true;

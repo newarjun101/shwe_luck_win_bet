@@ -65,7 +65,7 @@ class BuildLoginCard extends StatelessWidget {
                         password: passwordController.text,context: context);
                   }
                 },
-                title: "Get Otp",
+                title: "Login",
                 bgColor: Theme.of(context).colorScheme.secondary,
                 textColor: Theme.of(context).colorScheme.onPrimary,
                 radius: 4,
