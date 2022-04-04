@@ -71,16 +71,18 @@ class AuthRepo {
   }
 
   ///will use to request otp
-  Future<ApiResult<String>> optRequestResponse({apiRoute, body}) async {
+  Future<ApiResult<dynamic>> optRequestResponse({apiRoute, body}) async {
     try {
       ApiResponse response =
           await _apiBaseHelper.post(apiRoute, body, isHeader: false);
-      print(response.mData);
+      var data = jsonDecode(response.mData);
+      print(data);
 
-      if (response.status == Status.eCOMPLETED) {
-        return ApiResult(Status.eCOMPLETED, "Success", jsonEncode(response.mData));
+
+      if (data["success"] == true) {
+        return ApiResult(Status.eCOMPLETED, "Success", data);
       } else {
-        return ApiResult(Status.eERROR, response.message,  jsonEncode(response.mData));
+        return ApiResult(Status.eERROR, response.message,  data);
       }
     } catch (e) {
       return ApiResult(

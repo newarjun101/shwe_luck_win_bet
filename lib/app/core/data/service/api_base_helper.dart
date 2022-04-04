@@ -176,6 +176,18 @@ class ApiBaseHelper {
     };
   }
 
+/*  Future<dynamic> postWithImageFile(uri,body) {
+    var request = http.MultipartRequest("POST", Uri.parse(baseURL + 'register'));
+    request.fields['name'] = name;
+    request.fields['phone'] = phone;
+    request.fields['password'] = password;
+    if(profileImage != null){
+      request.files.add(await http.MultipartFile.fromPath(
+        'profile_image', profileImage.path,
+        filename: name,
+      ));
+  }
+  }*/
   initData() {
     baseUrl = "$zBaseUrl";
   }
