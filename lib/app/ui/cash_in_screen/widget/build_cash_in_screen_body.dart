@@ -115,6 +115,7 @@ class BuildCashInScreenBody extends StatelessWidget {
               height: 0.07.sh,
               child: CustomButton(
                   onClick: () {
+
                     paymentController.cashInRequest(
                         context: context,
                         name: userNameController.text,
