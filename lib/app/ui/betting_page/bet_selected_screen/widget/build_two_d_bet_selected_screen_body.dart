@@ -35,7 +35,7 @@ class BuildTwoDBetSelectedBody extends StatelessWidget {
             bottom: 48.h,
             right: 0,
             left: 0,
-            child: const TwoDSelectedBetList()),
+            child: TwoDSelectedBetList(controller: controller)),
         Positioned(
           bottom: 16.h,
           right: 16.w,
@@ -47,7 +47,7 @@ class BuildTwoDBetSelectedBody extends StatelessWidget {
                 borderRadius: BorderRadius.circular(4.h)),
             color: Theme.of(context).colorScheme.secondary,
             onPressed: () {
-                controller.bettingTwoD(context);
+              controller.bettingTwoD(context);
               controller.checkBySelectedItem();
             },
             child: Text(

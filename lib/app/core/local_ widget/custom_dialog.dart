@@ -11,10 +11,7 @@ customDialog(context, String title, Widget child) {
           backgroundColor: Theme.of(context).colorScheme.primaryContainer,
 
           title: Center(child: Text(title,style: TextStyle(fontSize: kLargeFontSize16.sp,fontWeight: FontWeight.bold),)),
-          content: SizedBox(
-            height: 40,
-              width: 20,
-              child: Center(child: child)),
+          content: child,
         );
       }
   );

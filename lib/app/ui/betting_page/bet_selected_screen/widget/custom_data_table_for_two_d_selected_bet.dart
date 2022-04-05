@@ -57,7 +57,7 @@ class CustomDataTableForTwoSelectedBet extends StatelessWidget {
                         children: [
                           GestureDetector(
                               onTap: () =>
-                                  controller.removeSelectedIndex(e, index),
+                                  controller.editPrice(e, index,context),
                               child: Icon(
                                 Icons.edit,
                                 size: 16.sp,

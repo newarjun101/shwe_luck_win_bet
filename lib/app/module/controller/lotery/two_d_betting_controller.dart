@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:shwe_luck_win_bet/app/core/data/model/lottery/tow_d_main_model.dart';
 import 'package:shwe_luck_win_bet/app/core/data/repo/lottery/two_d_repo.dart';
+import 'package:shwe_luck_win_bet/app/core/local_%20widget/dialog_child_with_text_form_filed.dart';
 import 'package:shwe_luck_win_bet/app/ui/betting_page/all_widget/tow_d_number_list.dart';
 
 import '../../../core/constants/default_values.dart';
@@ -11,6 +12,7 @@ import '../../../core/data/model/lottery/two_d_list_model.dart';
 import '../../../core/data/service/api_result.dart';
 import '../../../core/data/service/status.dart';
 import '../../../core/local_ widget/custom_dialog.dart';
+import '../../../core/local_ widget/custom_snack_bar.dart';
 
 class TwoDBettingController extends GetxController {
   late TwoDRepo _twoDRepo;
@@ -20,12 +22,15 @@ class TwoDBettingController extends GetxController {
   RxBool isSelectedIndex = false.obs;
   bool isThreeDRound = false;
   RxInt odd = 0.obs;
-  RxInt price = 100.obs;
+  RxInt price = 0.obs;
   RxBool isError = false.obs;
   RxString errorMessage = "".obs;
   RxBool isErrorBetting = false.obs;
   RxString errorBettingMessage = "".obs;
   RxList<TwoDListModel> mSelectedItem = RxList([]);
+  RxInt customPriceForSelectedItem = 100.obs;
+  TextEditingController customPriceText = TextEditingController();
+  RxInt betTotalAmount = 0.obs;
 
   TwoDBettingController() {
     _twoDRepo = Get.put(TwoDRepo());
@@ -53,7 +58,6 @@ class TwoDBettingController extends GetxController {
                 isSelected: false))
             .toList();
         odd.value = int.parse(_result.mData.odd);
-        print(mTwoDList.length);
         haveLoading.value = false;
         isError.value = false;
       } else {
@@ -78,8 +82,35 @@ class TwoDBettingController extends GetxController {
         mSelectedItem.remove(selectedItem);
       }
     }
-    //  checkBySelectedItem();
+    countBettingTotalPrice();
     update();
+  }
+
+  editPrice(TwoDListModel selectedItem, index, context) {
+    customDialog(
+        context,
+        "Update Value",
+        DialogChildWithTextFormField(
+            textController: customPriceText,
+            hint: "hint",
+            buttonText: "Update",
+            onPress: () {
+              RxString bill = customPriceText.text.obs;
+              selectedItem.defaultAmount = bill.value;
+              mSelectedItem.refresh();
+              countBettingTotalPrice();
+              Get.back();
+            }));
+  }
+
+  ///count total price
+  countBettingTotalPrice() {
+    betTotalAmount.value = 0;
+    for (int index = 0; index < mSelectedItem.length; index++) {
+      double value = double.parse(mSelectedItem[index].defaultAmount);
+      betTotalAmount.value += value.toInt();
+    }
+    print(betTotalAmount);
   }
 
   ///round 3 d
@@ -101,14 +132,21 @@ class TwoDBettingController extends GetxController {
         }
       }
     }
-   // mSelectedItem.clear();
-      mSelectedItem.addAll(mTest);
-  //  checkBySelectedItem();
+    // mSelectedItem.clear();
+    mSelectedItem.addAll(mTest);
+    //  checkBySelectedItem();
     update();
   }
 
   clearAllSelectedItem() {
-
+    for (int index = 0; index < mTwoDList.length; index++) {
+      if (mTwoDList[index].isSelected == true) {
+        mSelectedItem.remove(mTwoDList[index]);
+        mTwoDList[index].isSelected = false;
+      }
+    }
+    countBettingTotalPrice();
+    update();
   }
 
   getSelectedIndex(index) {
@@ -121,7 +159,9 @@ class TwoDBettingController extends GetxController {
       mSelectedItem.remove(TwoDListModel(
           id: mTwoDList[index].id,
           betNumber: mTwoDList[index].betNumber,
-          hotAmountLimit: mTwoDList[index].hotAmountLimit,
+          hotAmountLimit:
+              (double.parse(mTwoDList[index].hotAmountLimit).toInt())
+                  .toString(),
           defaultAmount: mTwoDList[index].defaultAmount,
           subCategoryId: mTwoDList[index].subCategoryId,
           closeNumber: mTwoDList[index].closeNumber,
@@ -132,6 +172,7 @@ class TwoDBettingController extends GetxController {
           isSelected: true));
     }
     checkBySelectedItem();
+    countBettingTotalPrice();
     update();
   }
 
@@ -149,6 +190,7 @@ class TwoDBettingController extends GetxController {
 
     mSelectedItem.clear();
     mSelectedItem.addAll(mmSelected);
+    countBettingTotalPrice();
     update();
   }
 
@@ -162,12 +204,10 @@ class TwoDBettingController extends GetxController {
         }
       }
     }
+    mSelectedItem.clear();
+    countBettingTotalPrice();
     update();
   }
-
-  firstNumberGreaterThanSecond() {}
-
-  secondNumberGreaterThanFirst() {}
 
   oddNumber() {
     //  removeSelectedItem();
@@ -337,18 +377,34 @@ class TwoDBettingController extends GetxController {
     try {
       ApiResult result = await _twoDRepo.betTowD(body);
       if (result.status == Status.eCOMPLETED) {
-        removeSelectedItem();
         Get.back();
         debugPrint("no error");
+        betTotalAmount.value = 0;
+        removeSelectedItem();
+        customSnackBar(
+            title: "Betting Successful",
+            icon: Icons.check_circle,
+            snackPosition: SnackPosition.BOTTOM,
+            bgColor: Colors.white,
+            iconColor: Colors.white);
       } else {
         Get.back();
-        print(result.status);
-        print("erorro on else");
+        customSnackBar(
+            title: "Betting Fail",
+            icon: Icons.check_circle,
+            snackPosition: SnackPosition.BOTTOM,
+            bgColor: Colors.white,
+            iconColor: Colors.white);
       }
     } catch (e) {
       Get.back();
       // Get.back();
-      print("errro on else");
+      customSnackBar(
+          title: "Betting fail Something gone wrong with server",
+          icon: Icons.check_circle,
+          snackPosition: SnackPosition.BOTTOM,
+          bgColor: Colors.white,
+          iconColor: Colors.white);
     }
   }
 }

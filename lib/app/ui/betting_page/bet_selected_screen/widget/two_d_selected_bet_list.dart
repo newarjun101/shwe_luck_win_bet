@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/constants/default_values.dart';
+import 'package:shwe_luck_win_bet/app/module/controller/lotery/two_d_betting_controller.dart';
 import 'package:shwe_luck_win_bet/app/ui/bet_selected_screen/widget/custom_data_table_for_selected_bet.dart';
 import 'package:shwe_luck_win_bet/app/ui/betting_page/bet_selected_screen/widget/custom_data_table_for_two_d_selected_bet.dart';
 
 class TwoDSelectedBetList extends StatelessWidget {
-  const TwoDSelectedBetList({Key? key}) : super(key: key);
+
+  final TwoDBettingController controller;
+  const TwoDSelectedBetList({Key? key,required this.controller}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -61,13 +64,15 @@ class TwoDSelectedBetList extends StatelessWidget {
                       fontSize: kSmallFontSize12.sp,
                       fontWeight: FontWeight.bold),
                 ),
-                Text(
-                  "hi",
-                  textAlign: TextAlign.end,
-                  style: TextStyle(
-                      color: Theme.of(context).colorScheme.primaryContainer,
-                      fontSize: kLargeFontSize16.sp,
-                      fontWeight: FontWeight.bold),
+                Obx(
+                    ()=> Text(
+                    controller.betTotalAmount.value.toString(),
+                    textAlign: TextAlign.end,
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.primaryContainer,
+                        fontSize: kLargeFontSize16.sp,
+                        fontWeight: FontWeight.bold),
+                  ),
                 ),
               ],
             )
