@@ -41,7 +41,7 @@ class BuildSignUpScreenBody extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   children: [
 
-                    GestureDetector(
+                 /*   GestureDetector(
                       onTap: ()=> controller.getFromGallery(),
                       child: CircleAvatar(
                         radius: 60.h,
@@ -57,7 +57,7 @@ class BuildSignUpScreenBody extends StatelessWidget {
                               backgroundImage: FileImage(signUpController.imageFile!))
                         )
                       ),
-                    ),
+                    ),*/
 
 
                     Text(

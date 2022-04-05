@@ -47,7 +47,7 @@ class CustomDataTableForSelectedBet extends StatelessWidget {
           DataCell(Row(
             children: [
               GestureDetector(
-                  onTap : ()=> controller.removeSelectedIndex(e,index),
+                  onTap : ()=>   controller.editPrice(e, index,context),
                   child: Icon(Icons.edit,size: 16.sp,color: Theme.of(context).colorScheme.secondary,)),
               SizedBox(
                 width: 8.w,

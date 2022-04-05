@@ -30,14 +30,17 @@ class BuildCashOutScreenBody extends StatelessWidget {
               height: 0.1.sh,
             ),
             CircleAvatar(
-                radius: 60.h,
-                backgroundColor: Theme.of(context).primaryColor,
-                child: Center(
-                    child: Icon(
+              radius: 60.h,
+              backgroundColor: Theme.of(context).primaryColor,
+              child: Center(
+                child:Obx(()=>  paymentController.isPaymentSelected.isFalse ? Icon(
                   Icons.paid_outlined,
                   size: 50.sp,
                   color: Theme.of(context).colorScheme.secondary,
-                ))),
+                ) : Text(paymentController.mPaymentList[paymentController.mSelectedPaymentIndex].name)
+                ),
+              ),
+            ),
             SizedBox(
               height: kDefaultMargin.sh,
             ),

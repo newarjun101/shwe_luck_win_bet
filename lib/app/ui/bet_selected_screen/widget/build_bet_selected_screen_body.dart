@@ -35,7 +35,7 @@ class BuildBetSelectedScreenBody extends StatelessWidget {
             bottom: 48.h,
             right: 0,
             left: 0,
-            child: const SelectedBetList()),
+            child: SelectedBetList(controller : controller)),
         Positioned(
           bottom: 16.h,
           right: 16.w,

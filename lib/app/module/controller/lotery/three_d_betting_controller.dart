@@ -13,6 +13,8 @@ import 'package:shwe_luck_win_bet/app/core/data/service/status.dart';
 import 'package:shwe_luck_win_bet/app/core/local_%20widget/custom_dialog.dart';
 import '../../../core/constants/default_values.dart';
 import '../../../core/extension/number_list.dart';
+import '../../../core/local_ widget/custom_snack_bar.dart';
+import '../../../core/local_ widget/dialog_child_with_text_form_filed.dart';
 
 class ThreeDBettingController extends GetxController {
   late ThreeDRepo _threeDRepo;
@@ -28,6 +30,8 @@ class ThreeDBettingController extends GetxController {
   RxString errorMessage = "".obs;
   RxBool isErrorBetting = false.obs;
   RxString errorBettingMessage = "".obs;
+  TextEditingController customPriceText = TextEditingController();
+  RxInt betTotalAmount = 0.obs;
 
   RxList<ThreeDAllDataModel> mSelectedItem = RxList([]);
 
@@ -35,6 +39,32 @@ class ThreeDBettingController extends GetxController {
     _threeDRepo = Get.put(ThreeDRepo());
     fetchThreeDList();
     TwoDRepo().getThreeD();
+  }
+
+  editPrice(ThreeDAllDataModel selectedItem, index, context) {
+    customDialog(
+        context,
+        "Update Value",
+        DialogChildWithTextFormField(
+            textController: customPriceText,
+            hint: "hint",
+            buttonText: "Update",
+            onPress: () {
+              RxString bill = customPriceText.text.obs;
+              selectedItem.defaultAmount = bill.value;
+              mSelectedItem.refresh();
+              countBettingTotalPrice();
+              Get.back();
+            }));
+  }
+
+  ///count total price
+  countBettingTotalPrice() {
+    betTotalAmount.value = 0;
+    for (int index = 0; index < mSelectedItem.length; index++) {
+      double value = double.parse(mSelectedItem[index].defaultAmount);
+      betTotalAmount.value += value.toInt();
+    }
   }
 
   ///Fetch all data from api
@@ -97,7 +127,7 @@ class ThreeDBettingController extends GetxController {
         mSelectedItem.remove(selectedItem);
       }
     }
-    checkBySelectedItem();
+    countBettingTotalPrice();
     update();
   }
 
@@ -174,16 +204,30 @@ class ThreeDBettingController extends GetxController {
       if (result.status == Status.eCOMPLETED) {
         removeSelectedItem();
         Get.back();
-        debugPrint("no error");
+        customSnackBar(
+            title: "Betting Successful",
+            icon: Icons.check_circle,
+            snackPosition: SnackPosition.BOTTOM,
+            bgColor: Colors.white,
+            iconColor: Colors.white);
       } else {
         Get.back();
-        print(result.status);
-        print("erorro on else");
+        customSnackBar(
+            title: result.errorMessage,
+            icon: Icons.check_circle,
+            snackPosition: SnackPosition.BOTTOM,
+            bgColor: Colors.white,
+            iconColor: Colors.white);
       }
     } catch (e) {
       Get.back();
       // Get.back();
-      print("errro on else");
+      customSnackBar(
+          title:  "Something wrong with Server",
+          icon: Icons.check_circle,
+          snackPosition: SnackPosition.BOTTOM,
+          bgColor: Colors.white,
+          iconColor: Colors.white);
     }
   }
 
@@ -201,6 +245,7 @@ class ThreeDBettingController extends GetxController {
     }
     mSelectedItem.clear();
     mSelectedItem.addAll(mmSelected);
+    countBettingTotalPrice();
   }
 
   ///remove item from selected item
@@ -215,6 +260,7 @@ class ThreeDBettingController extends GetxController {
       }
     }
     mSelectedItem.clear();
+    countBettingTotalPrice();
 //    mSelectedItem.addAll(mmSelected);
     // checkBySelectedItem();
     update();

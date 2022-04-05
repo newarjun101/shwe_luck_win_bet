@@ -20,10 +20,7 @@ class BuildThreeDGridNumber extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: kDefaultMargin.sh),
       child: GetBuilder<ThreeDBettingController>(
         builder: ( controller) => controller.mThreeDList.isEmpty
-            ? SizedBox(
-                height: 30.h,
-                width: 30.h,
-                child: const CircularProgressIndicator())
+            ? const Center(child:  CircularProgressIndicator())
             : GridView.builder(
                 itemCount:  controller.mThreeDList.length,
                 itemBuilder: (context, index) {

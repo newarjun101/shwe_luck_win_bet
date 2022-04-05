@@ -60,7 +60,7 @@ class BuildLoginScreenBody extends StatelessWidget {
           left: 0,
           right: 0,
           child: InkWell(
-            onTap: () => Get.toNamed(Pages.lSignUp),
+            onTap: () => Get.toNamed(Pages.lOtp),
             child: Text(
               "အကောင့်အသစ်ဖွင့်ရန်",
               textAlign: TextAlign.center,

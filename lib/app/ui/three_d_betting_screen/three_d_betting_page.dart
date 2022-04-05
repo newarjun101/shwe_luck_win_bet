@@ -46,7 +46,7 @@ class ThreeDBettingPage extends StatelessWidget {
             const BuildThreeDBettingPageBody(),
           ],
         ),
-        floatingActionButton: SizedBox(
+    /*    floatingActionButton: SizedBox(
           width: 0.3.sw,
           child: CustomButton(
             isIcon: false,
@@ -61,7 +61,7 @@ class ThreeDBettingPage extends StatelessWidget {
             textColor: Theme.of(context).colorScheme.onPrimary,
           ),
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,*/
 
       ),
     );
