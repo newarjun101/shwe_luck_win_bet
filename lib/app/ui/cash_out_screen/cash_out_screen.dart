@@ -6,7 +6,6 @@ import '../../core/local_ widget/app_bar_with_profile.dart';
 
 class CashOutScreen extends StatelessWidget {
   const CashOutScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
