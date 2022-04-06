@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/local_%20widget/custom_button.dart';
 import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 import 'package:shwe_luck_win_bet/app/module/controller/edit_profile_screen_controller.dart';
-import 'package:shwe_luck_win_bet/app/ui/profile_page/all_widget/profile_widget.dart';
 
 import '../../../core/constants/default_values.dart';
 import '../../../core/local_ widget/custom_text_form_field.dart';
@@ -47,8 +46,8 @@ class BuildEditProfileScreenBody extends StatelessWidget {
                         image: imageProvider, fit: BoxFit.cover),
                   ),
                 ),
-                placeholder: (context, url) => CircularProgressIndicator(),
-                errorWidget: (context, url, error) => Icon(Icons.error),
+                placeholder: (context, url) =>const  CircularProgressIndicator(),
+                errorWidget: (context, url, error) =>const Icon(Icons.error),
               ),
             ),
             SizedBox(

@@ -36,7 +36,7 @@ class ImageWithBorderRadius extends StatelessWidget {
             child:  CircularProgressIndicator(),
           ),
         ),
-        errorWidget: (context, url, error) => Icon(Icons.error),
+        errorWidget: (context, url, error) =>const Icon(Icons.error),
       ),
     );
   }

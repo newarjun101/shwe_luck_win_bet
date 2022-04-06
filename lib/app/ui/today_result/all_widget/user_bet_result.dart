@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shwe_luck_win_bet/app/core/constants/default_values.dart';
 
 class UserBetResult extends StatelessWidget {
   const UserBetResult({Key? key}) : super(key: key);

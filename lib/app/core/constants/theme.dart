@@ -11,9 +11,7 @@ class StyleTheme {
       colorScheme: ColorScheme.fromSwatch().copyWith(
         secondary: secondary,
         primaryContainer:  primaryContainer,
-        secondaryVariant: secondaryVariant,
         onSecondary: onSecondary,
-        primaryVariant: primaryVariant, ///card bg color
         onPrimary: onPrimary,
         ///text  color
       ),

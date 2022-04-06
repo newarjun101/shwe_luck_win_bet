@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/module/controller/lotery/three_d_betting_controller.dart';
 import 'package:shwe_luck_win_bet/app/ui/three_d_betting_screen/widget/build_betting_body.dart';
 
 import '../../core/local_ widget/app_bar_with_preferred_widget.dart';
-import '../../core/local_ widget/custom_button.dart';
-import '../../core/route/pages.dart';
-import '../betting_page/all_widget/build_betting_page_body.dart';
 import 'core/three_d_options.dart';
 
 class ThreeDBettingPage extends StatelessWidget {
