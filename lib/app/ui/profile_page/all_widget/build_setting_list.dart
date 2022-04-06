@@ -47,7 +47,7 @@ class BuildSettingList extends StatelessWidget {
               GestureDetector(
                   onTap: ()=> Get.toNamed(Pages.lEditProfile),
                   child: Text("အကောင့်ပြုပြင်ရန်",style: TextStyle(fontSize: kMediumFontSize14.sp),)),
-              Spacer(),
+              const Spacer(),
               Icon(Icons.keyboard_arrow_down_outlined,size: kExtraBigLargeFontSize24.sp,),
             ],
           ),
@@ -73,7 +73,7 @@ class BuildSettingList extends StatelessWidget {
               Icon(Icons.account_balance_wallet,size: kExtraBigLargeFontSize24.sp,),
               SizedBox(width: kDefaultMargin.sh,),
               Text("ပိုက်ဆံအိတ်",style: TextStyle(fontSize: kMediumFontSize14.sp),),
-              Spacer(),
+             const Spacer(),
               Text("10000 MMK",style: TextStyle(fontSize: kMediumFontSize14.sp),)
             ],
           ),
@@ -86,7 +86,7 @@ class BuildSettingList extends StatelessWidget {
               Icon(EvaIcons.flag,size: kExtraBigLargeFontSize24.sp,),
               SizedBox(width: kDefaultMargin.sh,),
               Text("ဘာသာစကား",style: TextStyle(fontSize: kMediumFontSize14.sp),),
-              Spacer(),
+              const Spacer(),
               Text("Myanmar",style: TextStyle(fontSize: kMediumFontSize14.sp),)
             ],
           ),

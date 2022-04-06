@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/module/controller/home_main_page_controller.dart';
-
 import '../../../core/constants/default_values.dart';
 
 class CustomCarouselSlider extends StatelessWidget {

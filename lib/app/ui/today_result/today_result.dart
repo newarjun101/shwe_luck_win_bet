@@ -53,7 +53,7 @@ class TodayResult extends StatelessWidget {
           child: Text(
             "ထိုးမယ်",
             style: TextStyle(
-                color: Theme.of(context).colorScheme.primaryVariant,
+                color: Theme.of(context).colorScheme.primaryContainer,
                 fontWeight: FontWeight.bold),
           ),
         ),

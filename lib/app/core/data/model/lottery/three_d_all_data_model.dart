@@ -33,7 +33,7 @@ class ThreeDAllDataModel {
     closeNumber: json["close_number"],
     currentLimit: json["current_limit"],
     createdAt: json["created_at"],
-    updatedAt: json["updated_at"] == null ? "" :json["updated_at"],
+    updatedAt: json["updated_at"] ?? "",
     status: json["status"],
     isSelected: false
   );

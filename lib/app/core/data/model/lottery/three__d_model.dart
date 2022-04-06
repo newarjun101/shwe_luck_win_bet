@@ -2,7 +2,7 @@
 //
 //     final threeDModel = threeDModelFromJson(jsonString);
 
-import 'package:meta/meta.dart';
+
 import 'dart:convert';
 
 ThreeDModel threeDModelFromJson(String str) =>

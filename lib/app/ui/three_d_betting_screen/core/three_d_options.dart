@@ -8,7 +8,6 @@ import '../../../core/constants/default_values.dart';
 import '../../../core/local_ widget/custom_button.dart';
 import '../../../core/local_ widget/custom_text_form_field.dart';
 import '../../../core/validation/validation.dart';
-import '../../betting_page/all_widget/quick_betting_bottom_sheet.dart';
 
 class ThreeDOptions extends StatelessWidget {
   const ThreeDOptions({Key? key}) : super(key: key);
