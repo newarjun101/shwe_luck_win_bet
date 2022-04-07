@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,7 +18,7 @@ class ThreeDBettingController extends GetxController {
   late ThreeDRepo _threeDRepo;
   RxBool haveLoading = false.obs;
   late int selectedIndex;
-  List<ThreeDAllDataModel> mThreeDList = [];
+  RxList<ThreeDAllDataModel> mThreeDList = RxList<ThreeDAllDataModel>([]);
   RxBool isSelectedIndex = false.obs;
   List<String> numberList = threeDNumberGenerate;
   bool isThreeDRound = false;
@@ -74,7 +72,7 @@ class ThreeDBettingController extends GetxController {
       ApiResult<ThreeDModel> _result = await _threeDRepo.getThreeD();
       if (_result.status == Status.eCOMPLETED) {
         //  mThreeDList.addAll(_result.mData.threed);
-        mThreeDList = _result.mData.threed
+        mThreeDList.value = _result.mData.threed
             .map((e) => ThreeDAllDataModel(
                 id: e.id,
                 betNumber: e.betNumber,
@@ -250,7 +248,6 @@ class ThreeDBettingController extends GetxController {
 
   ///remove item from selected item
   removeSelectedItem() {
-    RxList<ThreeDAllDataModel> mmSelected = RxList([]);
     for (int i = 0; i < mThreeDList.length; i++) {
       for (ThreeDAllDataModel selectedItem in mSelectedItem) {
         if (mThreeDList[i].id == selectedItem.id) {

@@ -38,8 +38,8 @@ class AppBarWithPreferredWidget extends StatelessWidget with PreferredSizeWidget
               image: DecorationImage(image: imageProvider, fit: BoxFit.cover),
             ),
           ),
-          placeholder: (context, url) => CircularProgressIndicator(),
-          errorWidget: (context, url, error) => Icon(Icons.error),
+          placeholder: (context, url) => const CircularProgressIndicator(),
+          errorWidget: (context, url, error) => const Icon(Icons.error),
         ),
       ),
       title: Column(
@@ -48,12 +48,12 @@ class AppBarWithPreferredWidget extends StatelessWidget with PreferredSizeWidget
         children: [
           Text(name,
               style: TextStyle(
-                  color: Theme.of(context).colorScheme.primaryVariant,
+                  color: Theme.of(context).colorScheme.primaryContainer,
                   fontWeight: FontWeight.bold,
                   fontSize: kLargeFontSize16.sp)),
           Text("****13",
               style: TextStyle(
-                  color: Theme.of(context).colorScheme.primaryVariant,
+                  color: Theme.of(context).colorScheme.primaryContainer,
                   fontSize: kMediumFontSize14.sp)),
         ],
       ),
@@ -71,7 +71,7 @@ class AppBarWithPreferredWidget extends StatelessWidget with PreferredSizeWidget
             Text(
               balance,
               style: TextStyle(
-                color: Theme.of(context).colorScheme.primaryVariant,
+                color: Theme.of(context).colorScheme.primaryContainer,
                 fontSize: kMediumFontSize14.sp,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -87,7 +87,7 @@ class AppBarWithPreferredWidget extends StatelessWidget with PreferredSizeWidget
             Icon(
               Icons.notifications_none_outlined,
               size: kIconSize.sp,
-              color: Theme.of(context).colorScheme.primaryVariant,
+              color: Theme.of(context).colorScheme.primaryContainer,
             ),
             Positioned(
               top: 0.01.sh,
@@ -99,7 +99,7 @@ class AppBarWithPreferredWidget extends StatelessWidget with PreferredSizeWidget
                   notification,
                   style: TextStyle(
                       fontSize: 8.sp,
-                      color: Theme.of(context).colorScheme.primaryVariant),
+                      color: Theme.of(context).colorScheme.primaryContainer),
                 ),
               ),
             )

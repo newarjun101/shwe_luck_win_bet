@@ -43,11 +43,9 @@ class PaymentRepo {
       if (response.status == Status.eCOMPLETED) {
         return ApiResult(Status.eCOMPLETED, "Success", mMap["message"]);
       } else {
-        print('error');
         return ApiResult(Status.eERROR, response.message, "Fail");
       }
     } catch (e) {
-      print(e.toString());
       return ApiResult(
         Status.eERROR,
         e.toString(),
@@ -66,11 +64,9 @@ class PaymentRepo {
       if (response.status == Status.eCOMPLETED) {
         return ApiResult(Status.eCOMPLETED, "Success", mMap["message"]);
       } else {
-        print('error');
         return ApiResult(Status.eERROR, response.message, "Fail");
       }
     } catch (e) {
-      print(e.toString());
       return ApiResult(
         Status.eERROR,
         e.toString(),

@@ -14,7 +14,6 @@ class BuildEditProfileScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final editProfileController = Get.find<EditProfileScreenController>();
     final TextEditingController userNameController = TextEditingController();
     final TextEditingController phoneController = TextEditingController();
 
