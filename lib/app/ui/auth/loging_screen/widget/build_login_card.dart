@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:shwe_luck_win_bet/app/core/extension/extension_form_validate.dart';
 import 'package:shwe_luck_win_bet/app/core/local_%20widget/custom_button.dart';
-import 'package:shwe_luck_win_bet/app/core/local_%20widget/custom_dialog.dart';
 import 'package:shwe_luck_win_bet/app/module/controller/login_screen_controller.dart';
 import '../../../../core/constants/default_values.dart';
 import '../../../../core/local_ widget/custom_text_form_field.dart';
-import '../../../../core/route/pages.dart';
 import '../../../../core/validation/validation.dart';
 
 class BuildLoginCard extends StatelessWidget {
@@ -51,9 +48,15 @@ class BuildLoginCard extends StatelessWidget {
             SizedBox(
               height: 8.h,
             ),
-            Obx(()=>         loginController.isLoginError.isTrue?
-            Text(loginController.errorMessage.toString(),style: const TextStyle(color: Colors.red,fontWeight: FontWeight.bold),): const SizedBox(),),
-
+            Obx(
+              () => loginController.isLoginError.isTrue
+                  ? Text(
+                      loginController.errorMessage.toString(),
+                      style: const TextStyle(
+                          color: Colors.red, fontWeight: FontWeight.bold),
+                    )
+                  : const SizedBox(),
+            ),
             SizedBox(
               height: kDefaultMargin.sh,
             ),
@@ -62,7 +65,8 @@ class BuildLoginCard extends StatelessWidget {
                   if (_key.currentState!.validate()) {
                     loginController.login(
                         phone: userNameController.text,
-                        password: passwordController.text,context: context);
+                        password: passwordController.text,
+                        context: context);
                   }
                 },
                 title: "Login",

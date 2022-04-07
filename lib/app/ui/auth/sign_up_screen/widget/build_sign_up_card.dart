@@ -18,8 +18,6 @@ class BuildSignUpCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextEditingController userNameController = TextEditingController();
-    TextEditingController phoneController = TextEditingController();
-    TextEditingController otpController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
     TextEditingController confirmController = TextEditingController();
     return Container(
@@ -58,7 +56,6 @@ class BuildSignUpCard extends StatelessWidget {
                 hint: "confirm password",
                 validator: checkByLength,
                 isPassword: true),
-
             SizedBox(
               height: kDefaultMargin.sh,
             ),
@@ -66,19 +63,21 @@ class BuildSignUpCard extends StatelessWidget {
               height: 0.06.sh,
               child: CustomButton(
                   onClick: () {
-
-                    if(signUpController.imageFile !=null && passwordController.text==confirmController.text) {
-                      signUpController.registerConfirm(password: passwordController.text, name: userNameController.text, context: context);
+                    if (signUpController.imageFile != null &&
+                        passwordController.text == confirmController.text) {
+                      signUpController.registerConfirm(
+                          password: passwordController.text,
+                          name: userNameController.text,
+                          context: context);
                     } else {
-                      customDialog(context, "Image Can't be Empty", Text("Image Null"));
+                      customDialog(
+                          context, "Image Can't be Empty", Text("Image Null"));
                     }
-
                   },
                   title: "Create Account",
                   bgColor: Theme.of(context).colorScheme.secondary,
                   textColor: Theme.of(context).colorScheme.onPrimary,
                   radius: 4,
-                  iconSize: 20,
                   isIcon: false),
             )
           ],

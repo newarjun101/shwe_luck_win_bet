@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shwe_luck_win_bet/app/ui/profile_page/all_widget/build_profile_main_body.dart';
-
 import '../../core/local_ widget/app_bar_with_profile.dart';
 
 class ProfileMainPage extends StatelessWidget {

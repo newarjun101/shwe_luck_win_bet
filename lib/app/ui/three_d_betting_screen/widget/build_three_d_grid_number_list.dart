@@ -2,13 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:shwe_luck_win_bet/app/core/data/model/lottery/three__d_model.dart';
 import 'package:shwe_luck_win_bet/app/module/controller/lotery/three_d_betting_controller.dart';
-
 import '../../../core/constants/default_values.dart';
 
 class BuildThreeDGridNumber extends StatelessWidget {
-
 
   const BuildThreeDGridNumber({Key? key})
       : super(key: key);

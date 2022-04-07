@@ -37,15 +37,15 @@ class ProfileWidget extends StatelessWidget {
                 placeholder: (context, url) => SizedBox(
                     height: 30.h,
                     width: 30.h,
-                    child: CircularProgressIndicator()),
+                    child:const CircularProgressIndicator()),
                 errorWidget: (context, url, error) => Icon(Icons.account_circle_outlined,size: 43.h,color: Theme.of(context).colorScheme.primaryContainer,),
               ),
               SizedBox(
                 height: kDefaultMargin.sh,
               ),
-              Text(controller.mModel.name,style: TextStyle(color: Theme.of(context).colorScheme.secondaryVariant,
+              Text(controller.mModel.name,style: TextStyle(color: Theme.of(context).colorScheme.primaryContainer,
                   fontSize: kExtraLargeFontSize18.sp,fontWeight: FontWeight.bold),),
-              Text(controller.mModel.phone,style: TextStyle(color: Theme.of(context).colorScheme.secondaryVariant,
+              Text(controller.mModel.phone,style: TextStyle(color: Theme.of(context).colorScheme.primaryContainer,
                 fontSize: kLargeFontSize16.sp,),),
             ],
           )

@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/local_%20widget/custom_button.dart';
-import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 import 'package:shwe_luck_win_bet/app/core/validation/validation.dart';
 import 'package:shwe_luck_win_bet/app/module/controller/sign_up_screen_controller.dart';
-
 import '../../../../core/constants/default_values.dart';
 import '../../../../core/local_ widget/custom_text_form_field.dart';
 
@@ -21,10 +19,7 @@ class BuildOtpCard extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(kDefaultMargin.sh),
       margin: EdgeInsets.all(kDefaultMargin.sh),
-      /*decoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
-        borderRadius: BorderRadius.circular(4.h),
-      ),*/
+
       child: Form(
         key: _key,
         child: Obx(

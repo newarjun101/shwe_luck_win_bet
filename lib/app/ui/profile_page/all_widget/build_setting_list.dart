@@ -15,7 +15,7 @@ class BuildSettingList extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.only(left: kDefaultMargin.sh,right: kDefaultMargin.sh),
       decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.secondaryVariant,
+          color: Theme.of(context).colorScheme.primaryContainer,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(25.h), topRight: Radius.circular(25.h))),
       child: ListView(
@@ -60,7 +60,7 @@ class BuildSettingList extends StatelessWidget {
               Icon(Icons.source,size: kExtraBigLargeFontSize24.sp,),
               SizedBox(width: kDefaultMargin.sh,),
               Text("ရန်ညွှန်းကုဒ်",style: TextStyle(fontSize: kMediumFontSize14.sp),),
-              Spacer(),
+             const Spacer(),
               Text("HM001",style: TextStyle(fontSize: kMediumFontSize14.sp),)
             ],
           ),

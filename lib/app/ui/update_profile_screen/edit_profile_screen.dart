@@ -3,7 +3,6 @@ import 'package:shwe_luck_win_bet/app/ui/update_profile_screen/widget/build_prof
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return  Scaffold(

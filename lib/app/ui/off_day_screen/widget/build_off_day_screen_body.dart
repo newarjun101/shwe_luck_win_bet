@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shwe_luck_win_bet/app/ui/off_day_screen/widget/off_day_list.dart';
 
 class BuildOffDayScreenBody extends StatelessWidget {
