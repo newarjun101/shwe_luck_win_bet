@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
           ),
           getPages: Routes().routerPage,
           initialRoute: token.read(TOKEN) == "" || token.read(TOKEN) == null
-              ? Pages.lBalancePage
+              ? Pages.lThreeDBetting
               : Pages.lChangePassword);
     });
   }

@@ -51,7 +51,6 @@ class AuthRepo {
       if (response.status == Status.eCOMPLETED) {
         return ApiResult(Status.eCOMPLETED, "", model);
       } else {
-        print("error on else");
         return ApiResult(Status.eERROR, response.message, model);
       }
     } catch (e) {

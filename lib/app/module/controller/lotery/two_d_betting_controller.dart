@@ -5,8 +5,6 @@ import 'package:get_storage/get_storage.dart';
 import 'package:shwe_luck_win_bet/app/core/data/model/lottery/tow_d_main_model.dart';
 import 'package:shwe_luck_win_bet/app/core/data/repo/lottery/two_d_repo.dart';
 import 'package:shwe_luck_win_bet/app/core/local_%20widget/dialog_child_with_text_form_filed.dart';
-import 'package:shwe_luck_win_bet/app/ui/betting_page/all_widget/tow_d_number_list.dart';
-
 import '../../../core/constants/default_values.dart';
 import '../../../core/data/model/lottery/two_d_list_model.dart';
 import '../../../core/data/service/api_result.dart';
