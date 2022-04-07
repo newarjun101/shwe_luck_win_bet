@@ -26,7 +26,7 @@ class BuildButtomNavbarFeature extends StatelessWidget {
       ],
       elevation: 1,
       selectedItemColor: Theme.of(context).colorScheme.secondary,
-      unselectedItemColor: Theme.of(context).colorScheme.primaryVariant,
+      unselectedItemColor: Theme.of(context).colorScheme.primaryContainer,
       showUnselectedLabels: true,
       backgroundColor: Theme.of(context).primaryColor,
       type: BottomNavigationBarType.fixed,

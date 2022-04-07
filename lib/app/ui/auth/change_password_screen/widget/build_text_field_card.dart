@@ -6,6 +6,7 @@ import 'package:shwe_luck_win_bet/app/core/validation/validation.dart';
 import 'package:shwe_luck_win_bet/app/module/controller/sign_up_screen_controller.dart';
 
 import '../../../../core/constants/default_values.dart';
+import '../../../../core/local_ widget/custom_button.dart';
 import '../../../../core/local_ widget/custom_text_form_field.dart';
 
 class BuildTextFieldCard extends StatelessWidget {
@@ -89,6 +90,21 @@ class BuildTextFieldCard extends StatelessWidget {
                 isPassword: true),
             SizedBox(
               height: kDefaultMargin.sh,
+            ),
+            SizedBox(
+              height: 0.068,
+              child: CustomButton(
+                onClick: () {
+                  if (_key.currentState!.validate()) {
+                    Get.toNamed(Pages.lOtp);
+                  }
+                },
+                bgColor: Theme.of(context).colorScheme.secondary,
+                radius: 4,
+                title: 'ဆက်သွားမယ်',
+                textColor: Theme.of(context).colorScheme.onPrimary,
+                isIcon: false,
+              ),
             ),
             MaterialButton(
               minWidth: double.infinity,

@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../core/constants/default_values.dart';
-import '../../../core/local_ widget/button_quick_bet.dart';
 import '../../../core/local_ widget/quick_bet_button_row.dart';
 import '../../../module/controller/lotery/two_d_betting_controller.dart';
 

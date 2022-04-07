@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 import 'package:shwe_luck_win_bet/app/ui/auth/sign_up_screen/widget/build_sign_up_card.dart';
-
 import '../../../../core/constants/default_values.dart';
 import '../../../../module/controller/sign_up_screen_controller.dart';
 
@@ -12,7 +11,7 @@ class BuildSignUpScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final signUpController = Get.find<SignUpScreenController>();
+
     return GetBuilder<SignUpScreenController>(
       builder: (controller) {
         return Stack(
@@ -38,24 +37,6 @@ class BuildSignUpScreenBody extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
                   children: [
-
-                 /*   GestureDetector(
-                      onTap: ()=> controller.getFromGallery(),
-                      child: CircleAvatar(
-                        radius: 60.h,
-
-                        backgroundColor: Theme.of(context).primaryColor,
-                        child: Center(
-                          child: signUpController.imageFile==null? Icon(
-                            Icons.add_a_photo_outlined,size: 50.sp,
-                            color: Theme.of(context).colorScheme.secondary,
-                          ) : CircleAvatar(
-                              backgroundColor: Theme.of(context).primaryColor,
-                              radius: 60.h,
-                              backgroundImage: FileImage(signUpController.imageFile!))
-                        )
-                      ),
-                    ),*/
 
 
                     Text(

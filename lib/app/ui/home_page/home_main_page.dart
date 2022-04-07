@@ -1,6 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:shwe_luck_win_bet/app/core/constants/default_values.dart';
 import 'package:shwe_luck_win_bet/app/core/local_%20widget/app_bar_with_profile.dart';
 import 'package:shwe_luck_win_bet/app/ui/home_page/all_widget/build_home_main_body.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

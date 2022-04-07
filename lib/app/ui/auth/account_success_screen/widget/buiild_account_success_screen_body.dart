@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:shwe_luck_win_bet/app/core/local_%20widget/custom_button.dart';
 import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
 import 'package:shwe_luck_win_bet/app/ui/auth/loging_screen/widget/build_login_card.dart';
 import 'package:shwe_luck_win_bet/app/ui/auth/otp_screen/widget/build_otp_card.dart';
@@ -63,26 +64,17 @@ class BuildAccountSuccessScreenBody extends StatelessWidget {
           ),
         ),
         Positioned(
-          bottom: 16.h,
-          left: 26.w,
-          right: 26.w,
-          child: MaterialButton(
-            minWidth: double.infinity,
-            height: 0.068.sh,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(4.h)),
-            color: Theme.of(context).colorScheme.secondary,
-            onPressed: () {
-              Get.offNamed(Pages.lINITIAL);
-            },
-            child: Text(
-              "ဆက်သွားမယ်",
-              style: TextStyle(
-                  //     color: Theme.of(context).colorScheme.primaryContainer,
-                  fontSize: kLargeFontSize16.sp,
-                  fontWeight: FontWeight.bold),
+            bottom: 16.h,
+            left: 26.w,
+            right: 26.w,
+            child: CustomButton(
+              onClick: () => Get.offNamed(Pages.lINITIAL),
+              bgColor: Theme.of(context).colorScheme.secondary,
+              radius: 4,
+              title: 'ဆက်သွားမယ်',
+              textColor: Theme.of(context).colorScheme.onPrimary,
+              isIcon: false,
             ),
-          ),
         )
       ],
     );

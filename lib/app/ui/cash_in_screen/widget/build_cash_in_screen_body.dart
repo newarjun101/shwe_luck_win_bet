@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/constants/default_values.dart';
 import 'package:shwe_luck_win_bet/app/core/local_%20widget/custom_button.dart';
-import 'package:shwe_luck_win_bet/app/core/local_%20widget/custom_dialog.dart';
 import 'package:shwe_luck_win_bet/app/core/validation/validation.dart';
 import 'package:shwe_luck_win_bet/app/module/controller/cash_in_cash_out_screen_controller.dart';
 
@@ -31,18 +30,20 @@ class BuildCashInScreenBody extends StatelessWidget {
             SizedBox(
               height: 0.07.sh,
             ),
-           CircleAvatar(
-                radius: 60.h,
-                backgroundColor: Theme.of(context).primaryColor,
-                child: Center(
-                    child:Obx(()=>  paymentController.isPaymentSelected.isFalse ? Icon(
-                  Icons.paid_outlined,
-                  size: 50.sp,
-                  color: Theme.of(context).colorScheme.secondary,
-                ) : Text("${paymentController.mPaymentList[paymentController.mSelectedPaymentIndex].name}")
-                ),
-           ),
-           ),
+            CircleAvatar(
+              radius: 60.h,
+              backgroundColor: Theme.of(context).primaryColor,
+              child: Center(
+                child: Obx(() => paymentController.isPaymentSelected.isFalse
+                    ? Icon(
+                        Icons.paid_outlined,
+                        size: 50.sp,
+                        color: Theme.of(context).colorScheme.secondary,
+                      )
+                    : Text(
+                        "${paymentController.mPaymentList[paymentController.mSelectedPaymentIndex].name}")),
+              ),
+            ),
             SizedBox(
               height: kDefaultMargin.sh,
             ),
@@ -115,7 +116,6 @@ class BuildCashInScreenBody extends StatelessWidget {
               height: 0.07.sh,
               child: CustomButton(
                   onClick: () {
-
                     paymentController.cashInRequest(
                         context: context,
                         name: userNameController.text,

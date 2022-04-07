@@ -17,7 +17,7 @@ class TabBarForUserResult extends StatelessWidget {
               borderRadius: BorderRadius.only(
                   topRight: Radius.circular(0.056.sh),
                   topLeft: Radius.circular(0.056.sh)),
-              color: Theme.of(context).colorScheme.secondaryVariant),
+              color: Theme.of(context).colorScheme.primaryContainer),
           child: Column(children: [
             TabBar(
               labelColor: Theme.of(context).primaryColor,

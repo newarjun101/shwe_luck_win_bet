@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/ui/bet_selected_screen/widget/selected_bet_list.dart';
-import 'package:shwe_luck_win_bet/app/ui/off_day_screen/widget/off_day_list.dart';
-
 import '../../../core/constants/default_values.dart';
 import '../../../module/controller/lotery/three_d_betting_controller.dart';
 

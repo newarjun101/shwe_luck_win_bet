@@ -1,13 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shwe_luck_win_bet/app/core/constants/default_values.dart';
-import 'package:shwe_luck_win_bet/app/core/local_%20widget/custom_dialog.dart';
 import 'package:shwe_luck_win_bet/app/core/route/pages.dart';
-import 'package:shwe_luck_win_bet/app/ui/home_page/core/card_container_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shwe_luck_win_bet/app/ui/home_page/core/image_with_border_radius.dart';
-
 import '../core/custom_carousel_slider.dart';
 
 class BuildHomeMainBody extends StatelessWidget {
@@ -73,19 +68,6 @@ class BuildHomeMainBody extends StatelessWidget {
                   height: 0.2.sh,
                   fit: BoxFit.contain,
                 ),
-             /*   CardButtonContainer(
-                  onClick: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return customDialog(context, "Slot",
-                            const Center(child: Text("Comming Soon")));
-                      },
-                    );
-                  },
-                  isComming: true,
-                  title: 'Slots',
-                ),*/
               ],
             ),
           )
